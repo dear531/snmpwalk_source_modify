@@ -26,13 +26,14 @@ USELIBS			= -lnetsnmp
 # link path in src dir
 LIBS		= $(USELIBS) 
 OSUFFIX		= o
-OBJS  = *.o
+OBJS		= *.o
 
 #
 # build rules
 #
-snmpwalk$(EXEEXT):    snmpwalk.$(OSUFFIX) $(USELIBS)
-	$(LINK) ${CFLAGS} -o $@ snmpwalk.$(OSUFFIX) $(LOCAL_LIBS) ${LDFLAGS} ${LIBS} 
+all:snmpwalk
+snmpwalk:snmpwalk.$(OSUFFIX) $(USELIBS)
+	$(LINK) ${CFLAGS} -o $@ snmpwalk.$(OSUFFIX) ${LIBS} 
 
 objs: ${OBJS}
 
@@ -40,8 +41,10 @@ objs: ${OBJS}
 #
 # cleaning targets
 #
-clean: $(OTHERCLEANTODOS)
-	$(LIBTOOLCLEAN) ${OBJS} core $(STANDARDCLEANTARGETS) $(OTHERCLEANTARGETS)
+clean:
+	$(LIBTOOLCLEAN) ${OBJS}
+cleanall:clean
+	-rm -rf snmpwalk
 # These aren't real targets, let gnu's make know that.
 .PHONY:
-	clean objs
+	all clean objs cleanall
