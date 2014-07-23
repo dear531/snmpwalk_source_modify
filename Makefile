@@ -6,7 +6,8 @@ LIBTOOLCLEAN	= --mode=clean rm -f
 #
 # Compiler arguments
 #
-CFLAGS		= -g -O2
+CFLAGS		= -gdwarf-2 -g3
+#CFLAGS		= -O2 -gdwarf-2 -g3
 #CFLAGS		= -fno-strict-aliasing -g -O2 -Ulinux -Dlinux=linux -I/usr/include/rpm  -D_REENTRANT -D_GNU_SOURCE -fno-strict-aliasing -pipe -Wdeclaration-after-statement -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/include/gdbm  -I/usr/lib64/perl5/5.8.8/x86_64-linux-thread-multi/CORE  
 
 # Misc Compiling Stuff
