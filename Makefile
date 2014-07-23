@@ -31,9 +31,11 @@ OBJS		= *.o
 #
 # build rules
 #
-all:snmpwalk
+all:snmpwalk snmpget
 snmpwalk:snmpwalk.$(OSUFFIX) $(USELIBS)
 	$(LINK) ${CFLAGS} -o $@ snmpwalk.$(OSUFFIX) ${LIBS} 
+snmpget:snmpget.$(OSUFFIX) $(USELIBS)
+	$(LINK) ${CFLAGS} -o $@ snmpget.$(OSUFFIX) ${LIBS} 
 
 objs: ${OBJS}
 
@@ -44,7 +46,7 @@ objs: ${OBJS}
 clean:
 	$(LIBTOOLCLEAN) ${OBJS}
 cleanall:clean
-	-rm -rf snmpwalk
+	-rm -rf snmpwalk snmpget
 # These aren't real targets, let gnu's make know that.
 .PHONY:
 	all clean objs cleanall
