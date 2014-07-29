@@ -161,9 +161,27 @@ optProc(int argc, char *const *argv, int opt)
         break;
     }
 }
+static int cpu_counter = 0;
+static inline double
+get_cpu_info(const u_char *buf)
+{
+	float num;
+	sscanf(buf, "%*s %*s %*s %*s %*s %*s %f", &num);
+	return num;
+}
 
+
+static double cpu_use;
+static inline double
+cpu_tatol(const u_char *buf)
+{
+	if (cpu_counter++)
+		return cpu_use += get_cpu_info(buf);
+	else
+		return cpu_use = 0;
+}
 int
-main(int argc, char *argv[])
+snmpwalk(int argc, char *argv[])
 {
     netsnmp_session session, *ss;
     netsnmp_pdu    *pdu, *response;
@@ -294,7 +312,24 @@ main(int argc, char *argv[])
                         continue;
                     }
                     numprinted++;
+#if 0
                     print_variable(vars->name, vars->name_length, vars);
+					void print_variable(const oid *objid, size_t objidlen, const netsnmp_variable_list
+							*variable);
+					int sprint_realloc_variable(u_char **buf, size_t *buf_len, size_t *out_len, int
+							allow_realloc, const  oid  *objid, size_t objidlen, const netsnmp_variable_list *variable);
+#else
+					u_char *buf = NULL;
+					size_t buf_len = 0;
+					size_t out_len = 0;
+					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
+							vars->name, vars->name_length, vars);
+					fprintf(stdout, "%s\n", buf);
+					cpu_tatol(buf);
+					fprintf(stdout, "cpu_use:%lf\n", cpu_use);
+					free(buf);
+#endif
+
                     if ((vars->type != SNMP_ENDOFMIBVIEW) &&
                         (vars->type != SNMP_NOSUCHOBJECT) &&
                         (vars->type != SNMP_NOSUCHINSTANCE)) {
@@ -389,4 +424,9 @@ main(int argc, char *argv[])
 
     SOCK_CLEANUP;
     return exitval;
+}
+
+main(int argc, char *argv[])
+{
+	return snmpwalk(argc, argv);
 }
