@@ -33,7 +33,7 @@ OBJS		= *.o
 # build rules
 #
 all:snmpwalk snmpget
-snmpwalk:snmpwalk.$(OSUFFIX) $(USELIBS)
+snmpwalk:snmpwalk.$(OSUFFIX) $(USELIBS) snmpwalk.h
 	$(LINK) ${CFLAGS} -o $@ snmpwalk.$(OSUFFIX) ${LIBS} 
 snmpget:snmpget.$(OSUFFIX) $(USELIBS)
 	$(LINK) ${CFLAGS} -o $@ snmpget.$(OSUFFIX) ${LIBS} 

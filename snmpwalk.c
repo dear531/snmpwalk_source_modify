@@ -76,6 +76,7 @@ SOFTWARE.
 #define NETSNMP_DS_WALK_DONT_CHECK_LEXICOGRAPHIC	3
 #define NETSNMP_DS_WALK_TIME_RESULTS     	        4
 #define NETSNMP_DS_WALK_DONT_GET_REQUESTED	        5
+#include "snmpwalk.h"
 
 oid             objid_mib[] = { 1, 3, 6, 1, 2, 1 };
 int             numprinted = 0;
@@ -161,25 +162,8 @@ optProc(int argc, char *const *argv, int opt)
         break;
     }
 }
-static int cpu_counter = 0;
-static inline double
-get_cpu_info(const u_char *buf)
-{
-	float num;
-	sscanf(buf, "%*s %*s %*s %*s %*s %*s %f", &num);
-	return num;
-}
 
 
-static double cpu_use;
-static inline double
-cpu_tatol(const u_char *buf)
-{
-	if (cpu_counter++)
-		return cpu_use += get_cpu_info(buf);
-	else
-		return cpu_use = 0;
-}
 int
 snmpwalk(int argc, char *argv[])
 {
@@ -325,8 +309,7 @@ snmpwalk(int argc, char *argv[])
 					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
 							vars->name, vars->name_length, vars);
 					fprintf(stdout, "%s\n", buf);
-					cpu_tatol(buf);
-					fprintf(stdout, "cpu_use:%lf\n", cpu_use);
+					global_get_info(buf);
 					free(buf);
 #endif
 
@@ -425,8 +408,14 @@ snmpwalk(int argc, char *argv[])
     SOCK_CLEANUP;
     return exitval;
 }
-
 main(int argc, char *argv[])
 {
-	return snmpwalk(argc, argv);
+	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0)
+	{
+		fprintf(stdout, "cpu.oid :%s\n", cpu.oid);
+		fprintf(stdout, "argv[argc - 1]:%s\n", argv[argc - 1]);
+		global_get_info = cpu.get_handle;
+		snmpwalk(argc, argv);
+	}
+	return 0;
 }
