@@ -412,9 +412,6 @@ snmpwalk(int argc, char *argv[])
 int
 walk_info_operation(int argc, char *argv[])
 {
-	int i;
-	for (i = 0; i < argc; i++)
-		fprintf(stdout, "argv[%d]:%s\n", i, argv[i]);
 	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0) {
 	/*
 	 * snmpwalk -v 3 -l authNoPriv -u usm_user -a MD5(or SHA) -A authenpassword
@@ -433,12 +430,45 @@ walk_info_operation(int argc, char *argv[])
 	return 0;
 }
 /*
- * ./snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.78 .1.3.6.1.4.1.99999.16
+ * 
+ * e.g. run: ./snmpwalk .1.3.6.1.4.1.99999.16  .1.3.6.1.4.1.99999.15
+ * get info of cpu(.1.3.6.1.4.1.99999.16) and memory(.1.3.6.1.4.1.99999.15)
  */
-int main(int argc, char *argv[])
+#include <strings.h>
+int
+main(int argc, char *argv[])
 {
-	walk_info_operation(argc, argv);
-	walk_info_operation(argc, argv);
+	char *argv_stak[] = {
+		argv[0], "-v", "3", "-l", "authNoPriv", "-u", "zhangliuying", "-a", "MD5", "-A", "zhangliuying",
+		"192.168.12.78", NULL,/* pointer NULL for reserved of oid */
+	};
+	char **argv_heap;
+	int argc_num;
+	int i;
+	
+	argc_num = sizeof(argv_stak) / sizeof(*argv_stak);
 
+	argv_heap = malloc(sizeof(*argv_heap) * argc_num);
+	for (i = 0; i < argc_num - 1; i++)
+		argv_heap[i] = strdup(argv_stak[i]);
+
+	for (i = 1; i < argc; i++) {
+
+		/* every unique one fo several oids */
+		argv_heap[argc_num - 1] = argv[i];
+		/*
+		 * whenever running snmpwalk will clear user and password,
+		 * so reset user and password
+		 */
+		bcopy(argv_stak[6], argv_heap[6], strlen(argv_stak[6]));
+		bcopy(argv_stak[10], argv_heap[10], strlen(argv_stak[10]));
+
+		/* call operation function get info */
+		walk_info_operation(argc_num, argv_heap);
+	}
+	for (i = 0; i < argc_num; i++)
+		if (NULL != argv_heap[i])
+			free(argv_heap[i]);
+	free(argv_heap);
 	return 0;
 }
