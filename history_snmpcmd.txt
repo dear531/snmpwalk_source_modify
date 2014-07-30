@@ -1,0 +1,1003 @@
+1.3.6.1.4.1.99999.1.0
+   78  make
+   79  ls
+   80  sh build.sh 
+   81  ls
+   82  sh build.sh 
+   83  sh build.sh 
+   84  ls
+   85  vim netsnmptmp.18043.c 
+   86  sh build.sh 
+   87  ls
+   88  rm netsnmptmp.18043.c -f
+   89  ls
+   90  sh build.sh 
+   91  ls
+   92  sh install_smartsnmpd_x86_64_V0.0.1T_16084.bin 
+   93  ls
+   94  cd ..
+   95  lks
+   96  ls
+   97  ls
+   98  cd smartagent/
+   99  ls
+  100  make
+  101  ls
+  102  sh build.sh 
+  103  ls
+  104  sh install_smartagent_x86_64_undefined_16084.bin 
+  105  ls
+  106  vim Makefile 
+  107  clear
+  108  ls
+  109  ls
+  110  cd ..
+  111  ls
+  112  cd smartcommon/
+  113  ls
+  114  cd snmm
+  115  cd snmp/
+  116  ls
+  117  vim snmp.c
+  118  pwd
+  119  cd ../
+  120  cd ../smartshell/
+  121  cd daemon4/
+  122  ls
+  123  vim layer7.c
+  124  ls
+  125  cd ..
+  126  ls
+  127  ls
+  128  ls
+  129  cd ..
+  130  ls
+  131  ls
+  132  ps aux |grep firefox
+  133  kill -9 4648
+  134  ls
+  135  cd smartsnmp/
+  136  ls
+  137  ./smartsnmpd 
+  138  ps aux |grep smartsnmpd 
+  139  kill i
+  140  kill -9 145484
+  141  kill -9 3903
+  142  cd ..
+  143  ls
+  144  cd smartagent/
+  145  ls
+  146  ./smartagent 
+  147  ps aux |grep smartagent
+  148  cd ../smartsnmp/
+  149  ;s
+  150  ls
+  151  ./smartsnmpd 
+  152  ps aux |grep smartsnmpd 
+  153  kill -9 4349
+  154  ls
+  155  cd libipvs/
+  156  ls
+  157  cd ..
+  158  ls
+  159  vim getinfo.c 
+  160  ls
+  161  find . -name "*" |xargs grep main
+  162  find . -name "*" |xargs grep main
+  163  find . -name "*"
+  164  find . -name "*" |xargs grep "main"
+  165  vim lvs.c 
+  166  ls
+  167  find . -name "*" |xargs grep "main"
+  168  mount -t ntfs-3g //192.168.12.56/share2/2014培训 /mnt/media/
+  169  mount //192.168.12.56/share2/2014培训 /mnt/media/
+  170  mount \\192.168.12.56\share2\2014培训 /mnt/media/
+  171  mount -t ntfs-3g //192.168.12.56/share2/2014培训 /mnt/media/
+  172  mount -t ntfs-3g //192.168.12.56/share2/2014培训 /mnt/media/
+  173  mount -t ntfs-3g //192.168.12.56/share2/2014培训 /mnt/media/
+  174  ls
+  175  cflow
+  176  man cflow
+  177  ls
+  178  ls
+  179  cflow *
+  180  ls
+  181  rm install_smartsnmpd_x86_64_V0.0.1T_16084.bin 
+  182  ls
+  183  rm install_smartsnmpd_x86_64_V0.0.1T_16084.bin 
+  184  cflow *
+  185  ls
+  186  man cflow 
+  187  cflow *.c
+  188  cflow *.c *.h
+  189  cflow *.h *.sh
+  190  cflow *.c *.sh
+  191  cflow *.c *.h >> call_snmp.c
+  192  vim call_snmp.c 
+  193  mv call_snmp.c call_snmp.cc
+  194  vim call_snmp.cc 
+  195  ls
+  196  man cflow
+  197  cflow -x *.c *.h
+  198  cflow *.c *.h
+  199  man cflow
+  200  man cflow
+  201  ls
+  202  jobs
+  203  fg
+  204  ls
+  205  fg
+  206  ls
+  207  ls
+  208  vim call_snmp.cc 
+  209  exit
+  210  jobs
+  211  fg
+  212  ls
+  213  make
+  214  ls
+  215  sh build.sh 
+  216  ls
+  217  svn status 
+  218  ls
+  219  mkdir /mnt/ntfs5
+  220  mkdir /mnt/ntfs6
+  221  mkdir /mnt/ntfs1
+  222  ls
+  223  snmptranslate -Tp -OS system
+  224  ls
+  225  pwd
+  226  wget http://d5.7xdown.com/soft2/WindowsXP-SP3-VOLMSDN.rar
+  227  ls
+  228  rm ErrorFile_GetUrl.htm 
+  229  wget http://d5.7xdown.com/soft2/WindowsXP-SP3-VOLMSDN.rar
+  230  rm ErrorFile_GetUrl.htm 
+  231  wget http://7xdown.com/Download.asp?ID=3319&URL=http://d2.7xdown.com/soft2/&file=WindowsXP-SP3-VOLMSDN.rar
+  232  ls
+  233  ls -t
+  234  rm Download.asp\?ID\=3319 
+  235  ls -t
+  236  wget http://d5.7xdown.com/soft2/&file=WindowsXP-SP3-VOLMSDN.rar
+  237  s
+  238  ls
+  239  ls -t
+  240  wget http://d5.7xdown.com/soft2/WindowsXP-SP3-VOLMSDN.rar
+  241  rm ErrorFile_GetUrl.htm 
+  242  ls
+  243  wget http://7xdown.com/Download.asp?ID=3319&URL=http://d2.7xdown.com/soft2/&file=WindowsXP-SP3-VOLMSDN.rar
+  244  ls
+  245  ls -t
+  246  rm Download.asp\?ID\=3319 
+  247  wget http://d2.7xdown.com/soft2/&file=WindowsXP-SP3-VOLMSDN.rar
+  248  ls -t
+  249  ls
+  250  ls
+  251  ls
+  252  ls
+  253  ls
+  254  cd /mnt/
+  255  ls
+  256  mkdir vmxp
+  257  mount //192.168.12.77/xp \(c\) /mnt/vmxp/
+  258  mount //192.168.12.77/xp\(c\) /mnt/vmxp/
+  259  ls
+  260  ls
+  261  cd ..
+  262  ls
+  263  cd
+  264  ls
+  265  rm xpsp3_5512.080413-2113_chs_x86fre_spcd.iso 
+  266  rm download_xp.txt 
+  267  ls
+  268  ls -t
+  269  cd smartgrid/
+  270  ls
+  271  cd tags/
+  272  ls
+  273  cd V3.0.XR/
+  274  ls
+  275  jobs
+  276  exit
+  277  ls
+  278  ls
+  279  cd /home/zhangly/download/
+  280  ls
+  281  chmod 755 VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle 
+  282  sh VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --unistall
+  283  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --unintall
+  284  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle 
+  285  vmware-installer -l 
+  286  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --install
+  287  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --uninstall
+  288  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --uninstall-product
+  289  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle --uninstall VMware-Workstation-Full-9.0.4-1945795.x86_64
+  290  vmware-uninstall
+  291  vmware-installer -l
+  292  vmware-uninstall 9.0.4.1945795
+  293  vmware-uninstall *
+  294  vmware-uninstall*
+  295  --uninstall-product PRODUCT
+  296   vmware-installer -u PRODUCT
+  297  vmware-installer -u vmware-workstation
+  298  vmware-installer -u vmware-workstation
+  299  ls
+  300  ./VMware-Workstation-Full-9.0.4-1945795.x86_64.bundle 
+  301  yum install gtk
+  302  yum search gtk
+  303  ls
+  304  chmod 755 VMware-Workstation-Full-7.1.6-744570.x86_64.bundle 
+  305  sh VMware-Workstation-Full-7.1.6-744570.x86_64.bundle 
+  306  sh VMware-Workstation-Full-7.1.6-744570.x86_64.bundle 
+  307  vmware-installer -u vmware-workstation
+  308  sh VMware-Workstation-Full-7.1.6-744570.x86_64.bundle 
+  309  fdisk -l
+  310  mount -t ntfs-3g /dev/sda5 /mnt/ntfs5/
+  311  mount -t ntfs-3g /dev/sda6 /mnt/ntfs6/
+  312  cd /mnt/ntfs5/
+  313  ls
+  314  mount -t ntfs-3g /dev/sda1 /mnt/ntfs1/
+  315  cd ../ntfs1/
+  316  l
+  317  ls
+  318  ls -al
+  319  cd ..
+  320  cd ntfs5/
+  321  ls
+  322  ls -al
+  323  cd Virtual\ Machines/
+  324  ls
+  325  cd CentOS\ 64-bit/
+  326  ls
+  327  cd ..
+  328  ls
+  329  cd ..
+  330  ls
+  331  find . -name 
+  332  find . -name "*.iso"
+  333  cd ../ntfs6/
+  334  find . -name "*.iso"
+  335  ls
+  336  ls
+  337  cd ..
+  338  ls
+  339  cd usb1/
+  340  ls
+  341  cd wi
+  342  rm win
+  343  cd ..
+  344  ls
+  345  cd win/
+  346  cd .
+  347  cd ..
+  348  rm win/
+  349  rm win/ -rf
+  350  ls
+  351  ls
+  352  ls
+  353  cd ..
+  354  ls
+  355  cd 
+  356  ls
+  357  wget http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=25129
+  358  ls
+  359  rm confirmation.aspx\?id\=25129 
+  360  wget http://download.microsoft.com/download/3/7/b/37b6b7c6-9c9b-42f8-b006-9338060ffdbd/xpsp3_5512.080413-2113_chs_x86fre_spcd.iso
+  361  ls
+  362  wget http://download.microsoft.com/download/3/7/b/37b6b7c6-9c9b-42f8-b006-9338060ffdbd/xpsp3_5512.080413-2113_chs_x86fre_spcd.iso -c
+  363  ls
+  364  echo "wget http://download.microsoft.com/download/3/7/b/37b6b7c6-9c9b-42f8-b006-9338060ffdbd/xpsp3_5512.080413-2113_chs_x86fre_spcd.iso -c" download_xp.txt
+  365  echo "wget http://download.microsoft.com/download/3/7/b/37b6b7c6-9c9b-42f8-b006-9338060ffdbd/xpsp3_5512.080413-2113_chs_x86fre_spcd.iso -c" >>  download_xp.txt
+  366  cat download_xp.txt 
+  367  ls
+  368  pwd >> download_xp.txt 
+  369  cat download_xp.txt 
+  370  ls
+  371  ls
+  372  cd 
+  373  l
+  374  ls
+  375  cd smartgrid/
+  376  ls
+  377  svn update 
+  378  svn log |less
+  379  vim svn_version.txt
+  380  date >> svn_version.txt 
+  381  cat svn_version.txt 
+  382  svn update 
+  383  cat svn_version.txt 
+  384  svn log |less
+  385  ls
+  386  cd tags/
+  387  ls
+  388  cd V3.0.XR/
+  389  ls
+  390  cd smartlog/
+  391  ls
+  392  make
+  393  cd ..
+  394  ls
+  395  cd log4c-localtime/
+  396  ls
+  397  sh build.sh 
+  398  ls
+  399  cd ..
+  400  ls
+  401  cd vmware/
+  402  ls
+  403  sh build.sh 
+  404  cd ..
+  405  ls
+  406  cd smartc
+  407  cd smartcli/
+  408  ls
+  409  sh build.sh 
+  410  cd ..
+  411  ls
+  412  cd smartcommon/
+  413  ls
+  414  make
+  415  cd ..
+  416  cd smartcli/
+  417  sh build.sh 
+  418  ls
+  419  ls
+  420  cd ../smartshell/
+  421  ls
+  422  sh build.sh 
+  423  ls
+  424  ls
+  425  ls
+  426  ls
+  427  cd daemon4/
+  428  ls
+  429  make
+  430  make clean 
+  431  make
+  432  ls
+  433  jobs
+  434  exit
+  435  shutdown -h now
+  436  ls
+  437  su -
+  438  snmptranslate .1.3.6.1.2.1.1.3.0
+  439  snmptranslate .1.3.6.1.2.1.1.3.0
+  440  man snmptranslate
+  441  snmptranslate DISMAN-EVENT-MIB::sysUpTimeInstance
+  442  snmptranslate DISMAN-EVENT-MIB::sysUpTimeInstance.0
+  443  snmptranslate DISMAN-EVENT-MIB::sysUpTimeInstanc
+  444  snmptranslate DISMAN-EVENT-MIB::sysUpTimeInstance
+  445  snmptranslate -on DISMAN-EVENT-MIB::sysUpTimeInstance
+  446  snmptranslate -On DISMAN-EVENT-MIB::sysUpTimeInstance
+  447  man snmptranslate 
+  448  minicom 
+  449  minicom 
+  450  minicom 
+  451  ls
+  452  ls
+  453  minicom 
+  454  minicom 
+  455  ping 192.168.12.78
+  456  minicom 
+  457  minicom 
+  458  minicom 
+  459  ls
+  460  ping 192.168.12.78
+  461  ls
+  462  ls
+  463  ls
+  464  ls
+  465  ls
+  466  cd 
+  467  ls
+  468  cd smartgrid/
+  469  ls
+  470  cd tags/V3.0.XR/
+  471  ls
+  472  cd smartsnmp/
+  473  ls
+  474  ls *.c -al
+  475  vim getinfo.c 
+  476  ls
+  477  ls
+  478  ls
+  479  vim lvs.c 
+  480  snmpget -v 1 -c demopublic test.net-snmp.org sysUpTime.0
+  481  snmptranslate .iso.3.6.1.private.enterprises.2021.2.1.prNames.0
+  482  snmptranslate -On .iso.3.6.1.private.enterprises.2021.2.1.prNames.0
+  483  snmptranslate -Of .iso.3.6.1.private.enterprises.2021.2.1.prNames.0
+  484  snmpget -v 2c -c demopublic test.net-snmp.org SNMPv2-MIB::sysUpTime.0
+  485  snmpget -v 2c -c demopublic 192.168.12.78 SNMPv2-MIB::sysUpTime.0
+  486  snmpget -v 2c -c public 192.168.12.78 SNMPv2-MIB::sysUpTime.0
+  487  snmpget -v 2c -c public 192.168.12.78 SNMPv2-MIB::sysUpTime.0
+  488  snmpget -v 2c -c demopublic test.net-snmp.org SNMPv2-MIB::sysORDescr.1
+  489  snmpget -v 2c -c public 192.168.12.78 SNMPv2-MIB::sysORDescr.1
+  490  ping 192.168.12.78
+  491  snmpget -v 2c -c public 192.168.12.80 SNMPv2-MIB::sysORDescr.1
+  492  netstat -apn |grep 161
+  493  ls
+  494  ls
+  495  ls
+  496  ./smartsnmpd 
+  497  nett
+  498  netstat -apn |grep 161
+  499  ps aux |grep smartsnmpd
+  500  kill -9 22113
+  501  vim /var/agentx/master
+  502  ls /var/agentx/master 
+  503  vim /var/agentx/master 
+  504  nc  -u 192.168.12.78 161
+  505  snmpget -v 2c -c public 192.168.12.78 sysUpTime.0
+  506  snmpget -v 2c -c public 192.168.12.78 sysUpTime.0
+  507  snmpget -v 2c -c public 192.168.12.78 sysUpTime.0
+  508  ls
+  509  cat VERSION 
+  510  vim README 
+  511  snmpwalk -c public -v 2c -m LVS-MIB localhost 1.3.6.1.4.1.8225.4711
+  512  snmpwalk -c public -v 2c -m LVS-MIB 192.168.12.78 1.3.6.1.4.1.8225.4711
+  513  fg
+  514  ls
+  515  jobs
+  516  vim README 
+  517  ls
+  518  cd ..
+  519  ls
+  520  cd smartsnmp/
+  521  ls
+  522  /SmartGrid/shell/smartstatus 
+  523  sh install_smartsnmpd_x86_64_V0.0.1T_16084.bin 
+  524  vim install_smartsnmpd_x86_64_V0.0.1T_16084.bin 
+  525  /SmartGrid/snmp/bin/smartsnmpd 
+  526  ps aux |grep snmp
+  527  kill -9 27436
+  528  ps aux |grep snmp
+  529  ls
+  530  find . -name "*" |xargs grep "Failed to connect to the agentx master agent"
+  531  find . -name "*" |xargs grep "Failed to connect to the agentx"
+  532  find . -name "*" |xargs grep "agentx"
+  533  ls
+  534  vim build.sh 
+  535  ls
+  536  ls
+  537  ls
+  538  snmpget -v 1 -c demopublic test.net-snmp.org sysUpTime.0
+  539  ls
+  540  vim Makefile 
+  541  ls
+  542  /SmartGrid/smartagent/smartagent 
+  543  /SmartGrid/snmp/bin/smartsnmpd 
+  544  ps aux |
+  545  ps aux | grep snmpd
+  546  kill -9 3071
+  547  ps aux | grep snmpd
+  548  snmpget -v 2c -c 192.168.12.80 sysUpTime
+  549  snmpget -v 2c -c demopublic 192.168.12.90 sysUpTime
+  550  snmpget -v 2c -c demopublic 192.168.12.80 sysUpTime
+  551  snmpget -v 2c -c public 192.168.12.80 sysUpTime
+  552  snmpget -v 2c -c public 192.168.12.80:sysUpTime.0
+  553  snmpget -v 2c -c public 192.168.12.80 sysUpTime.0
+  554  ls
+  555  cd ..
+  556  ls
+  557  cd smartagent/
+  558  ls
+  559  make clean 
+  560  ls
+  561  vim smartagent_config.c 
+  562  vim smartagent_misc.c 
+  563  vim smartagent_prototype.h 
+  564  vim smartagent_ssl.c 
+  565  vim smartagent_command.c 
+  566  ls
+  567  vim smartagent_event.c 
+  568  vim smartagent_main.c 
+  569  ls
+  570  fg
+  571  cflow *.c *.h
+  572  cflow *.c *.h >> call_agent.cc
+  573  vim call_agent.cc 
+  574  ls
+  575  ls
+  576  ls
+  577  ls
+  578  ls
+  579  ls
+  580  vim call_agent.cc 
+  581  ls *.c
+  582  ls *.c -al
+  583  ls
+  584  cat call_agent.cc |
+  585  cat call_agent.cc |grep ".c"
+  586  cat call_agent.cc |grep "\.c"
+  587  ls
+  588  ls -al
+  589  cat call_agent.cc |grep "smartagent_command.c"
+  590  cat call_agent.cc |grep "smartagent_command\.c"
+  591  cat call_agent.cc |grep "smartagent_config.c"
+  592  cat call_agent.cc |grep "smartagent_event.c"
+  593  ls
+  594  ls *.c -al
+  595  cat call_agent.cc |grep "smartagent_misc.c"
+  596  ls *.c -al
+  597  cat call_agent.cc |grep "smartagent_rtt_probe.c"
+  598  cat call_agent.cc |grep smartagent_ssl.c
+  599  cat call_agent.cc |grep smartagent_rtt_probe.c
+  600  ls
+  601  cat call_agent.cc |grep smartagent_rtt_probe.c
+  602  ls
+  603  ls
+  604  ls
+  605   yum install -y net-snmp net-snmp-utils
+  606  service snmpd start 
+  607  service snmptrapd start 
+  608  chkconfig snmpd on
+  609  chkconfig snmpd on
+  610  chkconfig snmpd off 
+  611  chkconfig --list 
+  612  snmpwalk -v 2c -c public local sysName.0
+  613  snmpwalk -v 2c -c public localhost sysName.0
+  614  snmptranslate To
+  615  snmptranslate to
+  616  snmptranslate -To
+  617  snmptranslate -To |head -n 10
+  618  snmptranslate -To |head -n 10
+  619  snmpwalk -v 2c -c public 192.168.12.80 sysName.0
+  620  snmpwalk -v 2c -c public 192.168.12.80 sysName.0
+  621  ssh root@192.168.12.63
+  622  ssh root@192.168.12.63
+  623  ls
+  624  ls
+  625  ls
+  626  ls
+  627  jobs
+  628  fg
+  629  ls
+  630  vim /etc/snmp/snmpd.conf
+  631  snmpwalk -v 2c -c public 192.168.12.80 1.3.6.1.4.1.2021.11.11.0
+  632  fg
+  633  service snmpd restart 
+  634  snmpwalk -v 2c -c public 192.168.12.80 1.3.6.1.4.1.2021.11.11.0
+  635  ls
+  636  vim smartagent_command.c 
+  637  cat *.c |grep system
+  638  vim smartagent_main.c 
+  639  cat *.c |grep system
+  640  cat *.c |grep system
+  641  fg
+  642  fg
+  643  ls
+  644  cd ..
+  645  ls
+  646  cd ..
+  647  tar -cvf V3.0.XR/ v3.0complete.tar.gz
+  648  tar -cvf  v3.0complete.tar.gz V3.0.XR/
+  649  ls
+  650  ls v3.0complete.tar.gz -al
+  651  rm v3.0complete.tar.gz 
+  652  man tar
+  653  ls
+  654  man tar
+  655  tar -cvf --exclude V3.0.XR/.svn/ v3.0complete.tar.gz V3.0.XR/
+  656  tar -cvf --exclude V3.0.XR/.svn/ v3.0complete.tar.gz V3.0.XR/
+  657  tar -cvf --exclude for_install/.svn v3.0complete.tar.gz V3.0.XR/
+  658  tar -cvf --exclude V3.0.XR/.svn/ --exclude V3.0.XR/for_install/  v3.0complete.tar.gz V3.0.XR/
+  659  ls
+  660  tar -cvf --exclude V3.0.XR/.svn/ --exclude V3.0.XR/for_install/ --exclude *.o --exclude install* v3.0complete.tar.gz V3.0.XR/
+  661  ls
+  662  cd V3.0.XR/
+  663  ls
+  664  cd documents/
+  665  ls
+  666  cd ..
+  667  ls
+  668  cd keepalived/
+  669  ls
+  670  cd ..
+  671  ls
+  672  cd log4c
+  673  cd log4c-localtime/
+  674  ls
+  675  make clean
+  676  ls
+  677  cd ..
+  678  ls
+  679  cd patch/
+  680  ls
+  681  ls
+  682  cd ..
+  683  ls
+  684  tar -cvf v3.0snmp.tar.gz smartsnmp/ smartagent/
+  685  ls
+  686  ls
+  687  mv v3.0snmp.tar.gz /home/zhangly/Desktop/
+  688  exit
+  689  jobs
+  690  fg
+  691  exit
+  692  wsadmin
+  693  su wsadmin
+  694  pwd
+  695  minicom 
+  696  minicom 
+  697  ssh root@192.168.12.78
+  698  minicom 
+  699  minicom 
+  700  minicom 
+  701  ls /dev/ttyUSB0 
+  702  ls /dev/ttyUSB0 
+  703  ls /dev/ttyUSB0 
+  704  minicom 
+  705  ls
+  706  jobs
+  707  pwd
+  708  ssh root@192.168.12.78
+  709  man sort
+  710  ls
+  711  cat smart |sort 
+  712  cat minicom.log |sort 
+  713  ls
+  714  ls
+  715  gcc 
+  716  man gcc 
+  717  man cc
+  718  fg
+  719  fg
+  720  jobs
+  721  exit
+  722  ls
+  723  ps aux |grep firefox
+  724  kill -9 o4887
+  725  kill -9 4887
+  726  ssh root@192.168.12.78
+  727  shutdown  -h now
+  728  ls
+  729  ls
+  730  ls
+  731  vim /etc/snmp/snmpd.conf 
+  732  snmpget -v2c -c public localhost Test-MIB:GetTime.0
+  733  snmpget -v2c -c public localhost Test-MIB:GetTime.0
+  734  snmpget -v2c -c public localhost Test-MIB:GetTime.0
+  735  snmpget -v2c -c public localhost Test-MIB:GetTime.0
+  736  snmpget -v2c -c public localhost Test-MIB:GetTime.0
+  737  snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  738  snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  739  ls
+  740  ping 192.168.12.78
+  741  ping 192.168.12.77
+  742  ssh root@192.168.12.78
+  743  ssh root@192.168.12.78
+  744  ls
+  745  ls
+  746  snmpget -v2c -c public 192.168.12.80 1.3.6.1.4.1.16535.1.1.0
+  747  ssh root@192.168.12.63
+  748  snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.16535.1.1.0
+  749  l
+  750  ls
+  751  pwd
+  752  ls
+  753  ls
+  754  ls
+  755  ls
+  756  service snmpd status 
+  757  service snmpd start 
+  758  ls
+  759  cd test/
+  760  ls
+  761  ls
+  762  ls
+  763  cd pe
+  764  cd ..
+  765  ls
+  766  cd personal/
+  767  ls
+  768  cd ..
+  769  ls
+  770  cd /home/
+  771  cd zhangly/
+  772  ls
+  773  cd demo/
+  774  ls
+  775  cd ..
+  776  ls
+  777  cd Desktop/
+  778  ls
+  779  cd snmp/
+  780  ls
+  781  cd source/
+  782  ls
+  783  ./Test 
+  784  ls
+  785  vim Test.c
+  786   /SmartGrid/snmp/bin/smartsnmpd
+  787  sl
+  788  ls
+  789  ls
+  790  ls
+  791  ./testsnmp 
+  792  vim Makefile 
+  793  ls
+  794  ls
+  795  snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  796  snmpget -v2c -c public 192.168.12.80 1.3.6.1.4.1.16535.1.1.0
+  797  ssh root@192.168.12.63
+  798  snmpget -v2c -c public 192.168.12.80 1.3.6.1.4.1.16535.1.1.0
+  799  ls
+  800  ./Test 
+  801  exit
+  802  ls
+  803  cd smartgrid/
+  804  ls
+  805  cd tags/
+  806  ls
+  807  cd V3.0.XR/
+  808  ls
+  809  cd smartsnmp/
+  810  ls
+  811  vim getinfo.h 
+  812  vim getinfo.c 
+  813  vim links.h
+  814  ls
+  815  vi lvs.
+  816  vi lvs.c 
+  817  vim lvs.c 
+  818  snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  819  snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.16535.1.1.0
+  820  snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.16535.1.1.0
+  821  ls
+  822  cflow *.c *.h
+  823  cflow *.c *.h >> call_snmp.cc 
+  824  vim call_snmp.cc 
+  825  ls
+  826  cd libipvs/
+  827  ls
+  828  vim Makefile 
+  829  ls
+  830  cd ..
+  831  ./smartsnmpd 
+  832  ./smartsnmpd 
+  833  ls
+  834  ls
+  835  sh build.sh 
+  836  ls
+  837  make clean 
+  838  ls
+  839  rm install_smartsnmpd_x86_64_V0.0.1T_16103.bin 
+  840  sh build.sh 
+  841  ls
+  842  cd ..
+  843  ls
+  844  cd smartsnmp/
+  845  ls
+  846  ls
+  847  sh build.sh clean
+  848  ls
+  849  vim build.sh 
+  850  sh build.sh 
+  851  git status -s
+  852  git init 
+  853  rm .git/
+  854  rm .git/ -rf
+  855  ls
+  856  ls
+  857  ls
+  858  rm install_smartsnmpd_x86_64_V0.0.1T_16103.bin 
+  859  ls
+  860  rm smartsnmpd 
+  861  ls
+  862  rm call_snmp.cc 
+  863  ls
+  864  svn status 
+  865  sh build.sh 
+  866  ls
+  867  ./smartsnmpd 
+  868  service snmpd restart 
+  869  ./smartsnmpd 
+  870  fg
+  871  jobs
+  872  fg
+  873  jobs
+  874  ps aux |grep snmpd
+  875  kill -9 24745
+  876  kill -9 24838
+  877  kill -9 26445
+  878  kill -9 26549
+  879  ps aux |grep snmpd
+  880  kill -9 12072
+  881  ps aux |grep snmpd
+  882  ls
+  883  /SmartGrid/snmp/bin/smartsnmpd 
+  884  ls
+  885  ps aux |grep snmpd
+  886  kill -9 27307
+  887  /SmartGrid/snmp/bin/smartsnmpd 
+  888  ps aux |grep snmpd
+  889  ls
+  890  vim lvs.c 
+  891  ls
+  892  ssh root@192.168.12.63
+  893  pwd
+  894  ls
+  895  ssh root@192.168.12.78
+  896  ping 192.168.12.78
+  897  ls
+  898  ssh root@192.168.12.78
+  899  ls
+  900  ls
+  901  ls
+  902  ls
+  903  ls
+  904  ping hao123.com
+  905  ping 8.8.8.8
+  906  ping 192.168.12.1
+  907  ping 192.168.12.1
+  908  ping hao123.com
+  909  git clone git://git.code.sf.net/p/net-snmp/code net-snmp-code
+  910  ls
+  911  ls -t
+  912  pwd
+  913  git clone git://git.code.sf.net/p/net-snmp/code net-snmp-code
+  914  ls
+  915  cd net-snmp-code/
+  916  git branch -a
+  917  ls
+  918  exit
+  919  ssh root@192.168.12.78
+  920   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  921   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  922   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  923   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  924   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  925   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  926   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  927   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  928   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  929   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  930  vim tmp.c
+  931  ls
+  932  rm tmp.c 
+  933  ls
+  934   snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  935   snmpget -v2c -c public localhost 1.3.6.1.4.1.99999.1.0
+  936   snmpget -v2c -c public 192.168.12.80 1.3.6.1.4.1.99999.1.0
+  937   snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.99999.1.0
+  938   snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.99999.1.0
+  939   snmpget -v2c -c public 192.168.12.78 1.3.6.1.4.1.99999.1.0
+  940  netstat uan |grep 161
+  941  netstat -uan |grep 161
+  942  netstat -uanp |grep 161
+  943  netstat -anp |grep 161
+  944  ls
+  945  ifconfig 
+  946  snmpget -v2c -c public localhost 1.3.6.1.4.1.16535.1.1.0
+  947  ls
+  948  ls
+  949  pwd
+  950  cd smartgrid/tags/V3.0.XR/
+  951  ls
+  952  cd smartsnmp/
+  953  ls
+  954  vim lvs.c 
+  955  vim tmp.txt
+  956  snmpget -v2c -c public localhost 1.3.6.1.4.1.99999.1.0
+  957  ps aux |grep snmpd
+  958  ssh root@192.168.12.63
+  959  ls
+  960  ls
+  961  cd 
+  962  ls
+  963  cd smartgrid/
+  964  ls
+  965  cd tags/
+  966  ls
+  967  cd V3.0.XR/
+  968  ls
+  969  cd ..
+  970  ls
+  971  cd ..
+  972  ls
+  973  cd ..
+  974  ls
+  975  ls
+  976  cd test/
+  977  ls
+  978  cd ..
+  979  ls
+  980  cd Desktop/
+  981  ls
+  982  cd ..
+  983  ls
+  984  cd /home/zhangly/Desktop/
+  985  ls
+  986  cd snmp/
+  987  ls
+  988  cd source/
+  989  ls
+  990  vim Test.c
+  991  ls
+  992  snmpwalk -c public -v 1 -t 120 192.168.12.78
+  993  snmpwalk -c public -v 1 -t 120 192.168.12.80
+  994  snmpwalk -c public -v 1 -t 120 192.168.12.80 |head -n 10
+  995  snmpwalk -c public -v 1 -t 120 192.168.12.78 |head -n 10
+  996  snmpwalk -c public -v 1 -t 120 192.168.12.78 |head -n 10
+  997  ls
+  998  ls
+  999  reboot 
+ 1000  ssh root@192.168.12.78
+ 1001  ls
+ 1002  ssh root@192.168.12.78
+ 1003  minicom 
+ 1004  minicom 
+ 1005  ssh root
+ 1006  ssh root@192.168.12.78
+ 1007  ssh root@192.168.12.78
+ 1008  ping 192.168.12.78
+ 1009  ssh root@192.168.12.78
+ 1010  minicom 
+ 1011  ls
+ 1012  ls
+ 1013  ls
+ 1014  ls
+ 1015  ls
+ 1016  ls
+ 1017  ssh root@192.168.12.78
+ 1018  jobs
+ 1019  ssh root@192.168.12.78
+ 1020  ssh root@192.168.12.78
+ 1021  ls
+ 1022  ls
+ 1023  cd smartgrid/
+ 1024  ls
+ 1025  cd tags/
+ 1026  ls
+ 1027  cd V3.0.XR/
+ 1028  ls
+ 1029  cd smartsnmp/
+ 1030  ls
+ 1031  scp install_smartsnmpd_x86_64_V0.0.1T_16103.bin root@192.168.12.78:
+ 1032  jobs
+ 1033  ssh root@192.168.12.78
+ 1034  ls
+ 1035  cd /SmartGrid/snmp/bin/
+ 1036  ls
+ 1037  vim SINOGRID-MIB.txt 
+ 1038  ls
+ 1039  cd ..
+ 1040  ls
+ 1041  cd ..
+ 1042  cd ..
+ 1043  ls
+ 1044  cd root/
+ 1045  ls
+ 1046  cd smartgrid/
+ 1047  ls
+ 1048  cd tags/
+ 1049  ls
+ 1050  cd V3.0.XR/
+ 1051  ls
+ 1052  cd smartsnmp/
+ 1053  ls
+ 1054  vim install_smartsnmpd_x86_64_V0.0.1T_16103.bin 
+ 1055  ls
+ 1056  ls
+ 1057  jobs
+ 1058  ssh root@192.168.12.78
+ 1059  ping 192.168.12.78
+ 1060  ssh root@192.168.12.78
+ 1061  ls
+ 1062  ./smartsnmpd 
+ 1063  ps aux |grep snmp
+ 1064  kill -9 20347
+ 1065  kill -9 20480
+ 1066  ps aux |grep snmp
+ 1067  ./smartsnmpd 
+ 1068  pwd
+ 1069  ls
+ 1070  ps aux |grep snmp
+ 1071  ssh root@192.168.12.78
+ 1072  ping 192.168.12.78
+ 1073  ls
+ 1074  ssh root@192.168.12.78
+ 1075  vim tmp.txt 
+ 1076  ls
+ 1077  history >> tmp.txt 
+snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.78 .1.3.6.1.4.1.99999.16
+/home/zhangly/smartgrid/tags/V3.1.XR/smartvs
