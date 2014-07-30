@@ -1,0 +1,48 @@
+[root@zhangly apps]# ./snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.78
+.1.3.6.1.4.1.99999.16
+argv[0]:./snmpwalk
+argv[1]:-v
+argv[2]:3
+argv[3]:-l
+argv[4]:authNoPriv
+argv[5]:-u
+argv[6]:zhangliuying
+argv[7]:-a
+argv[8]:MD5
+argv[9]:-A
+argv[10]:zhangliuying
+argv[11]:192.168.12.78
+argv[12]:.1.3.6.1.4.1.99999.16
+SNMPv2-SMI::enterprises.99999.16.1.1.1 = STRING: "02:23:41 PM  CPU   %user   %nice    %sys %iowait    %irq
+%soft  %steal   %idle    intr/s
+"
+SNMPv2-SMI::enterprises.99999.16.1.1.2 = STRING: "02:23:41 PM    0    0.95    0.00    2.61   13.13    0.00
+0.04    0.00   83.27     27.53
+"
+SNMPv2-SMI::enterprises.99999.16.1.1.3 = STRING: "02:23:41 PM    1    0.45    0.00    1.14    1.37    0.00
+0.01    0.00   97.03     28.88
+"
+SNMPv2-SMI::enterprises.99999.16.1.1.4 = STRING: "02:23:41 PM    2    0.98    0.00    2.47   11.43    0.00
+0.02    0.00   85.10     27.42
+"
+SNMPv2-SMI::enterprises.99999.16.1.1.5 = STRING: "02:23:41 PM    3    0.44    0.00    1.13    4.68    0.00
+0.01    0.00   93.74     26.57
+"
+argv[0]:./snmpwalk
+argv[1]:-v
+argv[2]:3
+argv[3]:-l
+argv[4]:authNoPriv
+argv[5]:-u
+argv[6]:
+argv[7]:-a
+argv[8]:MD5
+argv[9]:-A
+argv[10]:
+argv[11]:192.168.12.78
+argv[12]:.1.3.6.1.4.1.99999.16
+Error: passphrase chosen is below the length requirements of the USM (min=8).
+./snmpwalk: Unknown engine ID (The supplied password length is too short.)
+Error generating a key (Ku) from the supplied authentication pass phrase. 
+: Unknown Object Identifier (Sub-id not found: (top) -> )
+
