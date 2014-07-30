@@ -408,14 +408,60 @@ snmpwalk(int argc, char *argv[])
     SOCK_CLEANUP;
     return exitval;
 }
-main(int argc, char *argv[])
+
+int
+walk_info_operation(int argc, char *argv[])
 {
-	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0)
-	{
-		fprintf(stdout, "cpu.oid :%s\n", cpu.oid);
-		fprintf(stdout, "argv[argc - 1]:%s\n", argv[argc - 1]);
+	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0) {
+	/*
+	 * snmpwalk -v 3 -l authNoPriv -u usm_user -a MD5(or SHA) -A authenpassword
+	 * realipaddrs .1.3.6.1.4.1.99999.16
+	 */
 		global_get_info = cpu.get_handle;
+		snmpwalk(argc, argv);
+	} else if (memcmp(mem.oid, argv[argc - 1], strlen(mem.oid) + 1) == 0) {
+	/*
+	 * snmpwalk -v 3 -l authNoPriv -u usm_user -a MD5(or SHA) -A authenpassword
+	 * realipaddrs .1.3.6.1.4.1.99999.15
+	 */
+		global_get_info = mem.get_handle;
 		snmpwalk(argc, argv);
 	}
 	return 0;
 }
+#if 1
+int
+main(int argc, char *argv[])
+{
+	int argc_array;
+	int i;
+#if 1
+	char *arg_stak[13] = {
+		argv[0], "-v", "3", "-l", "authNoPriv", "-u", "zhangliuying", "-a", "MD5", "-A", "zhangliuying",
+		"192.168.12.78", "1"
+	};
+#endif
+	char **arg;
+	argc_array = sizeof(arg_stak) / sizeof(*arg_stak);
+
+	arg = malloc(sizeof(*arg) * argc_array);
+	for (i = 0; i < argc_array - 1; i++)
+		arg[i] = strdup(arg_stak[i]);
+#if debug
+	for (i = 0; i < argc_array; i++)
+		fprintf(stdout, "arg[%d]:%s\n", i, arg[i]);
+#endif
+
+	for (i = 1; i < argc; i++) {
+		arg[argc_array - 1] = strdup(argv[i]);
+		fprintf(stdout, "arg[argc_array - 1] :%s\n", arg[argc_array - 1]);
+		walk_info_operation(argc_array, arg);
+		free(arg[argc_array - 1]);
+		arg[argc_array - 1] = NULL;
+	}
+	for (i = 0; i < argc_array; i++)
+		free(arg[i]);
+	free(arg);
+	return 0;
+}
+#endif
