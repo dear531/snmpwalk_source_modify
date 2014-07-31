@@ -81,6 +81,12 @@ SOFTWARE.
 oid             objid_mib[] = { 1, 3, 6, 1, 2, 1 };
 int             numprinted = 0;
 
+/*
+ * pirnt error information flag,
+ * is 0: close print for smart machine,
+ * is 1: open print for debug
+ */
+#define ERR_PRINT	0
 void
 usage(void)
 {
@@ -113,7 +119,28 @@ snmp_get_and_print(netsnmp_session * ss, oid * theoid, size_t theoid_len)
     if (status == STAT_SUCCESS && response->errstat == SNMP_ERR_NOERROR) {
         for (vars = response->variables; vars; vars = vars->next_variable) {
             numprinted++;
+#define PRINT_FLAG	0
+#if PRINT_FLAG
             print_variable(vars->name, vars->name_length, vars);
+#else
+			/*
+			 * replace from origin net-snmp-5.4.4 to our code
+			 * from print_variable to sprint_realloc_variable
+			 */
+					u_char *buf = NULL;
+					size_t buf_len = 0;
+					size_t out_len = 0;
+					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
+							vars->name, vars->name_length, vars);
+/* flag for get infomartion show to standard output */
+#define DEBUG	ERR_PRINT
+#if DEBUG
+					fprintf(stdout, "%s\n", buf);
+#endif
+					global_get_info(buf);
+					if (out_len > 0)
+						free(buf);
+#endif
         }
     }
     if (response) {
@@ -154,8 +181,10 @@ optProc(int argc, char *const *argv, int opt)
                 break;
                 
             default:
+#if ERR_PRINT
                 fprintf(stderr, "Unknown flag passed to -C: %c\n",
                         optarg[-1]);
+#endif
                 exit(1);
             }
         }
@@ -224,7 +253,9 @@ snmpwalk(int argc, char *argv[])
          */
         rootlen = MAX_OID_LEN;
         if (snmp_parse_oid(argv[arg], root, &rootlen) == NULL) {
+#if ERR_PRINT
             snmp_perror(argv[arg]);
+#endif
             exit(1);
         }
     } else {
@@ -245,7 +276,9 @@ snmpwalk(int argc, char *argv[])
         /*
          * diagnose snmp_open errors with the input netsnmp_session pointer 
          */
+#if ERR_PRINT
         snmp_sess_perror("snmpwalk", &session);
+#endif
         SOCK_CLEANUP;
         exit(1);
     }
@@ -296,7 +329,7 @@ snmpwalk(int argc, char *argv[])
                         continue;
                     }
                     numprinted++;
-#if 0
+#if PRINT_FLAG
                     print_variable(vars->name, vars->name_length, vars);
 					void print_variable(const oid *objid, size_t objidlen, const netsnmp_variable_list
 							*variable);
@@ -308,9 +341,12 @@ snmpwalk(int argc, char *argv[])
 					size_t out_len = 0;
 					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
 							vars->name, vars->name_length, vars);
+#if DEBUG
 					fprintf(stdout, "%s\n", buf);
+#endif
 					global_get_info(buf);
-					free(buf);
+					if (out_len > 0)
+						free(buf);
 #endif
 
                     if ((vars->type != SNMP_ENDOFMIBVIEW) &&
@@ -323,12 +359,14 @@ snmpwalk(int argc, char *argv[])
                             && snmp_oid_compare(name, name_length,
                                                 vars->name,
                                                 vars->name_length) >= 0) {
+#if ERR_PRINT
                             fprintf(stderr, "Error: OID not increasing: ");
                             fprint_objid(stderr, name, name_length);
                             fprintf(stderr, " >= ");
                             fprint_objid(stderr, vars->name,
                                          vars->name_length);
                             fprintf(stderr, "\n");
+#endif
                             running = 0;
                             exitval = 1;
                         }
@@ -349,10 +387,14 @@ snmpwalk(int argc, char *argv[])
                 if (response->errstat == SNMP_ERR_NOSUCHNAME) {
                     printf("End of MIB\n");
                 } else {
+#if ERR_PRINT
                     fprintf(stderr, "Error in packet.\nReason: %s\n",
                             snmp_errstring(response->errstat));
+#endif
                     if (response->errindex != 0) {
+#if ERR_PRINT
                         fprintf(stderr, "Failed object: ");
+#endif
                         for (count = 1, vars = response->variables;
                              vars && count != response->errindex;
                              vars = vars->next_variable, count++)
@@ -360,18 +402,24 @@ snmpwalk(int argc, char *argv[])
                         if (vars)
                             fprint_objid(stderr, vars->name,
                                          vars->name_length);
+#if ERR_PRINT
                         fprintf(stderr, "\n");
+#endif
                     }
                     exitval = 2;
                 }
             }
         } else if (status == STAT_TIMEOUT) {
+#if ERR_PRINT
             fprintf(stderr, "Timeout: No Response from %s\n",
                     session.peername);
+#endif
             running = 0;
             exitval = 1;
         } else {                /* status == STAT_ERROR */
+#if ERR_PRINT
             snmp_sess_perror("snmpwalk", ss);
+#endif
             running = 0;
             exitval = 1;
         }
@@ -396,13 +444,17 @@ snmpwalk(int argc, char *argv[])
 
     if (netsnmp_ds_get_boolean(NETSNMP_DS_APPLICATION_ID,
                                NETSNMP_DS_WALK_PRINT_STATISTICS)) {
+#if ERR_PRINT
         printf("Variables found: %d\n", numprinted);
+#endif
     }
     if (netsnmp_ds_get_boolean(NETSNMP_DS_APPLICATION_ID,
                                NETSNMP_DS_WALK_TIME_RESULTS)) {
+#if ERR_PRINT
         fprintf (stderr, "Total traversal time = %f seconds\n",
                  (double) (tv2.tv_usec - tv1.tv_usec)/1000000 +
                  (double) (tv2.tv_sec - tv1.tv_sec));
+#endif
     }
 
     SOCK_CLEANUP;
@@ -465,6 +517,7 @@ main(int argc, char *argv[])
 
 		/* call operation function get info */
 		walk_info_operation(argc_num, argv_heap);
+		argv_heap[argc_num - 1] = NULL;
 	}
 	for (i = 0; i < argc_num; i++)
 		if (NULL != argv_heap[i])
