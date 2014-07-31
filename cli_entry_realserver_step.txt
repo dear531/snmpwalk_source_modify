@@ -1,0 +1,118 @@
+WiseGrid (SLB) # ?
+ language             Set Language.
+ exit                 Exit from current direcotry.
+ help                 Show available commands
+ quit                 Disconnect
+ history              Show a list of previously run commands
+ pwd                  Show command the entire path name
+ show                 Show something
+ add                  Add something
+ set                  Set something
+ delete               Delete something
+
+WiseGrid (SLB) # set vserver 
+va               zml              
+
+WiseGrid (SLB) # set vserver va
+
+WiseGrid (vserver-va) # address 
+        <ipv4 address:port; ipv6 [address]:port>
+
+
+WiseGrid (vserver-va) # address 192.168.12.76:80
+
+WiseGrid (vserver-va) # show
+vserver_print_detail_content:753 protocol:[tcp]
++----------------+------------------------------------------------------------+
+|SLB-VSName      |va                                                          |
++----------------+------------------------------------------------------------+
+|Enable          |on                                                          |
++----------------+------------------------------------------------------------+
+|Protocol        |tcp                                                         |
++----------------+------------------------------------------------------------+
+|Address         |192.168.12.76:80                                            |
++----------------+------------------------------------------------------------+
+|Sched           |lc                                                          |
++----------------+------------------------------------------------------------+
+|Persistent      |                                                            |
++----------------+------------------------------------------------------------+
+|VM enable       |off                                                         |
++----------------+------------------------------------------------------------+
+|Pool            |pool=aaa,                                                   |
++----------------+------------------------------------------------------------+
+|Limits          |                                                            |
++----------------+------------------------------------------------------------+
+|Notes           |                                                            |
++----------------+------------------------------------------------------------+
+|VS Status       |down                                                        |
++----------------+------------------------------------------------------------+
+|aaa Status      |192.168.12.80:80 down                                       |
++----------------+------------------------------------------------------------+
+
+WiseGrid (vserver-va) # e
+exit             enable           
+
+WiseGrid (vserver-va) # eix
+
+WiseGrid (vserver-va) # exit 
+
+WiseGrid (SLB) # set pool 
+aaa              bbb              pb               
+WiseGrid (SLB) # set pool aaa 
+
+WiseGrid (pool-aaa) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|aaa         |                     |ping        |                             |
+|            |192.168.12.80:80     |http        |weight=10,state=up,fail_timeo|
+|            |                     |            |ut=10,                       |
++------------+---------------------+------------+-----------------------------+
+
+WiseGrid (pool-aaa) # set realserver 192.168.12.80:80 
+
+WiseGrid (realserver-192..:80) # show
++---------------------+------------+--------------------------------+
+|Address              |HealthCheck |Notes                           |
++---------------------+------------+--------------------------------+
+|192.168.12.80:80     |http        |weight=10,state=up,fail_timeout=|
+|                     |            |10,                             |
++---------------------+------------+--------------------------------+
+
+WiseGrid (realserver-192..:80) # show
++---------------------+------------+--------------------------------+
+|Address              |HealthCheck |Notes                           |
++---------------------+------------+--------------------------------+
+|192.168.12.80:80     |https       |weight=10,state=up,fail_timeout=|
+|                     |            |10,                             |
++---------------------+------------+--------------------------------+
+
+WiseGrid (realserver-192..:80) # ?   
+ language             Set Language.
+ exit                 Exit from current direcotry.
+ help                 Show available commands
+ quit                 Disconnect
+ history              Show a list of previously run commands
+ pwd                  Show command the entire path name
+ weight               Set GSLB Rserver Weight
+ limit                Set limit of Vserver
+ fail_timeout         Set the fail timeout of rserver
+ healthcheck          Manage HealthCheck
+ enable               Set if this RealServer enabled
+ show                 Show Vserver Information
+
+WiseGrid (realserver-192..:80) # weight 
+        <num>
+
+
+WiseGrid (realserver-192..:80) # weight 20
+
+WiseGrid (realserver-192..:80) # show
++---------------------+------------+--------------------------------+
+|Address              |HealthCheck |Notes                           |
++---------------------+------------+--------------------------------+
+|192.168.12.80:80     |https       |weight=20,state=down,fail_timeou|
+|                     |            |t=10,                           |
++---------------------+------------+--------------------------------+
+
+
