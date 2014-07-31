@@ -1001,3 +1001,4 @@
  1077  history >> tmp.txt 
 snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.78 .1.3.6.1.4.1.99999.16
 /home/zhangly/smartgrid/tags/V3.1.XR/smartvs
+/home/zhangly/smartgrid/tags/V3.1.XR/smartcli/libvs
