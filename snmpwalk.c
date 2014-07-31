@@ -24,6 +24,13 @@ WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
 ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 ******************************************************************/
+/*
+ * The source code official of net-snmp-5.4.4 developmant,
+ * above descrip net-snmp-5.4.4 
+ * @snmpwalk function form source code main import
+ * @author:zhangly
+ * @date:2014.7.31
+ */
 #include <net-snmp/net-snmp-config.h>
 
 #if HAVE_STDLIB_H
