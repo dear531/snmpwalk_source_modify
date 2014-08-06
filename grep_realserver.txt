@@ -1,0 +1,137 @@
+./for_install/WiseGrid.sql:  `realserver` varchar(255) NOT NULL COMMENT '真实服务器名称',
+./smartcli/libvcenter/libvcenter.c:	/* get realserver */
+./smartcli/libvcenter/libvcenter.c:			/* get realserver */
+./smartcli/libvcenter/libvcenter.c:		printf("Error: not found realserver :[%s] in pool[%s]!\n", rsaddr, poolname);
+./smartcli/libvs/libvs.c:			printf("ERROR: zero port is used by realserver\n");
+./smartcli/libvs/libpool.c:				printf("\nError: existed realserver '%s'\n", value);
+./smartcli/libvs/libpool.c:	if (strcmp(command, "add realserver") == 0) {
+./smartcli/libvs/libpool.c:	if (strcmp(command, "delete realserver") == 0) {
+./smartcli/libvs/libpool.c:				printf("The realserver is draining, and soon will be automatically deleted.\n");
+./smartcli/libvs/libpool.c:	if (strcmp(command, "add realserver") == 0) {
+./smartcli/libvs/libpool.c:		snprintf(buff, 1024, "script4 system pool %s add realserver %s,weight=10,enable=on",
+./smartcli/libvs/libpool.c:		snprintf(buff, 1024, "script4 system pool %s delete realserver %s",
+./smartcli/libvs/libpool.c:		printf("Can't add this realserver %s to apppool\n", argv[0]);
+./smartcli/libvs/libpool.c:	sprintf(buff, "script4 system pool %s add realserver %s", poolname, address);
+./smartcli/libvs/libpool.c:	t = cli_register_command(cli, parent, "realserver", realserver_new_delete, PRIVILEGE_PRIVILEGED,
+./smartcli/libvs/libpool.c:	t = cli_register_command(cli, parent, "realserver", realserver_set_default, PRIVILEGE_PRIVILEGED,
+./smartcli/libvs/libpool.c:	t = cli_register_command(cli, parent, "realserver", realserver_new_delete, PRIVILEGE_PRIVILEGED,
+./smartcli/libgslb/gslb_libpool.c:			char realserver[256] = {0};
+./smartcli/libgslb/gslb_libpool.c:				sscanf(rsaddr, "%[^-]-%s", realserver, device_vsname);
+./smartcli/libgslb/gslb_libpool.c:				if(strcmp(realserver, gslb_rserver->device) != 0  || strcmp(device_vsname, gslb_rserver->device_vsname) != 0)
+./smartcli/libgslb/gslb_libpool.c:				printf("\nError: existed realserver '%s'\n", value);
+./smartcli/libgslb/gslb_libpool.c:			char realserver[256] = {0};
+./smartcli/libgslb/gslb_libpool.c:				sscanf(rsaddr, "%[^-]-%s", realserver, device_vsname);
+./smartcli/libgslb/gslb_libpool.c:				if(strcmp(realserver, gslb_rserver->device) != 0  || strcmp(device_vsname, gslb_rserver->device_vsname) != 0)
+./smartcli/libgslb/gslb_libpool.c:			char realserver[256] = {0};
+./smartcli/libgslb/gslb_libpool.c:				sscanf(rsaddr, "%[^-]-%s", realserver, device_vsname);
+./smartcli/libgslb/gslb_libpool.c:				if(strcmp(realserver, gslb_rserver->device) != 0  || strcmp(device_vsname, gslb_rserver->device_vsname) != 0)
+./smartcli/libllb/llb_libpool.c:				printf("\nError: existed realserver '%s'\n", value);
+./smartsnmp/lvs.c:/* register LVS realserver table handler */
+./keepalived/doc/man/man5/keepalived.conf.5:    # setup realserver(s)
+./keepalived/doc/man/man5/keepalived.conf.5:    # one entry for each realserver 	
+./keepalived/doc/man/man5/keepalived.conf.5:               #IP, tcp port for service on realserver 
+./keepalived/doc/man/man5/keepalived.conf.5:       } # realserver defn
+./keepalived/doc/keepalived.conf.SYNOPSIS:					#   realserver are down
+./keepalived/ChangeLog:	  realserver on MD5SUM mismatch !!! whats that crap.
+./keepalived/ChangeLog:	  framework to support multiple checkers per realserver.
+./keepalived/ChangeLog:	  Each checker own a uniq id, each realserver own a list
+./keepalived/ChangeLog:	  updater helper function to perform realserver state according
+./keepalived/ChangeLog:	* Added support to "notify_up" & "notify_down" for realserver config.
+./keepalived/ChangeLog:	* Set default realserver weight to 1. So, realserver will be active
+./keepalived/ChangeLog:	  the realserver pool since LVS VIP is owned by master LVS.
+./keepalived/ChangeLog:	* Prepare work on real_server_group in order to group some realserver
+./keepalived/keepalived/check/check_api.c:	checker->rs = rs;		/* point to realserver */
+./keepalived/keepalived/check/ipwrapper.c:/* Remove a realserver IPVS rule */
+./keepalived/keepalived/check/ipwrapper.c:/* Set a realserver IPVS rules */
+./keepalived/keepalived/check/ipwrapper.c:		/** add by anhk, set the state of the realserver from XXX to unset **/
+./keepalived/keepalived/check/ipwrapper.c:/* Test if realserver is marked UP for a specific checker */
+./keepalived/keepalived/check/ipvswrapper.c:	/* Process realserver queue */
+./keepalived/keepalived/check/ipvswrapper.c:	/* Process realserver queue */
+./keepalived/keepalived/include/check_http.h:	struct sockaddr_storage dst;	/* realserver address */
+./keepalived/keepalived/include/check_api.h:	real_server *rs;			/* point to realserver */
+./keepalived/keepalived/include/check_data.h:	int sorry_server_flag;	/** if this realserver is sorry_server **/
+./smartvs/linux1/ip_vs.h:#define IP_VS_CONN_F_RSERVER_CLEANUP	0x0001	/* cleanup realserver after deleting */
+./smartcommon/common/dependence.c:	struct rserver *realserver;
+./smartcommon/common/dependence.c:	list_for_each_entry(realserver, &apppool->realserver_head, list) {
+./smartcommon/common/dependence.c:			inet_sockaddr2address(&realserver->address, raddress);
+./smartcommon/common/dependence.c: * Apppool 添加 realserver
+./smartcommon/loadbalance/apppool.h:	char healthcheck[32];		/* realserver healthcheck name */
+./smartcommon/loadbalance/vserver.c:		/** realserver data **/
+./smartcommon/loadbalance/apppool.c:			ret = module_add_sub("apppool", poolname, "realserver", ipaddr);
+./smartcommon/loadbalance/apppool.c:			ret = module_add_sub("apppool", poolname, "realserver", ipaddr);
+./smartcommon/loadbalance/apppool.c:		ret = module_add_sub("apppool", poolname, "realserver", value);
+./smartcommon/loadbalance/apppool.c:			ret = module_add_sub("apppool", poolname, "realserver", ipaddr);
+./smartcommon/loadbalance/apppool.c:	struct rserver *realserver;
+./smartcommon/loadbalance/apppool.c:	if ((realserver = calloc(1, sizeof(*realserver))) == NULL) {
+./smartcommon/loadbalance/apppool.c:	strcpy(realserver->state, "unknown");
+./smartcommon/loadbalance/apppool.c:	strcpy(realserver->fail_timeout, "10");
+./smartcommon/loadbalance/apppool.c:	return &realserver->list;
+./smartcommon/loadbalance/apppool.c:	struct rserver *realserver = list_entry(list, struct rserver, list);
+./smartcommon/loadbalance/apppool.c:	free(realserver);
+./smartcommon/loadbalance/apppool.c:	struct rserver *realserver = list_entry(list, struct rserver, list);
+./smartcommon/loadbalance/apppool.c:	//m_analyse_common(pnode, realserver, address);
+./smartcommon/loadbalance/apppool.c:		inet_address2sockaddr(value, &realserver->address);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, maxconn);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, bandwidth);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, maxreq);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, healthcheck);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, enable);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, state);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, id);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, fail_timeout);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, rscenter);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, vmdatacenter);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, vmxpath);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, uuid);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, vmname);
+./smartcommon/loadbalance/apppool.c:	m_analyse_common(pnode, realserver, vmstate);
+./smartcommon/loadbalance/apppool.c:	struct rserver *realserver = list_entry(list, struct rserver, list);
+./smartcommon/loadbalance/apppool.c:	//m_restore_common(pnode, realserver, address);
+./smartcommon/loadbalance/apppool.c:	if (inet_sockaddr2address(&realserver->address, address) == 0) {
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, maxconn);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, bandwidth);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, maxreq);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, healthcheck);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, enable);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, state);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, id);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, fail_timeout);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, rscenter);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, vmdatacenter);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, vmxpath);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, uuid);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, vmname);
+./smartcommon/loadbalance/apppool.c:	m_restore_common(pnode, realserver, vmstate);
+./smartcommon/loadbalance/apppool.c:		} else if (!strncasecmp(token, "healthcheck=", 12)) {	/* realserver healthcheck */
+./smartcommon/loadbalance/apppool.c:		/* generate realserver */
+./smartcommon/loadbalance/apppool.c:	if (strcmp(name, "realserver") == 0) {
+./smartcommon/loadbalance/apppool.c:	/* realserver copy */
+./smartcommon/loadbalance/apppool.c:	.m_desc = "realserver",
+./smartcommon/gslb/gslb_pool.c:	char realserver[256] = {0};
+./smartcommon/gslb/gslb_pool.c:	strcpy(realserver, token);
+./smartcommon/gslb/gslb_pool.c:		return strcmp(address, realserver);
+./smartcommon/gslb/gslb_pool.c:	return strcmp(realserver, gslb_rserver->device) != 0 || strcmp(device_vsname, gslb_rserver->device_vsname) != 0;
+./smartcommon/gslb/gslb_pool.c:	sscanf(name, "%[^-]-%s", realserver, device_vsname);
+./smartcommon/gslb/gslb_pool.c:	return strcmp(realserver, gslb_rserver->device) != 0 || strcmp(device_vsname, gslb_rserver->device_vsname) != 0;
+./smartshell/vmware_daemon/vmware_daemon.c:	snprintf(buff, 1023, "script4 system pool %s add realserver %s", poolname, address);
+./smartshell/vmware_daemon/vmware_daemon.c:	 * if only one realserver in this pool, we do nothing. */
+./smartshell/status/db.h:	char realserver[256];	/** 真实服务器 **/
+./smartshell/status/main.c:	char realserver[512];			/** 真实服务器名 **/
+./smartshell/status/main.c:	//strcpy(stat->realserver, rdesc->address);
+./smartshell/status/main.c:	inet_sockaddr2address(&rdesc->address, stat->realserver);
+./smartshell/status/main.c:					sprintf(db->cmd, "insert into pool_stat(poolname, realserver, "
+./smartshell/daemon4/snmpsched.c:						"realserver", 
+./smartshell/daemon4/snmpsched.c:						"realserver", 
+./smartshell/daemon4/snmpsched.c:						"realserver",
+./smartshell/daemon4/analyzer.c: * eg: pool2 add realserver 192.168.10.20:8877,maxconn=10000,bandwidth=10000,healthcheck=check3,enable=on...
+./smartshell/daemon4/analyzer.c: * eg: pool2 del realserver 192.168.10.20:8877
+./smartshell/daemon4/analyzer.c: * eg: pool2 show [realserver,backserver]
+./smartshell/daemon4/analyzer.c:	if (strcmp(op, "add") == 0 && strcmp(key, "realserver") == 0) {
+./smartshell/daemon4/analyzer.c:	} else if (strcmp(op, "delete") == 0 && strcmp(key, "realserver") == 0) {
+./smartshell/daemon4/analyzer.c:		ret = module_del_sub("apppool", poolname, "realserver", value);
+./smartshell/daemon4/generator.c: * rcheck: realserver healthcheck
+./smartshell/daemon4/layer7.c:		/** when enable contentswitch, then Disable "gzip/deflate"-encoding to realserver **/
+./smartshell/daemon4/event_log.c:		if (!strcmp(op, "add") && !strcmp(key, "realserver")) {
+./smartshell/daemon4/event_log.c:		} else if (!strcmp(op, "delete") && !strcmp(key, "realserver")) {
