@@ -135,3 +135,10 @@
 ./smartshell/daemon4/layer7.c:935:		/** when enable contentswitch, then Disable "gzip/deflate"-encoding to realserver **/
 ./smartshell/daemon4/event_log.c:370:		if (!strcmp(op, "add") && !strcmp(key, "realserver")) {
 ./smartshell/daemon4/event_log.c:375:		} else if (!strcmp(op, "delete") && !strcmp(key, "realserver")) {
+find . -name *.c |xargs grep -n realserver_set
+./smartcli/libvs/libpool.c:796:static int realserver_set_default(struct cli_def *cli, char *command, char *argv[],
+./smartcli/libvs/libpool.c:805:static int realserver_set_command(struct cli_def *cli, struct cli_command *parent)
+./smartcli/libvs/libpool.c:808:	t = cli_register_command(cli, parent, "realserver", realserver_set_default, PRIVILEGE_PRIVILEGED,
+./smartcli/libvs/libpool.c:1535:	realserver_set_command(cli, t);
+./smartcommon/loadbalance/apppool.c:454:static int realserver_set(struct list_head *list, const char *name,
+./smartcommon/loadbalance/apppool.c:1020:	.m_set = realserver_set,
