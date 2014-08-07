@@ -1,4 +1,5 @@
 ./smartcli/libvs/libpool.c:254:		snprintf(buff, 1024, "script4 system pool %s add realserver %s,weight=10,enable=on",
+//the weight = 10 init place.
 ./smartcli/libvs/libpool.c:300:	RSERVER_SET_VALUE("weight", rserver->weight);
 ./smartcli/libvs/libpool.c:359:static int check_weight_range(struct cli_def *cli, struct cli_command *c, char *value)
 ./smartcli/libvs/libpool.c:466:	if (rserver->weight[0] != 0) {
