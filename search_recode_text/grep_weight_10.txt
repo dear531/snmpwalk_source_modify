@@ -1,0 +1,477 @@
+./smartcli/libvs/libpool.c:254:		snprintf(buff, 1024, "script4 system pool %s add realserver %s,weight=10,enable=on",
+./smartcli/libvs/libpool.c:300:	RSERVER_SET_VALUE("weight", rserver->weight);
+./smartcli/libvs/libpool.c:359:static int check_weight_range(struct cli_def *cli, struct cli_command *c, char *value)
+./smartcli/libvs/libpool.c:466:	if (rserver->weight[0] != 0) {
+./smartcli/libvs/libpool.c:467:		sprintf(desc, "%sweight=%s,", desc, rserver->weight);
+./smartcli/libvs/libpool.c:608:			} else if (strncmp(command, "weight", 6) == 0) {
+./smartcli/libvs/libpool.c:609:				sprintf(rserver->weight, "%u", atoi(argc == 0 ? "10" : argv[0]));
+./smartcli/libvs/libpool.c:847:	p = cli_register_command(cli, t, "weight", realserver_config_modify,
+./smartcli/libvs/libpool.c:849:	cli_command_add_argument(p, "<num>", check_weight_range);
+./smartcli/libgslb/gslb_libpool.c:65:	if (gslb_rserver->weight[0] != 0) {
+./smartcli/libgslb/gslb_libpool.c:66:		sprintf(desc, "%sweight=%s,", desc, gslb_rserver->weight);
+./smartcli/libgslb/gslb_libpool.c:352:		"script4 system gslb_pool %s add gslb_rserver %s,type=site,device_vsname=%s,device_vsip=%s,weight=10,maxreq=0,enable=on,healthcheck=ping,state=unknown", 
+./smartcli/libgslb/gslb_libpool.c:357:			"script4 system gslb_pool %s add gslb_rserver %s,type=host,weight=10,maxreq=0,enable=on,healthcheck=ping,state=unknown",
+./smartcli/libgslb/gslb_libpool.c:392:	GSLB_RSERVER_SET_VALUE("weight", gslb_rserver->weight);
+./smartcli/libgslb/gslb_libpool.c:460:			} else if (strncmp(command, "weight", 6) == 0) {
+./smartcli/libgslb/gslb_libpool.c:461:				sprintf(gslb_rserver->weight, "%u", atoi(argc == 0 ? "10" : argv[0]));
+./smartcli/libgslb/gslb_libpool.c:495:static int check_weight_range(struct cli_def *cli, struct cli_command *c, char *value)
+./smartcli/libgslb/gslb_libpool.c:850:	cli_unregister_command(cli, cli->folder, "weight");
+./smartcli/libgslb/gslb_libpool.c:893:	p = cli_register_command(cli, cli->folder, "weight", gslb_rserver_config_modify,
+./smartcli/libgslb/gslb_libpool.c:895:	cli_command_add_argument(p, "<weight>", check_weight_range);
+./smartcli/libllb/llb_libpool.c:130:		snprintf(buff, 1024, "script4 system llb_pool %s add llb_rserver %s,weight=10,enable=on",
+./smartcli/libllb/llb_libpool.c:158:	RSERVER_SET_VALUE("weight", llb_rserver->weight);
+./smartcli/libllb/llb_libpool.c:180:static int check_weight_range(struct cli_def *cli, struct cli_command *c, char *value)
+./smartcli/libllb/llb_libpool.c:226:	if (llb_rserver->weight[0] != 0) {
+./smartcli/libllb/llb_libpool.c:227:		sprintf(desc, "%sweight=%s,", desc, llb_rserver->weight);
+./smartcli/libllb/llb_libpool.c:336:			} else if (strncmp(command, "weight", 6) == 0) {
+./smartcli/libllb/llb_libpool.c:337:				sprintf(llb_rserver->weight, "%u", atoi(argc == 0 ? "10" : argv[0]));
+./smartcli/libllb/llb_libpool.c:397:	p = cli_register_command(cli, t, "weight", llb_rserver_config_modify,
+./smartcli/libllb/llb_libpool.c:399:	cli_command_add_argument(p, "<num>", check_weight_range);
+./smartsnmp/getinfo.c:188:			STRNCPY(d->entrytable[i].weight, rserver->weight);
+./smartsnmp/lvs.c:593:				case 5:	/* weight */
+./smartsnmp/lvs.c:596:						(u_char*)destentry->weight,
+./smartsnmp/lvs.c:597:						strlen(destentry->weight));
+./smartsnmp/libipvs/libipvs.c:332:	NLA_PUT_U32(msg, IPVS_DEST_ATTR_WEIGHT, dst->weight);
+./smartsnmp/libipvs/libipvs.c:751:	d->entrytable[i].weight = nla_get_u32(dest_attrs[IPVS_DEST_ATTR_WEIGHT]);
+./keepalived/keepalived/check/check_data.c:295:	new->weight = 1;
+./keepalived/keepalived/check/check_data.c:296:	new->iweight = 1;
+./keepalived/keepalived/check/check_data.c:315:		    ntohs(inet_sockaddrport(&rs->addr)), rs->weight);
+./keepalived/keepalived/check/check_data.c:334:	new->weight = 1;
+./keepalived/keepalived/check/check_data.c:335:	new->iweight = 1;
+./keepalived/keepalived/check/ipwrapper.c:43:/* Returns the sum of all RS weight in a virtual server. */
+./keepalived/keepalived/check/ipwrapper.c:54:			count += svr->weight;
+./keepalived/keepalived/check/ipwrapper.c:321:/* set quorum state depending on current weight of real servers */
+./keepalived/keepalived/check/ipwrapper.c:484:/* Store new weight in real_server struct and then update kernel. */
+./keepalived/keepalived/check/ipwrapper.c:485:void update_svr_wgt(int weight, virtual_server * vs, real_server * rs)
+./keepalived/keepalived/check/ipwrapper.c:491:	if (weight != rs->weight)
+./keepalived/keepalived/check/ipwrapper.c:494:				"Changing weight from %d to %d for %s service [%s]:%d of VS [%s]:%d",
+./keepalived/keepalived/check/ipwrapper.c:495:				rs->weight, weight,
+./keepalived/keepalived/check/ipwrapper.c:502:		rs->weight = weight;
+./keepalived/keepalived/check/ipwrapper.c:504:		 * Have weight change take effect now only if rs is in
+./keepalived/keepalived/check/ipwrapper.c:705:			rs->weight = old_rs->weight;
+./keepalived/keepalived/check/ipwrapper.c:764:	if (rs->weight != old_rs->weight) {
+./keepalived/keepalived/check/check_parser.c:330:static void weight_handler(vector strvec)
+./keepalived/keepalived/check/check_parser.c:334:	rs->weight = atoi(VECTOR_SLOT(strvec, 1));
+./keepalived/keepalived/check/check_parser.c:335:	rs->iweight = rs->weight;
+./keepalived/keepalived/check/check_parser.c:494:	install_keyword("weight", &weight_handler);
+./keepalived/keepalived/check/ipvswrapper.c:212:	urule->weight = 1;
+./keepalived/keepalived/check/ipvswrapper.c:237:			urule->weight = rs->weight;
+./keepalived/keepalived/check/ipvswrapper.c:255:		urule->weight = 0;
+./keepalived/keepalived/check/ipvswrapper.c:317:				urule->weight = rs->weight;
+./keepalived/keepalived/check/ipvswrapper.c:556:	drule->weight = 1;
+./keepalived/keepalived/check/ipvswrapper.c:639:			drule->weight = rs->weight;
+./keepalived/keepalived/check/ipvswrapper.c:659:		drule->weight = 0;
+./keepalived/keepalived/check/ipvswrapper.c:732:				drule->weight = rs->weight;
+./keepalived/keepalived/check/check_misc.c:276:			 * The actual weight set when using misc_dynamic is two less than
+./keepalived/keepalived/vrrp/vrrp_data.c:116:	log_message( LOG_INFO, "   Weight = %d", vscript->weight);
+./keepalived/keepalived/vrrp/vrrp_data.c:383:	new->weight = VRRP_SCRIPT_DW;
+./keepalived/keepalived/vrrp/vrrp_parser.c:361:static void vrrp_vscript_weight_handler(vector strvec)
+./keepalived/keepalived/vrrp/vrrp_parser.c:364:	vscript->weight = atoi(VECTOR_SLOT(strvec, 1));
+./keepalived/keepalived/vrrp/vrrp_parser.c:432:	install_keyword("weight", &vrrp_vscript_weight_handler);
+./keepalived/keepalived/vrrp/vrrp_track.c:34:	log_message( LOG_INFO, "     %s weight %d", IF_NAME(tip->ifp),
+./keepalived/keepalived/vrrp/vrrp_track.c:35:		    tip->weight);
+./keepalived/keepalived/vrrp/vrrp_track.c:42:	int weight = 0;
+./keepalived/keepalived/vrrp/vrrp_track.c:55:	    !strcmp(VECTOR_SLOT(strvec, 1), "weight"))
+./keepalived/keepalived/vrrp/vrrp_track.c:57:		weight = atoi(VECTOR_SLOT(strvec, 2));
+./keepalived/keepalived/vrrp/vrrp_track.c:58:		if (weight < -254 || weight > 254)
+./keepalived/keepalived/vrrp/vrrp_track.c:60:			log_message( LOG_INFO, "     %s: weight must be between "
+./keepalived/keepalived/vrrp/vrrp_track.c:63:			weight = 0;
+./keepalived/keepalived/vrrp/vrrp_track.c:69:	tip->weight = weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:95:	log_message( LOG_INFO, "     %s weight %d", tsc->scr->sname,
+./keepalived/keepalived/vrrp/vrrp_track.c:96:		    tsc->weight);
+./keepalived/keepalived/vrrp/vrrp_track.c:103:	int weight = 0;
+./keepalived/keepalived/vrrp/vrrp_track.c:115:	/* default weight */
+./keepalived/keepalived/vrrp/vrrp_track.c:116:	weight = vsc->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:119:	    !strcmp(VECTOR_SLOT(strvec, 1), "weight"))
+./keepalived/keepalived/vrrp/vrrp_track.c:121:		weight = atoi(VECTOR_SLOT(strvec, 2));
+./keepalived/keepalived/vrrp/vrrp_track.c:122:		if (weight < -254 || weight > 254)
+./keepalived/keepalived/vrrp/vrrp_track.c:124:			weight = vsc->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:126:				    "     %s: weight must be between [-254..254]"
+./keepalived/keepalived/vrrp/vrrp_track.c:133:	tsc->weight = weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:138:/* Test if all tracked interfaces are either UP or weight-tracked */
+./keepalived/keepalived/vrrp/vrrp_track.c:147:		if (!tip->weight && !IF_ISUP(tip->ifp))
+./keepalived/keepalived/vrrp/vrrp_track.c:170:/* Returns total weights of all tracked interfaces :
+./keepalived/keepalived/vrrp/vrrp_track.c:171: * - a positive interface weight adds to the global weight when the
+./keepalived/keepalived/vrrp/vrrp_track.c:173: * - a negative interface weight subtracts from the global weight when the
+./keepalived/keepalived/vrrp/vrrp_track.c:177:int vrrp_tracked_weight(list l)
+./keepalived/keepalived/vrrp/vrrp_track.c:181:	int weight = 0;
+./keepalived/keepalived/vrrp/vrrp_track.c:188:			if (tip->weight > 0)
+./keepalived/keepalived/vrrp/vrrp_track.c:189:				weight += tip->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:193:			if (tip->weight < 0)
+./keepalived/keepalived/vrrp/vrrp_track.c:194:				weight += tip->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:198:	return weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:201:/* Test if all tracked scripts are either OK or weight-tracked */
+./keepalived/keepalived/vrrp/vrrp_track.c:213:		if (!tsc->weight && tsc->scr->result < tsc->scr->rise)
+./keepalived/keepalived/vrrp/vrrp_track.c:220:/* Returns total weights of all tracked scripts :
+./keepalived/keepalived/vrrp/vrrp_track.c:221: * - a positive weight adds to the global weight when the result is OK
+./keepalived/keepalived/vrrp/vrrp_track.c:222: * - a negative weight subtracts from the global weight when the result is bad
+./keepalived/keepalived/vrrp/vrrp_track.c:225:int vrrp_script_weight(list l)
+./keepalived/keepalived/vrrp/vrrp_track.c:229:	int weight = 0;
+./keepalived/keepalived/vrrp/vrrp_track.c:238:			if (tsc->weight > 0)
+./keepalived/keepalived/vrrp/vrrp_track.c:239:				weight += tsc->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:243:			if (tsc->weight < 0)
+./keepalived/keepalived/vrrp/vrrp_track.c:244:				weight += tsc->weight;
+./keepalived/keepalived/vrrp/vrrp_track.c:248:	return weight;
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:235:					if (tip->weight)
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:237:						tip->weight = 0;
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:248:					if (sc->weight)
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:260:					    "tracked script with weights due to SYNC group",
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:766:	/* Now we will sum the weights of all interfaces which are tracked. */
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:768:		prio_offset += vrrp_tracked_weight(vrrp->track_ifp);
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:770:	/* Now we will sum the weights of all scripts which are tracked. */
+./keepalived/keepalived/vrrp/vrrp_scheduler.c:772:		prio_offset += vrrp_script_weight(vrrp->track_script);
+./keepalived/keepalived/libipvs-2.6/libipvs.c:358:	NLA_PUT_U32(msg, IPVS_DEST_ATTR_WEIGHT, dst->weight);
+./keepalived/keepalived/libipvs-2.6/libipvs.c:798:	d->entrytable[i].weight =
+./smartvs/ip_vs_lc.c:13: *     Wensong Zhang            :     added any dest with weight=0 is quiesced
+./smartvs/ip_vs_lc.c:52:	 * Except whose weight is equal to zero.
+./smartvs/ip_vs_lc.c:53:	 * If the weight is equal to zero, it means that the server is
+./smartvs/ip_vs_lc.c:62:		    atomic_read(&dest->weight) == 0)
+./smartvs/ip_vs_lblcr.c:12: *     Julian Anastasov        :    Added the missing (dest->weight>0)
+./smartvs/ip_vs_lblcr.c:21: *               n, serverSet[dest_ip] <- {weighted least-conn node};
+./smartvs/ip_vs_lblcr.c:25: *                  (n.conns>n.weight AND
+./smartvs/ip_vs_lblcr.c:26: *                   there is a node m with m.conns<m.weight/2) then
+./smartvs/ip_vs_lblcr.c:27: *                   n <- {weighted least-conn node};
+./smartvs/ip_vs_lblcr.c:170:/* get weighted least-connection node in the destination set */
+./smartvs/ip_vs_lblcr.c:180:	/* select the first destination server, whose weight > 0 */
+./smartvs/ip_vs_lblcr.c:187:		if ((atomic_read(&least->weight) > 0)
+./smartvs/ip_vs_lblcr.c:197:	/* find the destination with the weighted least load */
+./smartvs/ip_vs_lblcr.c:207:		if ((loh * atomic_read(&dest->weight) >
+./smartvs/ip_vs_lblcr.c:208:		     doh * atomic_read(&least->weight))
+./smartvs/ip_vs_lblcr.c:217:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_lblcr.c:223:		      atomic_read(&least->weight), loh);
+./smartvs/ip_vs_lblcr.c:227:/* get weighted most-connection node in the destination set */
+./smartvs/ip_vs_lblcr.c:237:	/* select the first destination server, whose weight > 0 */
+./smartvs/ip_vs_lblcr.c:241:		if (atomic_read(&most->weight) > 0)
+./smartvs/ip_vs_lblcr.c:250:	/* find the destination with the weighted most load */
+./smartvs/ip_vs_lblcr.c:258:		if ((moh * atomic_read(&dest->weight) <
+./smartvs/ip_vs_lblcr.c:259:		     doh * atomic_read(&most->weight))
+./smartvs/ip_vs_lblcr.c:260:		    && (atomic_read(&dest->weight) > 0))
+./smartvs/ip_vs_lblcr.c:268:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_lblcr.c:273:		      atomic_read(&most->weight), moh);
+./smartvs/ip_vs_lblcr.c:593:	 *                (dest overhead) / dest->weight
+./smartvs/ip_vs_lblcr.c:598:	 * if every weight is larger than zero.
+./smartvs/ip_vs_lblcr.c:600:	 * The server with weight=0 is quiesced and will not receive any
+./smartvs/ip_vs_lblcr.c:609:		if (atomic_read(&dest->weight) > 0)
+./smartvs/ip_vs_lblcr.c:631:		if (loh * atomic_read(&dest->weight) >
+./smartvs/ip_vs_lblcr.c:632:		    doh * atomic_read(&least->weight))
+./smartvs/ip_vs_lblcr.c:642:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_lblcr.c:647:		      atomic_read(&least->weight), loh);
+./smartvs/ip_vs_lblcr.c:659:	if (atomic_read(&dest->activeconns) > atomic_read(&dest->weight))
+./smartvs/ip_vs_lblcr.c:667:			    < atomic_read(&d->weight))
+./smartvs/ip_vs_lblcr.c:679: *    Locality-Based (weighted) Least-Connection scheduling
+./smartvs/ip_vs_sed.c:19: * jobs on the ith server and Ui is the fixed service rate (weight) of
+./smartvs/ip_vs_sed.c:34: * (the server weight varies a lot).
+./smartvs/ip_vs_sed.c:68:	 *      (server expected overhead) / dest->weight
+./smartvs/ip_vs_sed.c:73:	 * if every weight is larger than zero.
+./smartvs/ip_vs_sed.c:75:	 * The server with weight=0 is quiesced and will not receive any
+./smartvs/ip_vs_sed.c:83:		    atomic_read(&dest->weight) > 0)
+./smartvs/ip_vs_sed.c:103:		if (loh * atomic_read(&dest->weight) >
+./smartvs/ip_vs_sed.c:104:		    doh * atomic_read(&least->weight))
+./smartvs/ip_vs_sed.c:114:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_sed.c:118:		      atomic_read(&least->weight), loh);
+./smartvs/ip_vs_ctl.c:160:				if (atomic_read(&dest->cur_weight) < atomic_read(&dest->weight)) {
+./smartvs/ip_vs_ctl.c:161:					atomic_inc(&dest->cur_weight);
+./smartvs/ip_vs_ctl.c:938:	/* set the weight and the flags */
+./smartvs/ip_vs_ctl.c:939:	atomic_set(&dest->weight, udest->weight);
+./smartvs/ip_vs_ctl.c:940:	atomic_set(&dest->cur_weight, 0);
+./smartvs/ip_vs_ctl.c:1076:	if (udest->weight < 0)
+./smartvs/ip_vs_ctl.c:1078:		pr_err("%s(): server weight less than zero\n", __func__);
+./smartvs/ip_vs_ctl.c:1204:	if (udest->weight < 0)
+./smartvs/ip_vs_ctl.c:1206:		pr_err("%s(): server weight less than zero\n", __func__);
+./smartvs/ip_vs_ctl.c:1235:	/* call the update_service, because server weight may be changed */
+./smartvs/ip_vs_ctl.c:2409:	udest->weight = udest_compat->weight;
+./smartvs/ip_vs_ctl.c:2651:			entry.weight = atomic_read(&dest->weight);
+./smartvs/ip_vs_ctl.c:3203:	NLA_PUT_U32(skb, IPVS_DEST_ATTR_WEIGHT, atomic_read(&dest->weight));
+./smartvs/ip_vs_ctl.c:3314:		struct nlattr *nla_fwd, *nla_weight, *nla_u_thresh,
+./smartvs/ip_vs_ctl.c:3318:		nla_weight = attrs[IPVS_DEST_ATTR_WEIGHT];
+./smartvs/ip_vs_ctl.c:3322:		if (!(nla_fwd && nla_weight && nla_u_thresh && nla_l_thresh))
+./smartvs/ip_vs_ctl.c:3327:		udest->weight = nla_get_u32(nla_weight);
+./smartvs/ip_vs_conn.c:913:		(atomic_read(&dest->weight) == 0))) {
+./smartvs/ip_vs_rr.c:18: *     Wensong Zhang            :     added any dest with weight=0 is quiesced
+./smartvs/ip_vs_rr.c:68:		if (!(dest->flags & IP_VS_DEST_F_OVERLOAD) && atomic_read(&dest->weight) > 0) {
+./smartvs/ip_vs_rr.c:86:		      "activeconns %d refcnt %d weight %d\n",
+./smartvs/ip_vs_rr.c:89:		      atomic_read(&dest->refcnt), atomic_read(&dest->weight));
+./smartvs/ip_vs_wlc.c:18: *     Wensong Zhang            :     added any dest with weight=0 is quiesced
+./smartvs/ip_vs_wlc.c:56:	 *                (dest overhead) / dest->weight
+./smartvs/ip_vs_wlc.c:61:	 * if every weight is larger than zero.
+./smartvs/ip_vs_wlc.c:63:	 * The server with weight=0 is quiesced and will not receive any
+./smartvs/ip_vs_wlc.c:71:		    atomic_read(&dest->weight) > 0)
+./smartvs/ip_vs_wlc.c:91:		if (loh * atomic_read(&dest->cur_weight) >
+./smartvs/ip_vs_wlc.c:92:		    doh * atomic_read(&least->weight))
+./smartvs/ip_vs_wlc.c:102:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_wlc.c:106:		      atomic_read(&least->cur_weight), loh);
+./smartvs/ip_vs_nq.c:64:	 *      (server expected overhead) / dest->weight
+./smartvs/ip_vs_nq.c:69:	 * if every weight is larger than zero.
+./smartvs/ip_vs_nq.c:71:	 * The server with weight=0 is quiesced and will not receive any
+./smartvs/ip_vs_nq.c:80:		    !atomic_read(&dest->weight))
+./smartvs/ip_vs_nq.c:94:		    (loh * atomic_read(&dest->weight) >
+./smartvs/ip_vs_nq.c:95:		     doh * atomic_read(&least->weight)))
+./smartvs/ip_vs_nq.c:113:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_nq.c:117:		      atomic_read(&least->weight), loh);
+./smartvs/ip_vs_wrr.c:17: *                                    with weight 0 when all weights are zero
+./smartvs/ip_vs_wrr.c:33: * current destination pointer for weighted round-robin scheduling
+./smartvs/ip_vs_wrr.c:38:	int cw;			/* current weight */
+./smartvs/ip_vs_wrr.c:39:	int mw;			/* maximum weight */
+./smartvs/ip_vs_wrr.c:43:static int ip_vs_wrr_gcd_weight(struct ip_vs_service *svc)
+./smartvs/ip_vs_wrr.c:46:	int weight;
+./smartvs/ip_vs_wrr.c:52:		weight = atomic_read(&dest->weight);
+./smartvs/ip_vs_wrr.c:53:		if (weight > 0)
+./smartvs/ip_vs_wrr.c:56:				g = gcd(weight, g);
+./smartvs/ip_vs_wrr.c:58:				g = weight;
+./smartvs/ip_vs_wrr.c:66: *    Get the maximum weight of the service destinations.
+./smartvs/ip_vs_wrr.c:68:static int ip_vs_wrr_max_weight(struct ip_vs_service *svc)
+./smartvs/ip_vs_wrr.c:71:	int new_weight, weight = 0;
+./smartvs/ip_vs_wrr.c:76:		new_weight = atomic_read(&dest->weight);
+./smartvs/ip_vs_wrr.c:77:		if (new_weight > weight)
+./smartvs/ip_vs_wrr.c:78:			weight = new_weight;
+./smartvs/ip_vs_wrr.c:82:	return weight;
+./smartvs/ip_vs_wrr.c:100:	mark->mw = ip_vs_wrr_max_weight(svc);
+./smartvs/ip_vs_wrr.c:101:	mark->di = ip_vs_wrr_gcd_weight(svc);
+./smartvs/ip_vs_wrr.c:122:	mark->mw = ip_vs_wrr_max_weight(svc);
+./smartvs/ip_vs_wrr.c:123:	mark->di = ip_vs_wrr_gcd_weight(svc);
+./smartvs/ip_vs_wrr.c:142:	 * This loop will always terminate, because mark->cw in (0, max_weight]
+./smartvs/ip_vs_wrr.c:143:	 * and at least one server has its weight equal to max_weight.
+./smartvs/ip_vs_wrr.c:189:			    atomic_read(&dest->weight) >= mark->cw)
+./smartvs/ip_vs_wrr.c:208:		      "activeconns %d refcnt %d weight %d\n",
+./smartvs/ip_vs_wrr.c:211:		      atomic_read(&dest->refcnt), atomic_read(&dest->weight));
+./smartvs/ip_vs_sh.c:21: *          (n is overloaded) or (n.weight <= 0) then
+./smartvs/ip_vs_sh.c:227:	    || atomic_read(&dest->weight) <= 0 || is_overloaded(dest))
+./smartvs/ip_vs_lblc.c:28: *               n, cachenode[dest_ip] <- {weighted least-conn node};
+./smartvs/ip_vs_lblc.c:32: *                  (n.conns>n.weight AND
+./smartvs/ip_vs_lblc.c:33: *                   there is a node m with m.conns<m.weight/2) then
+./smartvs/ip_vs_lblc.c:34: *                 n, cachenode[dest_ip] <- {weighted least-conn node};
+./smartvs/ip_vs_lblc.c:405:	 *                (dest overhead) / dest->weight
+./smartvs/ip_vs_lblc.c:410:	 * if every weight is larger than zero.
+./smartvs/ip_vs_lblc.c:412:	 * The server with weight=0 is quiesced and will not receive any
+./smartvs/ip_vs_lblc.c:420:		if (atomic_read(&dest->weight) > 0)
+./smartvs/ip_vs_lblc.c:442:		if (loh * atomic_read(&dest->weight) >
+./smartvs/ip_vs_lblc.c:443:		    doh * atomic_read(&least->weight))
+./smartvs/ip_vs_lblc.c:453:		      "activeconns %d refcnt %d weight %d overhead %d\n",
+./smartvs/ip_vs_lblc.c:458:		      atomic_read(&least->weight), loh);
+./smartvs/ip_vs_lblc.c:470:	if (atomic_read(&dest->activeconns) > atomic_read(&dest->weight))
+./smartvs/ip_vs_lblc.c:478:			    < atomic_read(&d->weight))
+./smartvs/ip_vs_lblc.c:490: *    Locality-Based (weighted) Least-Connection scheduling
+./smartvs/ip_vs_lblc.c:526:	/* If the destination has a weight and is not overloaded, use it */
+./smartvs/ip_vs_lblc.c:527:	if (dest && atomic_read(&dest->weight) > 0 && !is_overloaded(dest, svc))
+./smartvs/ip_vs_dh.c:24: *          (n is overloaded) OR (n.weight <= 0) then
+./smartvs/ip_vs_dh.c:229:	    || atomic_read(&dest->weight) <= 0 || is_overloaded(dest))
+./smartcommon/llb/llb_pool.c:68:	m_analyse_common(pnode, llb_rserver, weight);
+./smartcommon/llb/llb_pool.c:85:	m_restore_common(pnode, llb_rserver, weight);
+./smartcommon/llb/llb_pool.c:157:	ZERO(weight);
+./smartcommon/llb/llb_pool.c:166:		if (!strncasecmp(token, "weight=", 7)) {
+./smartcommon/llb/llb_pool.c:167:			set_value(token, llb_rserver->weight);
+./smartcommon/loadbalance/apppool.c:233:	m_analyse_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:324:	m_restore_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:487:	ZERO(weight);
+./smartcommon/loadbalance/apppool.c:520:		if (!strncasecmp(token, "weight=", 7)) {
+./smartcommon/loadbalance/apppool.c:521:			set_value(token, rserver->weight);
+./smartcommon/loadbalance/apppool.c:522:			if (strcmp(rserver->weight, "0") == 0) {
+./smartcommon/loadbalance/apppool.c:523:				strcpy(rserver->weight, "10");
+./smartcommon/loadbalance/apppool.c:821:					strcpy(rs->weight, "10");
+./smartcommon/gslb/gslb_pool.c:73:	m_analyse_common(pnode, gslb_rserver, weight);
+./smartcommon/gslb/gslb_pool.c:94:	m_restore_common(pnode, gslb_rserver, weight);
+./smartcommon/gslb/gslb_pool.c:235:	ZERO(weight);
+./smartcommon/gslb/gslb_pool.c:246:		} else if (!strncasecmp(token, "weight=", 7)) {
+./smartcommon/gslb/gslb_pool.c:247:			set_value(token, gslb_rserver->weight);
+./smartshell/vmware_daemon/vmware_daemon.c:1397:	RSERVER_SET_VALUE("weight", rserver->weight);
+./smartshell/daemon4/gslb.c:355:		if (strlen(rserver->weight))
+./smartshell/daemon4/gslb.c:356:			fprintf(fp, "\t\tweight %s\n", rserver->weight);
+./smartshell/daemon4/generator.c:303:	if (strlen(rserver->weight))
+./smartshell/daemon4/generator.c:304:		fprintf(fp, "\t\tweight %s\n", rserver->weight);
+./smartshell/daemon4/layer7.c:47:	if (atoi(rserver->weight) > 0)
+./smartshell/daemon4/layer7.c:48:		fprintf(fp, " weight=%s", rserver->weight);
+./smartshell/daemon4/layer7.c:86:			if (strlen(rserver->weight)) 			\
+./smartshell/daemon4/layer7.c:87:			fprintf(fp, " weight=%s", rserver->weight); 	\
+./smartshell/daemon4/layer7.c:252:		fprintf(fp, "\t\tserver 127.0.0.1:1 weight=10;\n");
+./smartshell/daemon4/layer7.c:380:		fprintf(fp, "\t\tserver 127.0.0.1:1 weight=10;\n");
+./smartshell/daemon4/llb.c:252:		if (strlen(rserver->weight))
+./smartshell/daemon4/llb.c:253:			fprintf(fp, "\t\tweight %s\n", rserver->weight);
+./llbfwd/llbfwd_wrr.c:4: * 1. pool中的cw全0时， cw = weight
+./llbfwd/llbfwd_proc_file.c:91: * pool xxxx add/delete rserver xxxx address=xxxx,bandwidth=xxxx,weight=xxxx,healthcheck=xxx
+./llbfwd/llbfwd_proc_file.c:130:		/* pool xxxx add/delete rserver xxxx address xxxx,weight xxxx */
+./llbfwd/main.c:456:	strcpy(rs->weight, "10");
+./smartllb/smartllb_admin/smartllb_admin.c:110:				&& !STRCASECMP(bandwidth) && !STRCASECMP(weight) 
+./smartllb/smartllb_admin/smartllb_admin.c:785:	strncpy(rserver.weight, rs_new->weight, sizeof(rserver.weight) - 1);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:17:static int smartllb_wrr_gcd_weight(struct list_head *rserver_head)
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:20:	int weight;
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:24:		if ((weight = atomic_read(&rserver->weight)) > 0) {
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:25:			g =  (g > 0 ? gcd(weight, g) : weight);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:33:static int smartllb_wrr_reset_current_weight(
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:40:	__be32 weight, gcd;
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:46:		weight = atomic_read(&rserver->weight);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:48:		atomic_set(&sched_data->cw, weight/gcd);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:54:static struct smartllb_rserver * smartllb_wrr_max_weight_data(
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:67:		/* find max current weight rserver */
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:113:	rserver = smartllb_wrr_max_weight_data(sched_data, sched_node_head);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:115:		smartllb_wrr_reset_current_weight(sched_data, sched_node_head);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:116:		rserver = smartllb_wrr_max_weight_data(sched_data, sched_node_head);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:143:		DP("rserver:%pI4 weight:%d bandwidth:%d cw:%d gcd:%d\n",
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:145:					atomic_read(&rserver->weight), 
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:169:	gcd = smartllb_wrr_gcd_weight(rserver_head);
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:183:		atomic_set(&sched_data->rserver.weight, atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_wrr_schedule.c:186:		atomic_set(&sched_data->cw, atomic_read(&rserver->weight)/gcd);
+./smartllb/smartllb_kernel/smartllb_rtt_schedule.c:22:		DP("rserver:%pI4 weight:%u\n",
+./smartllb/smartllb_kernel/smartllb_rtt_schedule.c:24:					(__be16)atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_rtt_schedule.c:162:			atomic_set(&new->weight, atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_rserver.c:81:			char *bandwidth, char *weight, int order)
+./smartllb/smartllb_kernel/smartllb_rserver.c:97:	atomic_set(&rserver->weight, simple_strtol(weight, NULL, 10));
+./smartllb/smartllb_kernel/smartllb_rserver.c:188:		printk(KERN_ERR "  <nexthop:%pI4, weight:%d, bandwidth:%ld order:%d conns:%d>", 
+./smartllb/smartllb_kernel/smartllb_rserver.c:189:					&addr->sin_addr.s_addr, atomic_read(&rserver->weight), 
+./smartllb/smartllb_kernel/smartllb_leastthroughout_schedule.c:21:		DP("rserver:%pI4 weight:%u bandwidth:%lu connections:%u flow_total:%lu\n",
+./smartllb/smartllb_kernel/smartllb_leastthroughout_schedule.c:23:					(unsigned int)atomic_read(&rserver->weight),
+./smartllb/smartllb_kernel/smartllb_leastthroughout_schedule.c:113:			atomic_set(&new->weight, atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_setsockopt.c:82:	rc = smartllb_vserver_rserver_add(A(vserver_name), &A(nexthop), A(weight), A(bandwidth), A(order));
+./smartllb/smartllb_kernel/smartllb_rr_schedule.c:20:		DP("rserver:%pI4 weight:%d bandwidth:%d\n",
+./smartllb/smartllb_kernel/smartllb_rr_schedule.c:22:					(int)atomic_read(&rserver->weight),
+./smartllb/smartllb_kernel/smartllb_rr_schedule.c:118:			atomic_set(&new->weight, atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_vserver.c:492:			char *weight, char *bandwidth, int order)
+./smartllb/smartllb_kernel/smartllb_vserver.c:517:	ret = smartllb_rserver_add(&vserver->rserver_head, nexthop, bandwidth, weight, order);
+./smartllb/smartllb_kernel/smartllb_leastconnection_schedule.c:21:		DP("rserver:%pI4 weight:%u bandwidth:%lu refcnt:%u\n",
+./smartllb/smartllb_kernel/smartllb_leastconnection_schedule.c:23:					(__be16)atomic_read(&rserver->weight),
+./smartllb/smartllb_kernel/smartllb_leastconnection_schedule.c:108:			atomic_set(&new->weight, atomic_read(&rserver->weight));
+./smartllb/smartllb_kernel/smartllb_ga_schedule.c:27:		printk(KERN_ERR "rserver:%pI4 weight:%d bandwidth:%ld order:%d\n",
+./smartllb/smartllb_kernel/smartllb_ga_schedule.c:29:					atomic_read(&rserver->weight),
+./smartllb/smartllb_kernel/smartllb_ga_schedule.c:108:			atomic_set(&new->weight, atomic_read(&rserver->weight));
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:17:    ngx_uint_t                          current_weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:46:    ngx_uint_t                          weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:78:    ngx_uint_t                          weight_mode:2;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:401:        } else if (ngx_strcmp(value[i].data, "weight_mode=peak") == 0) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:403:                ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, "weight_mode= options are mutually exclusive");
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:407:        } else if (ngx_strcmp(value[i].data, "weight_mode=idle") == 0) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:409:                ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, "weight_mode= options are mutually exclusive");
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:442:    return (first->weight < second->weight);
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:491:                peers->peer[n].weight = server[i].down ? 0 : server[i].weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:538:                backup->peer[n].weight = server[i].weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:595:        peers->peer[i].weight = 1;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:748:        peers->weight_mode = WM_IDLE;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:750:        peers->weight_mode = WM_PEAK;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:809: * to pure weighted round-robin.
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:883:    ngx_uint_t                          weight_mode = fp->peers->weight_mode;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:889:        ngx_uint_t weight = fp->peers->peer[n].weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:894:        if (nreq >= weight || (nreq > 0 && weight_mode != WM_IDLE)) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:903:        if (weight_mode != WM_IDLE || !fp->peers->no_rr) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:910:         * on demand and can handle up to 'weight' concurrent requests
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:930:    ngx_uint_t                          weight_mode = fp->peers->weight_mode;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:941:        ngx_uint_t                          weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:946:        if (weight_mode == WM_PEAK && nreq >= peer->weight) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:948:                    "[upstream_fair] backend %d has nreq %ui >= weight %ui in WM_PEAK mode", 
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:949:                    n, nreq, peer->weight);
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:967:        if (weight_mode == WM_DEFAULT) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:969:             * take peer weight into account
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:971:            weight = peer->shared->current_weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:974:                weight = peer->shared->current_weight * (mf - peer->shared->fails) / mf;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:976:            if (weight > 0) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:977:                sched_score /= weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:980:                    "[upstream_fair] bss = %ui, ss = %ui (n = %d, w = %d/%d, f = %d/%d, weight = %d)",
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:981:                    best_sched_score, sched_score, n, peer->shared->current_weight, 
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:982:                    peer->weight, peer->shared->fails, peer->max_fails, weight);
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1000:    ngx_uint_t                          weight_mode;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1011:    weight_mode = fp->peers->weight_mode;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1071:    if (weight_mode == WM_DEFAULT) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1074:        if (peer->shared->current_weight-- == 0) {
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1075:            peer->shared->current_weight = peer->weight;
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1076:            ngx_log_debug2(NGX_LOG_DEBUG_HTTP, pc->log, 0, "[upstream_fair] peer %d expired weight, reset to %d", best_idx, peer->weight);
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1559:            b->last = ngx_sprintf(b->last, " peer %d: %V weight: %d/%d, fails: %d/%d, acc: %d, down: %d, nreq: %d, total_req: %ui, last_req: %ui\n",
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:1560:                    i, &peer->name, sh->current_weight, peer->weight, sh->fails, peer->max_fails, peer->accessed, peer->down,
+./nginx/3party/ngx_http_consistent_hash/ngx_http_upstream_consistent_hash_module.c:346:    /* ip max 80, :port max 6, maxweight is highest number of uchar */
+./nginx/3party/ngx_http_consistent_hash/ngx_http_upstream_consistent_hash_module.c:918:    /* ip max 64, :port max 6, maxweight is highest number of uchar */
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:3:/* TODO : generalize this into a generic list module, with weight */
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:7:    ngx_uint_t      weight;
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:15:ndk_upstream_list_parse_weight (ndk_upstream_list_parse_t *ulp)
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:29:        ulp->weight = 1;
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:48:    ulp->weight = ngx_atoi (s->data, i);
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:139:        if (ndk_upstream_list_parse_weight (&ulp) != NGX_OK)
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:142:        buckets += ulp.weight;
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:164:        if (ndk_upstream_list_parse_weight (&ulp) != NGX_OK)
+./nginx/3party/nginx_devel_kit/src/ndk_upstream_list.c:173:        for (j=0; j<ulp.weight; j++, bucket++) {
+./nginx/src/http/modules/ngx_http_upstream_ip_hash_module.c:181:        if (!iphp->rrp.peers->weighted) {
+./nginx/src/http/modules/ngx_http_upstream_ip_hash_module.c:185:            w = hash % iphp->rrp.peers->total_weight;
+./nginx/src/http/modules/ngx_http_upstream_ip_hash_module.c:188:                w -= iphp->rrp.peers->peer[i].weight;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:237:            || lcp->conns[i] * best->weight < lcp->conns[p] * peer->weight)
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:243:        } else if (lcp->conns[i] * best->weight
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:244:                   == lcp->conns[p] * peer->weight)
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:276:            if (lcp->conns[i] * best->weight != lcp->conns[p] * peer->weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:287:            peer->current_weight += peer->effective_weight;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:288:            total += peer->effective_weight;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:290:            if (peer->effective_weight < peer->weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:291:                peer->effective_weight++;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:294:            if (peer->current_weight > best->current_weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:301:    best->current_weight -= total;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:510:            || lcp->conns[i] * best->weight < lcp->conns[p] * peer->weight)
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:516:        } else if (lcp->conns[i] * best->weight
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:517:                   == lcp->conns[p] * peer->weight)
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:549:            if (lcp->conns[i] * best->weight != lcp->conns[p] * peer->weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:560:            peer->current_weight += peer->effective_weight;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:561:            total += peer->effective_weight;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:563:            if (peer->effective_weight < peer->weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:564:                peer->effective_weight++;
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:567:            if (peer->current_weight > best->current_weight) {
+./nginx/src/http/modules/ngx_http_upstream_least_conn_module.c:591:    best->current_weight -= total;
+./nginx/src/http/ngx_http_upstream.c:4376:    ngx_int_t                    weight, max_fails;
+./nginx/src/http/ngx_http_upstream.c:4414:    weight = 1;
+./nginx/src/http/ngx_http_upstream.c:4424:        if (ngx_strncmp(value[i].data, "weight=", 7) == 0) {
+./nginx/src/http/ngx_http_upstream.c:4430:            weight = ngx_atoi(&value[i].data[7], value[i].len - 7);
+./nginx/src/http/ngx_http_upstream.c:4432:            if (weight == NGX_ERROR || weight == 0) {
+./nginx/src/http/ngx_http_upstream.c:4530:    us->weight = weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:113:            w += server[i].naddrs * server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:131:        peers->weighted = (w != n);
+./nginx/src/http/ngx_http_upstream_round_robin.c:132:        peers->total_weight = w;
+./nginx/src/http/ngx_http_upstream_round_robin.c:149:                peers->peer[n].weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:150:                peers->peer[n].effective_weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:151:                peers->peer[n].current_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:177:            w += server[i].naddrs * server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:197:        backup->weighted = (w != n);
+./nginx/src/http/ngx_http_upstream_round_robin.c:198:        backup->total_weight = w;
+./nginx/src/http/ngx_http_upstream_round_robin.c:212:                backup->peer[n].weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:213:                backup->peer[n].effective_weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:214:                backup->peer[n].current_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:279:    peers->weighted = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:280:    peers->total_weight = n;
+./nginx/src/http/ngx_http_upstream_round_robin.c:287:        peers->peer[i].weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:288:        peers->peer[i].effective_weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:289:        peers->peer[i].current_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:453:                peers->peer[n].weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:454:                peers->peer[n].effective_weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:455:                peers->peer[n].current_weight = peers->peer[n].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:505:                backup->peer[n].weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:506:                backup->peer[n].effective_weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:507:                backup->peer[n].current_weight = server[i].weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:630:        peers->peer[0].weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:631:        peers->peer[0].effective_weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:632:        peers->peer[0].current_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:663:            peers->peer[i].weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:664:            peers->peer[i].effective_weight = 1;
+./nginx/src/http/ngx_http_upstream_round_robin.c:665:            peers->peer[i].current_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:758:                       rrp->current, peer->current_weight);
+./nginx/src/http/ngx_http_upstream_round_robin.c:851:        peer->current_weight += peer->effective_weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:852:        total += peer->effective_weight;
+./nginx/src/http/ngx_http_upstream_round_robin.c:854:        if (peer->effective_weight < peer->weight) {
+./nginx/src/http/ngx_http_upstream_round_robin.c:855:            peer->effective_weight++;
+./nginx/src/http/ngx_http_upstream_round_robin.c:858:        if (best == NULL || peer->current_weight > best->current_weight) {
+./nginx/src/http/ngx_http_upstream_round_robin.c:876:    best->current_weight -= total;
+./nginx/src/http/ngx_http_upstream_round_robin.c:913:            peer->effective_weight -= peer->weight / peer->max_fails;
+./nginx/src/http/ngx_http_upstream_round_robin.c:918:                       rrp->current, peer->effective_weight);
+./nginx/src/http/ngx_http_upstream_round_robin.c:920:        if (peer->effective_weight < 0) {
+./nginx/src/http/ngx_http_upstream_round_robin.c:921:            peer->effective_weight = 0;
+./nginx/src/http/ngx_http_upstream_round_robin.c:1104:                    rrp->current, peer->current_weight);
+./nginx/src/http/ngx_http_upstream_round_robin.c:1225:            peer->current_weight -= peer->weight / peer->max_fails;
+./nginx/src/http/ngx_http_upstream_round_robin.c:1230:                       rrp->current, peer->current_weight);
+./nginx/src/http/ngx_http_upstream_round_robin.c:1232:        if (peer->current_weight < 0) {
+./nginx/src/http/ngx_http_upstream_round_robin.c:1233:            peer->current_weight = 0;
+./gslbdnsd/gslbdnsd_misc.c:909:			fprintf(fp, "rserver: [ip: %s, type: %s, device: %s, weight: %s, healthcheck: %s, enable: %s, maxreq: %s, state: %s, device_vsname: %s]\n",
+./gslbdnsd/gslbdnsd_misc.c:911:				rserver_config->weight, rserver_config->healthcheck,
+./gslbdnsd/gslbdnsd_wrr_schedule.c:32:static int gslbdnsd_wrr_max_weight(struct gslbdnsd_vserver *vserver)
+./gslbdnsd/gslbdnsd_wrr_schedule.c:36:	int new_weight, weight = 0;
+./gslbdnsd/gslbdnsd_wrr_schedule.c:45:		new_weight = atoi(rserver->rserver_config->weight);
+./gslbdnsd/gslbdnsd_wrr_schedule.c:46:		if (new_weight > weight)
+./gslbdnsd/gslbdnsd_wrr_schedule.c:47:			weight = new_weight;
+./gslbdnsd/gslbdnsd_wrr_schedule.c:50:	return weight;
+./gslbdnsd/gslbdnsd_wrr_schedule.c:53:static int ip_vs_wrr_gcd_weight(struct gslbdnsd_vserver *vserver)
+./gslbdnsd/gslbdnsd_wrr_schedule.c:57:	int weight;
+./gslbdnsd/gslbdnsd_wrr_schedule.c:67:		weight = atoi(rserver->rserver_config->weight);
+./gslbdnsd/gslbdnsd_wrr_schedule.c:68:		if (weight > 0) {
+./gslbdnsd/gslbdnsd_wrr_schedule.c:70:				g = gcd(weight, g);
+./gslbdnsd/gslbdnsd_wrr_schedule.c:72:				g = weight;
+./gslbdnsd/gslbdnsd_wrr_schedule.c:98:	mark->mw = gslbdnsd_wrr_max_weight(vserver);
+./gslbdnsd/gslbdnsd_wrr_schedule.c:99:	mark->di = ip_vs_wrr_gcd_weight(vserver);
+./gslbdnsd/gslbdnsd_wrr_schedule.c:148:				if (atoi(rserver->rserver_config->weight) >= mark->cw)
