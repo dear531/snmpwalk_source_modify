@@ -264,7 +264,7 @@ optProc(int argc, char *const *argv, int opt)
 				if (SNMP_SHOW == snmp_show_flag)
 					fprintf(stderr, "Unknown flag passed to -C: %c\n",
                         optarg[-1]);
-                exit(1);
+				return;
             }
         }
         break;
@@ -315,10 +315,10 @@ snmpwalk(int argc, char *argv[])
      */
     switch (arg = snmp_parse_args(argc, argv, &session, "C:", optProc)) {
     case -2:
-        exit(0);
+		return 1;
     case -1:
         usage();
-        exit(1);
+		return 2;
     default:
         break;
     }
@@ -334,7 +334,7 @@ snmpwalk(int argc, char *argv[])
         if (snmp_parse_oid(argv[arg], root, &rootlen) == NULL) {
 			if (SNMP_SHOW == snmp_show_flag)
 				snmp_perror(argv[arg]);
-            exit(1);
+			return 2;
         }
     } else {
         /*
@@ -357,7 +357,7 @@ snmpwalk(int argc, char *argv[])
 		if (SNMP_SHOW == snmp_show_flag)
 			snmp_sess_perror("snmpwalk", &session);
         SOCK_CLEANUP;
-        exit(1);
+		return 2;
     }
 
     /*
@@ -537,22 +537,27 @@ snmpwalk(int argc, char *argv[])
 static int
 walk_info_operation(int argc, char *argv[])
 {
+	int ret;
 	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0) {
 	/*
 	 * snmpwalk -v 3 -l authNoPriv -u usm_user -a MD5(or SHA) -A authenpassword
 	 * realipaddrs .1.3.6.1.4.1.99999.16
 	 */
 		global_get_info = cpu.get_handle;
-		snmpwalk(argc, argv);
+		ret = snmpwalk(argc, argv);
+		if (ret > 0)
+			return ret;
 	} else if (memcmp(mem.oid, argv[argc - 1], strlen(mem.oid) + 1) == 0) {
 	/*
 	 * snmpwalk -v 3 -l authNoPriv -u usm_user -a MD5(or SHA) -A authenpassword
 	 * realipaddrs .1.3.6.1.4.1.99999.15
 	 */
 		global_get_info = mem.get_handle;
-		snmpwalk(argc, argv);
+		ret = snmpwalk(argc, argv);
+		if (ret > 0)
+			return ret;
 	}
-	return 0;
+	return ret;
 }
 
 
@@ -572,7 +577,7 @@ int
 mibs_snmpwalk(int snmp_argc, char *snmp_argv[], int mib_argc, char *mib_argv[], int flag)
 {
 	char **heap_argv;
-	int i;
+	int i, ret = 0;
 	snmp_show_flag = flag;
 
 	heap_argv = malloc(sizeof(*heap_argv) * snmp_argc + 1);
@@ -592,15 +597,19 @@ mibs_snmpwalk(int snmp_argc, char *snmp_argv[], int mib_argc, char *mib_argv[], 
 		bcopy(snmp_argv[10], heap_argv[10], strlen(snmp_argv[10]));
 
 		/* call operation function get info */
-		walk_info_operation(snmp_argc + 1, heap_argv);
+		ret = walk_info_operation(snmp_argc + 1, heap_argv);
 		heap_argv[snmp_argc] = NULL;
+		if (ret > 0)
+			goto flaid;
 	}
+flaid:
 	for (i = 0; i < snmp_argc + 1; i++)
 		if (NULL != heap_argv[i])
 			free(heap_argv[i]);
 	free(heap_argv);
-	return 0;
+	return ret;
 }
+
 int main(int argc, char *argv[])
 {
     char *snmpargv[] = {"snmpwalk", "-v", "3", "-l", "authNoPriv",
@@ -610,9 +619,21 @@ int main(int argc, char *argv[])
     char *mibargv[] = {
      ".1.3.6.1.4.1.99999.16", ".1.3.6.1.4.1.99999.15"
     };   
+	int ret;
 
-    mibs_snmpwalk(sizeof(snmpargv) / sizeof(*snmpargv), snmpargv, sizeof(mibargv) / sizeof(*mibargv), mibargv,
+    ret = mibs_snmpwalk(sizeof(snmpargv) / sizeof(*snmpargv), snmpargv, sizeof(mibargv) / sizeof(*mibargv), mibargv,
 			SNMP_SHOW);
+	switch (ret) {
+		case 0:
+			fprintf(stdout, "success\n");
+			break;
+		case 1:
+			fprintf(stdout, "get failed\n");
+			break;
+		case 2:
+			fprintf(stdout, "set flaide\n");
+			break;
+	}
 
 	return 0;
 }
