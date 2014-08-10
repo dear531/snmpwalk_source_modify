@@ -93,8 +93,83 @@ int             numprinted = 0;
  * is 0: close print for smart machine,
  * is 1: open print for debug
  */
-#define ERR_PRINT	0
-void
+#define ERR_PRINT	1
+
+/* hold row of table pdu */
+static int cpu_counter = 0;
+/* every cpu num user value percent */
+static float *num = NULL;
+static int 
+get_cpu_info(const u_char *buf)
+{
+	num = realloc(num, sizeof(*num) * (cpu_counter + 1));
+	if (NULL == num)
+		goto failure;
+	/* 
+	 * SNMPv2-SMI::enterprises.99999.16.1.1.1 = STRING: "10:35:24 AM  CPU   %user   %nice    %sys %iowait
+	 * %irq   %soft  %steal   %idle    intr/s "
+	 * SNMPv2-SMI::enterprises.99999.16.1.1.2 = STRING: "10:35:24 AM    0    0.97    0.00    2.82   15.13    0.00
+	 * 0.04    0.00   81.04     27.88 "
+	 * ....
+	 * sscanf discast start several invalid value
+	 */
+	sscanf((char *)buf, "%*s %*s %*s %*s %*s %*s %f", num + cpu_counter);
+	cpu_counter++;
+	return 0;
+failure:
+	if (NULL != num)
+		free(num);
+	return 1;
+}
+
+static struct get_info cpu = {
+	/* cpu oid of standard mib */
+	.oid = ".1.3.6.1.4.1.99999.16",
+	/* cpu headle function */
+	.get_handle = get_cpu_info,
+};
+static struct{
+	int used;
+	int total;
+	int free;
+}mem_info;
+static int mem_counter = 0;
+enum mem_status
+{
+	MEM_SECCESS,
+	MEM_FAILRUE,
+	MEM_OTHER,
+};
+
+static int get_mem_info(const u_char *buf)
+{
+	if (1 == mem_counter && NULL != buf) {
+	/* 
+	 * SNMPv2-SMI::enterprises.99999.15.1.1.1 = STRING: "             total       used       free     shared
+	 * buffers     cached "
+	 * SNMPv2-SMI::enterprises.99999.15.1.1.2 = STRING: "Mem:          7976        754       7221          0
+	 * 37         74 "
+	 * SNMPv2-SMI::enterprises.99999.15.1.1.3 = STRING: "Swap:         3914          0       3914
+	 */
+		sscanf((char *)buf, "%*s %*s %*s %*s %d %d %d",
+			&mem_info.total, &mem_info.used, &mem_info.free);
+		return MEM_SECCESS;
+	} else if (1 == mem_counter) {
+		/* mem_counter == 1 && buf == NULL FAILURE */
+		return MEM_FAILRUE;
+	} else {
+		return MEM_OTHER;
+	}
+}
+static struct get_info mem = {
+	/* memory oid of standard mib */
+	.oid = ".1.3.6.1.4.1.99999.15",
+	/* memory headle function */
+	.get_handle = get_mem_info,
+};
+
+static int (*global_get_info)(const u_char *buf);
+static void
 usage(void)
 {
     fprintf(stderr, "USAGE: snmpwalk ");
@@ -112,7 +187,7 @@ usage(void)
             "\t\t\t  t:  Display wall-clock time to complete the request\n");
 }
 
-void
+static void
 snmp_get_and_print(netsnmp_session * ss, oid * theoid, size_t theoid_len)
 {
     netsnmp_pdu    *pdu, *response;
@@ -140,8 +215,8 @@ snmp_get_and_print(netsnmp_session * ss, oid * theoid, size_t theoid_len)
 					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
 							vars->name, vars->name_length, vars);
 /* flag for get infomartion show to standard output */
-#define DEBUG	ERR_PRINT
-#if DEBUG
+#define SNMP_DEBUG	ERR_PRINT
+#if SNMP_DEBUG
 					fprintf(stdout, "%s\n", buf);
 #endif
 					global_get_info(buf);
@@ -200,7 +275,7 @@ optProc(int argc, char *const *argv, int opt)
 }
 
 
-int
+static int
 snmpwalk(int argc, char *argv[])
 {
     netsnmp_session session, *ss;
@@ -348,7 +423,7 @@ snmpwalk(int argc, char *argv[])
 					size_t out_len = 0;
 					sprint_realloc_variable(&buf, &buf_len, &out_len, 1,
 							vars->name, vars->name_length, vars);
-#if DEBUG
+#if SNMP_DEBUG
 					fprintf(stdout, "%s\n", buf);
 #endif
 					global_get_info(buf);
@@ -468,7 +543,7 @@ snmpwalk(int argc, char *argv[])
     return exitval;
 }
 
-int
+static int
 walk_info_operation(int argc, char *argv[])
 {
 	if (memcmp(cpu.oid, argv[argc - 1], strlen(cpu.oid) + 1) == 0) {
@@ -488,47 +563,63 @@ walk_info_operation(int argc, char *argv[])
 	}
 	return 0;
 }
+
+
 /*
- * 
- * e.g. run: ./snmpwalk .1.3.6.1.4.1.99999.16  .1.3.6.1.4.1.99999.15
- * get info of cpu(.1.3.6.1.4.1.99999.16) and memory(.1.3.6.1.4.1.99999.15)
+ * char *snmp_argv[] = {"snmpwalk", "-v", "3", "-l", "authNoPriv",
+ * 	"-u", "zhangliuying", "-a", "MD5", "-A", "zhangliuying",
+ * 	"192.168.12.78"
+ * };
+ * char *mib_argv[] = {
+ * 	".1.3.6.1.4.1.99999.16", ".1.3.6.1.4.1.99999.15"
+ * };
+ * 	cpu 			and 		memory
  */
+
 #include <strings.h>
 int
-main(int argc, char *argv[])
+mibs_snmpwalk(int snmp_argc, char *snmp_argv[], int mib_argc, char *mib_argv[])
 {
-	char *argv_stak[] = {
-		argv[0], "-v", "3", "-l", "authNoPriv", "-u", "zhangliuying", "-a", "MD5", "-A", "zhangliuying",
-		"192.168.12.78", NULL,/* pointer NULL for reserved of oid */
-	};
-	char **argv_heap;
-	int argc_num;
+	char **heap_argv;
 	int i;
-	
-	argc_num = sizeof(argv_stak) / sizeof(*argv_stak);
 
-	argv_heap = malloc(sizeof(*argv_heap) * argc_num);
-	for (i = 0; i < argc_num - 1; i++)
-		argv_heap[i] = strdup(argv_stak[i]);
+	heap_argv = malloc(sizeof(*heap_argv) * snmp_argc + 1);
 
-	for (i = 1; i < argc; i++) {
+	for (i = 0; i < snmp_argc; i++)
+		heap_argv[i] = strdup(snmp_argv[i]);
 
-		/* every unique one fo several oids */
-		argv_heap[argc_num - 1] = argv[i];
+	for (i = 0; i < mib_argc; i++) {
+
+		/* every unique one of several oids */
+		heap_argv[snmp_argc] = mib_argv[i];
 		/*
 		 * whenever running snmpwalk will clear user and password,
 		 * so reset user and password
 		 */
-		bcopy(argv_stak[6], argv_heap[6], strlen(argv_stak[6]));
-		bcopy(argv_stak[10], argv_heap[10], strlen(argv_stak[10]));
+		bcopy(snmp_argv[6], heap_argv[6], strlen(snmp_argv[6]));
+		bcopy(snmp_argv[10], heap_argv[10], strlen(snmp_argv[10]));
 
 		/* call operation function get info */
-		walk_info_operation(argc_num, argv_heap);
-		argv_heap[argc_num - 1] = NULL;
+		walk_info_operation(snmp_argc + 1, heap_argv);
+		heap_argv[snmp_argc] = NULL;
 	}
-	for (i = 0; i < argc_num; i++)
-		if (NULL != argv_heap[i])
-			free(argv_heap[i]);
-	free(argv_heap);
+	for (i = 0; i < snmp_argc + 1; i++)
+		if (NULL != heap_argv[i])
+			free(heap_argv[i]);
+	free(heap_argv);
+	return 0;
+}
+int main(int argc, char *argv[])
+{
+    char *snmpargv[] = {"snmpwalk", "-v", "3", "-l", "authNoPriv",
+     "-u", "zhangliuying", "-a", "MD5", "-A", "zhangliuying",
+     "192.168.12.78"
+    };   
+    char *mibargv[] = {
+     ".1.3.6.1.4.1.99999.16", ".1.3.6.1.4.1.99999.15"
+    };   
+
+    mibs_snmpwalk(sizeof(snmpargv) / sizeof(*snmpargv), snmpargv, sizeof(mibargv) / sizeof(*mibargv), mibargv);
+
 	return 0;
 }
