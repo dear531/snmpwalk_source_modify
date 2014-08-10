@@ -15,10 +15,15 @@ struct get_info{
 	 */
 	int (*get_handle)(const u_char *buf);
 };
+/* snmp show promty infomation */
+enum snmp_show{
+	SNMP_HIDE = 0,
+	SNMP_SHOW,
+};
 
 /* 
  * in function snmpwalk of snmpwalk.c handle data
  * .e.g : global_get_info = cpu.get_handle get info for cpu
  */
-extern int mibs_snmpwalk(int snmpargc, char *snmpargv[], int mibargc, char *mibargv[]);
+extern int mibs_snmpwalk(int snmpargc, char *snmpargv[], int mibargc, char *mibargv[], int flag);
 #endif
