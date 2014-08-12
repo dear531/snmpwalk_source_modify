@@ -317,7 +317,9 @@ snmpwalk(int argc, char *argv[])
     case -2:
 		return 1;
     case -1:
+#if 0
         usage();
+#endif
 		return 2;
     default:
         break;
@@ -617,7 +619,7 @@ int main(int argc, char *argv[])
      "192.168.12.78"
     };   
     char *mibargv[] = {
-     ".1.3.6.1.4.1.99999.16", ".1.3.6.1.4.1.99999.15"
+		".1.3.6.1.4.1.99999.15", ".1.3.6.1.4.1.99999.16",
     };   
 	int ret;
 
