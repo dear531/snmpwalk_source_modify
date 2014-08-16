@@ -50,11 +50,9 @@ LINK		= $(LIBTOOL) --mode=link $(LINKCC)
 RANLIB		= :
 
 # libtool definitions
-.SUFFIXES: .c .o .lo .rc
+.SUFFIXES: .c .o .lo
 .c.lo:
 	$(LIBTOOL) --mode=compile $(CC) $(CFLAGS) -c -o $@ $<
-.rc.lo:
-	$(LIBTOOL) --mode=compile --tag=CC windres -o $@ -i $<
 
 # include paths
 #
