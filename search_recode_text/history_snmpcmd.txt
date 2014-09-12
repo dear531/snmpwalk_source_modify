@@ -1003,3 +1003,21 @@ snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.78
 /home/zhangly/smartgrid/tags/V3.1.XR/smartvs
 /home/zhangly/smartgrid/tags/V3.1.XR/smartcli/libvs
 find . -name * |xargs grep realserver |grep -v svn |grep -v -i ^binary |grep -v ^grep |grep -v nginx |grep -v tags |grep -v web | grep -v txt | grep brealserverb > grep_realserver.txt
+iptables -D INPUT -s 192.168.12.0/24  -p udp  --sport 161 -j ACCEPT
+
+at 192.168.12.80
+# snmpwalk -v 2c -c public localhost sysName.0
+SNMPv2-MIB::sysName.0 = STRING: zhangly
+
+# snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.76 .1.3.6.1.4.1.2021.4.11.0
+UCD-SNMP-MIB::memTotalFree.0 = INTEGER: 4347804
+# my be problem
+
+# snmpwalk -v 2c -c public localhost .1.3.6.1.4.1.2021.4.11.0
+UCD-SNMP-MIB::memTotalFree.0 = INTEGER: 256968
+
+# snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.76 .1.3.6.1.4.1.2021.11.11.0
+UCD-SNMP-MIB::ssCpuIdle.0 = INTEGER: 86
+
+# snmpwalk -v 2c -c public localhost .1.3.6.1.4.1.2021.11.11.0
+UCD-SNMP-MIB::ssCpuIdle.0 = INTEGER: 79
