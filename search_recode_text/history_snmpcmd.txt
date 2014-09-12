@@ -556,6 +556,7 @@
   632  fg
   633  service snmpd restart 
   634  snmpwalk -v 2c -c public 192.168.12.80 1.3.6.1.4.1.2021.11.11.0
+	/* cpu info */
   635  ls
   636  vim smartagent_command.c 
   637  cat *.c |grep system
