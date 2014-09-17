@@ -2,6 +2,11 @@
 #include <string.h>
 #include <errno.h>
 #include <syslog.h>
+#define STANDARD_CPU_OID	".1.3.6.1.2.1.25.3.3.1.2"
+#define STANDARD_MEM_TYPE	".1.3.6.1.2.1.25.2.3.1.2"
+#define STANDARD_MEM_UNIT	".1.3.6.1.2.1.25.2.3.1.4"
+#define STANDARD_MEM_SIZE	".1.3.6.1.2.1.25.2.3.1.5"
+
 #define CPUOID	".1.3.6.1.4.1.2021.11.11.0"
 #define MEMOID	".1.3.6.1.4.1.2021.4.11.0"
 
@@ -9,11 +14,14 @@ int get_data(char *oid, char* buff)
 {
 	int data = -1;
 	int ret;
-	if (0 == memcmp(oid, CPUOID, sizeof(CPUOID))) {
-		sscanf(buff, "UCD-SNMP-MIB::ssCpuIdle.0 = INTEGER: %d", &data);
-	} else if (0 == memcmp(oid, MEMOID, sizeof(MEMOID))) {
-		sscanf(buff, "UCD-SNMP-MIB::memTotalFree.0 = INTEGER: %d", &data);
+	if (0 == memcmp(oid, STANDARD_CPU_OID, sizeof(STANDARD_CPU_OID))) {
+		sscanf(buff, "HOST-RESOURCES-MIB::hrProcessorLoad.%*d = INTEGER: %d", &data);
+	} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE))
+			&& NULL != strstr(buff, "hrStorageRam")) {
+		sscanf(buff, "HOST-RESOURCES-MIB::hrStorageType.%d", &data);
+		fprintf(stdout, "mem index :%d\n", data);
 	}
+
 	if (0 <= data) {
 		ret = data;
 	} else {
@@ -23,37 +31,104 @@ int get_data(char *oid, char* buff)
 	return ret;
 }
 
-int get_result(FILE *fp, int show_mod, char *oid, int (*get_data)(char *oid, char *prompt))
+int get_mem_type(char *command, int show_mod)
 {
+	char *oid = STANDARD_MEM_TYPE;
 	char buf[1024] = {0};
-	char prompt[1024] = {0};
 	int walk_ret;
-	int data = 0;
+	int data_flag = 1;
 	int ret;
+
+	FILE * fp;
+	fp = popen(command, "r");
+	if (NULL == fp) {
+		syslog(LOG_INFO, "popen error :%s\n",
+				strerror(errno));
+		ret = -1;
+		goto finish;
+	}
+
 	while (NULL != fgets(buf, sizeof(buf), fp)) {
 		if (0 == strncasecmp(buf, "USAGE:", strlen("USAGE:"))) {
-			break;
+			data_flag = 0;
 		} else if (0 == strncasecmp(buf, "result:", strlen("result:"))) {
 			sscanf(buf ,"result:%d", &walk_ret);
 			break;
-		} else {
-			strcat(prompt, buf);
-			data = get_data(oid, buf);
 		}
+
+	    if (1 != data_flag) {
+			memset(buf, 0x00, strlen(buf));
+			continue;
+		}
+		get_data(oid, buf);
+	}
+
+	if (NULL != fp)
+		pclose(fp);
+finish:
+
+	return ret;
+}
+
+int get_cpu(char *command, int show_mod)
+{
+	char *oid = STANDARD_CPU_OID;
+	char buf[1024] = {0};
+	int walk_ret;
+	int data = -1;
+	int ret;
+	int data_flag = 1;
+	int counter = 0;
+	int total = 0;
+
+	FILE * fp;
+	fp = popen(command, "r");
+	if (NULL == fp) {
+		syslog(LOG_INFO, "popen error :%s\n",
+				strerror(errno));
+		ret = -1;
+		goto finish;
+	}
+
+	while (NULL != fgets(buf, sizeof(buf), fp)) {
+		if (0 == strncasecmp(buf, "USAGE:", strlen("USAGE:"))) {
+			data_flag = 0;
+		} else if (0 == strncasecmp(buf, "result:", strlen("result:"))) {
+			sscanf(buf ,"result:%d", &walk_ret);
+			break;
+		}
+
+	    if (1 != data_flag) {
+			memset(buf, 0x00, strlen(buf));
+			continue;
+		}
+
+		data = get_data(oid, buf);
+
+		if (0 <= data) {
+			total += data;
+			counter++;
+			data  = -1;
+		}
+
+		if (1 == show_mod) {
+			fprintf(stdout, "%s", buf);
+		}
+
 		memset(buf, 0x00, strlen(buf));
 	}
 
-	if (1 == show_mod) {
-		fprintf(stdout, "%s", prompt);
-	}
-
-	if (0 == walk_ret && 0 <= data) {
+	if (0 == walk_ret && 0 < total) {
 		/* success : walk return 0 and get data */
-		ret = data;
+		ret = 100 - total / counter;
 	} else {
 		/* other */
 		ret = -1;
 	}
+
+	if (NULL != fp)
+		pclose(fp);
+finish:
 
 	return ret;
 }
@@ -62,23 +137,23 @@ int get_result(FILE *fp, int show_mod, char *oid, int (*get_data)(char *oid, cha
 
 int main(void)
 {
-	char commmod[512] = {0};
-	char *commond = "/SmartGrid/snmp/bin/snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.76 .1.3.6.1.4.1.2021.11.11.0 2>&1\necho \"result:$?\"";
-	FILE * fp;
-	fp = popen(commond, "r");
-	if (NULL == fp) {
-		syslog(LOG_INFO, "popen error :%s\n",
-				strerror(errno));
-		goto finish;
-	}
+#if 0
+	char *command = "/SmartGrid/snmp/bin/snmpwalk -v 3 -l authNoPriv -u zhangliuying -a MD5 -A zhangliuying 192.168.12.76 .1.3.6.1.4.1.2021.11.11.0 2>&1\necho \"result:$?\"";
+#endif
+#if 0
+	char *command = "/SmartGrid/snmp/bin/snmpwalk -v 2c -c public 192.168.12.80 .1.3.6.1.2.1.25.3.3.1.2 2>&1\necho \"result:$?\"";
+#else
+	char *command = "/SmartGrid/snmp/bin/snmpwalk -v 2c -c public 192.168.12.80 .1.3.6.1.2.1.25.2.3.1.2 2>&1\necho \"result:$?\"";
+#endif
 	
 	int data = 0;
-	data = get_result(fp, 1, CPUOID, get_data);
+#if 0
+	data = get_cpu(command, 1);
+#else
+	data = get_mem_type(command, 1);
+#endif
 
 	fprintf(stdout, "data: %d\n", data);
 
-	if (NULL != fp)
-		pclose(fp);
-finish:
 	return 0;
 }
