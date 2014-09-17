@@ -1050,3 +1050,65 @@ SNMPv2-MIB::sysDescr.0 = STRING: Linux localhost.localdomain 3.2.28 #2 SMP Fri F
 # to windows xp
 # snmpwalk -v 2c -c public 192.168.12.77  sysDescr
 SNMPv2-MIB::sysDescr.0 = STRING: Hardware: x86 Family 6 Model 23 Stepping 10 AT/AT COMPATIBLE - Software: Windows 2000 Version 5.1 (Build 2600 Uniprocessor Free)
+
+
+===================
+# cpu
+# snmpwalk -v 2c -c public 192.168.12.79 .1.3.6.1.2.1.25.3.3.1.2
+HOST-RESOURCES-MIB::hrProcessorLoad.3 = INTEGER: 0
+HOST-RESOURCES-MIB::hrProcessorLoad.4 = INTEGER: 0
+
+# snmpwalk -v 2c -c public 192.168.12.77 .1.3.6.1.2.1.25.3.3.1.2
+HOST-RESOURCES-MIB::hrProcessorLoad.1 = INTEGER: 0
+HOST-RESOURCES-MIB::hrProcessorLoad.2 = INTEGER: 0
+
+# snmpwalk -v 2c -c public 192.168.12.80 .1.3.6.1.2.1.25.3.3.1.2
+HOST-RESOURCES-MIB::hrProcessorLoad.768 = INTEGER: 4
+HOST-RESOURCES-MIB::hrProcessorLoad.769 = INTEGER: 20
+
+# memory
+# snmpwalk -v 2c -c public 192.168.12.80 1.3.6.1.2.1.25.2.3.1.2
+HOST-RESOURCES-MIB::hrStorageType.1 = OID: HOST-RESOURCES-TYPES::hrStorageRam
+HOST-RESOURCES-MIB::hrStorageType.3 = OID: HOST-RESOURCES-TYPES::hrStorageVirtualMemory
+HOST-RESOURCES-MIB::hrStorageType.6 = OID: HOST-RESOURCES-TYPES::hrStorageOther
+HOST-RESOURCES-MIB::hrStorageType.7 = OID: HOST-RESOURCES-TYPES::hrStorageOther
+HOST-RESOURCES-MIB::hrStorageType.10 = OID: HOST-RESOURCES-TYPES::hrStorageVirtualMemory
+HOST-RESOURCES-MIB::hrStorageType.31 = OID: HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.35 = OID: HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.36 = OID: HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.39 = OID: HOST-RESOURCES-TYPES::hrStorageNetworkDisk
+
+
+# snmpwalk -v 2c -c public 192.168.12.77 1.3.6.1.2.1.25.2.3.1.2
+HOST-RESOURCES-MIB::hrStorageType.1 = OID: HOST-RESOURCES-TYPES::hrStorageRemovableDisk
+HOST-RESOURCES-MIB::hrStorageType.2 = OID: HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.3 = OID: HOST-RESOURCES-TYPES::hrStorageCompactDisc
+HOST-RESOURCES-MIB::hrStorageType.4 = OID: HOST-RESOURCES-TYPES::hrStorageVirtualMemory
+HOST-RESOURCES-MIB::hrStorageType.5 = OID: HOST-RESOURCES-TYPES::hrStorageRam
+
+
+# snmpwalk -v 2c -c public 192.168.12.77 1.3.6.1.2.1.25.2.3.1.4
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.1 = INTEGER: 0 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.2 = INTEGER: 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.3 = INTEGER: 0 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.4 = INTEGER: 65536 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.5 = INTEGER: 65536 Bytes
+
+# snmpwalk -v 2c -c public 192.168.12.77 1.3.6.1.2.1.25.2.3.1.5
+HOST-RESOURCES-MIB::hrStorageSize.1 = INTEGER: 0
+HOST-RESOURCES-MIB::hrStorageSize.2 = INTEGER: 5240752
+HOST-RESOURCES-MIB::hrStorageSize.3 = INTEGER: 0
+HOST-RESOURCES-MIB::hrStorageSize.4 = INTEGER: 32073
+HOST-RESOURCES-MIB::hrStorageSize.5 = INTEGER: 8183
+
+# snmpwalk -v 2c -c public 192.168.12.77 1.3.6.1.2.1.25.2.3.1.6
+HOST-RESOURCES-MIB::hrStorageUsed.1 = INTEGER: 0
+HOST-RESOURCES-MIB::hrStorageUsed.2 = INTEGER: 1653212
+HOST-RESOURCES-MIB::hrStorageUsed.3 = INTEGER: 0
+HOST-RESOURCES-MIB::hrStorageUsed.4 = INTEGER: 3191
+HOST-RESOURCES-MIB::hrStorageUsed.5 = INTEGER: 1614
+
+# snmpwalk -v 2c -c public 192.168.12.80 1.3.6.1.2.1.25.2.3.1
+
+.iso(1).org(3).dod(6).internet(1).mgmt(2).mib-2(1).host(25).hrStorage(2).hrStorageTable(3).hrStorageEntry(1).hrStorageSize(5)
+.iso.org.dod.internet.mgmt.mib-2.host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize
