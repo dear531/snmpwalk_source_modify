@@ -29,11 +29,6 @@ int get_data(char *oid, char* buff)
 	return ret;
 }
 
-static inline void show_info_oid(int show_mod, char *buf)
-{
-		if (1 == show_mod)
-			fprintf(stdout, "%s", buf);
-}
 
 #define WALK_COMMAND	"/SmartGrid/snmp/bin/snmpwalk"
 #define REDIRECT_ERR	"2>&1"
@@ -89,14 +84,15 @@ int snmp_oid(char *rsinfo, char *oid, int show_mod)
 				total += data;
 				counter++;
 				data  = -1;
-				show_info_oid(show_mod, buf);
 			}
 		} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE))
 				&& NULL != strstr(buf, "hrStorageRam")) {
 			data = get_data(oid, buf);
-			show_info_oid(show_mod, buf);
 		}
 
+		if (1 == show_mod) {
+			fprintf(stdout, "%s", buf);
+		}
 
 		memset(buf, 0x00, strlen(buf));
 	}
