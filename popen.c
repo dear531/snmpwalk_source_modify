@@ -2,41 +2,21 @@
 #include <string.h>
 #include <errno.h>
 #include <syslog.h>
+
 #define STANDARD_CPU_OID	".1.3.6.1.2.1.25.3.3.1.2"
 #define STANDARD_MEM_TYPE	".1.3.6.1.2.1.25.2.3.1.2"
 #define STANDARD_MEM_UNIT	".1.3.6.1.2.1.25.2.3.1.4"
 #define STANDARD_MEM_SIZE	".1.3.6.1.2.1.25.2.3.1.5"
-
-#define CPUOID	".1.3.6.1.4.1.2021.11.11.0"
-#define MEMOID	".1.3.6.1.4.1.2021.4.11.0"
-
-int get_data(char *oid, char* buff)
-{
-	int data = -1;
-	int ret;
-	if (0 == memcmp(oid, STANDARD_CPU_OID, sizeof(STANDARD_CPU_OID))) {
-		sscanf(buff, "HOST-RESOURCES-MIB::hrProcessorLoad.%*d = INTEGER: %d", &data);
-	} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE))) {
-		sscanf(buff, "HOST-RESOURCES-MIB::hrStorageType.%d", &data);
-	}
-
-	if (0 <= data) {
-		ret = data;
-	} else {
-		ret = -1;
-	}
-
-	return ret;
-}
-
+#define STANDARD_MEM_USED	".1.3.6.1.2.1.25.2.3.1.6"
 
 #define WALK_COMMAND	"/SmartGrid/snmp/bin/snmpwalk"
 #define REDIRECT_ERR	"2>&1"
 #define SHOW_RESULT		"\necho \"result:$?\"\n"
 
-int snmp_oid(char *rsinfo, char *oid, int show_mod)
+static int snmp_oid(char *rsinfo, char *oid, int show_mod)
 {
 	char buf[1024] = {0};
+	char prompt[1024] = {0};
 	int walk_ret;
 	int data = -1;
 	int ret;
@@ -78,30 +58,72 @@ int snmp_oid(char *rsinfo, char *oid, int show_mod)
 		}
 
 		if (0 == memcmp(oid, STANDARD_CPU_OID, sizeof(STANDARD_CPU_OID))) {
-			data = get_data(oid, buf);
-
+			sscanf(buf, "HOST-RESOURCES-MIB::hrProcessorLoad.%*d = INTEGER: %d", &data);
 			if (0 <= data) {
 				total += data;
 				counter++;
 				data  = -1;
 			}
-		} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE))
-				&& NULL != strstr(buf, "hrStorageRam")) {
-			data = get_data(oid, buf);
-		}
+			strcat(prompt, buf);
+		} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE))) {
+			if (NULL != strstr(buf, "hrStorageRam")) {
+				sscanf(buf, "HOST-RESOURCES-MIB::hrStorageType.%d", &data);
+			}
+			if (0 < data) {
+				total = data;
+				data = -1;
+				memset(prompt, 0x00, strlen(prompt));
+				strcat(prompt, buf);
+			}
 
-		if (1 == show_mod) {
-			fprintf(stdout, "%s", buf);
+			if (0 == total) {
+				strcat(prompt, buf);
+			}
+		} else if (0 == memcmp(oid, STANDARD_MEM_UNIT, sizeof(STANDARD_MEM_UNIT) -1)) {
+			sscanf(buf, "HOST-RESOURCES-MIB::hrStorageAllocationUnits.%*d = INTEGER: %d Bytes", &data);
+#define DATA_OPRATION() do {					\
+							if (0 < data) {		\
+								total = data;	\
+								data = -1;		\
+							}					\
+							strcat(prompt, buf);\
+						}while (0)
+			DATA_OPRATION();
+		} else if (0 == memcmp(oid, STANDARD_MEM_SIZE, sizeof(STANDARD_MEM_SIZE) - 1)) {
+			sscanf(buf, "HOST-RESOURCES-MIB::hrStorageSize.%*d = INTEGER: %d", &data);
+			DATA_OPRATION();
+		} else if (0 == memcmp(oid, STANDARD_MEM_USED, sizeof(STANDARD_MEM_USED) - 1)) {
+			sscanf(buf, "HOST-RESOURCES-MIB::hrStorageUsed.%*d = INTEGER: %d", &data);
+			DATA_OPRATION();
+		} else {
+			memcpy(prompt, "invalid oid\n", sizeof("invalid oid\n"));
 		}
+#undef DATA_OPRATION
 
 		memset(buf, 0x00, strlen(buf));
 	}
 
+	if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE)) && 0 == total && 0 == walk_ret) {
+		memset(prompt, 0x00, strlen(prompt));
+		memcpy(prompt, "cannot find HOST-RESOURCES-TYPES::hrStorageRam\n",
+				sizeof("cannot find HOST-RESOURCES-TYPES::hrStorageRam\n"));
+	}
+
+	if (1 == show_mod) {
+		fprintf(stdout, "%s", prompt);
+	}
+
 	if (0 == memcmp(oid, STANDARD_CPU_OID, sizeof(STANDARD_CPU_OID)) && 0 == walk_ret && 0 < total) {
 		/* success : walk return 0 and get data */
-		ret = 100 - total / counter;
-	} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE)) && 0 <= data) {
-		ret = data;
+		ret = total / counter;
+	} else if (0 == memcmp(oid, STANDARD_MEM_TYPE, sizeof(STANDARD_MEM_TYPE)) && 0 < total) {
+		ret = total;
+	} else if (0 == memcmp(oid, STANDARD_MEM_UNIT, sizeof(STANDARD_MEM_UNIT) - 1) && 0 < total) {
+		ret = total;
+	} else if (0 == memcmp(oid, STANDARD_MEM_SIZE, sizeof(STANDARD_MEM_SIZE) - 1) && 0 < total) {
+		ret = total;
+	} else if (0 == memcmp(oid, STANDARD_MEM_USED, sizeof(STANDARD_MEM_USED) - 1) && 0 < total) {
+		ret = total;
 	} else {
 		/* other */
 		ret = -1;
@@ -114,22 +136,81 @@ finish:
 	return ret;
 }
 
-
-int main(void)
+#define SNMP_DEBUG	0
+unsigned long int get_cpu_free(char *rsinfo, int show_mod)
 {
-#if 1
-	char *rsinfo = "-v 2c -c public 192.168.12.80";
-#endif
-	
-	int data = 0;
-#if 1
-	data = snmp_oid(rsinfo, STANDARD_CPU_OID, 1);
+	unsigned long int data = 0;
+	data = snmp_oid(rsinfo, STANDARD_CPU_OID, show_mod);
+#if SNMP_DEBUG
 	fprintf(stdout, "cpu :%d\n", data);
-	data = snmp_oid(rsinfo, STANDARD_MEM_TYPE, 1);
+#endif
+	return data;
+}
+unsigned long int get_mem_free(char *rsinfo, int show_mod)
+{
+	unsigned long int data = 0;
+	char tmpoid[sizeof(STANDARD_MEM_UNIT) + sizeof(".dd") - 1] = {0};
+	unsigned long int index;
+	unsigned long int unit;
+	unsigned long int size;
+	unsigned long int used;
+	data = snmp_oid(rsinfo, STANDARD_MEM_TYPE, show_mod);
+#if SNMP_DEBUG
 	fprintf(stdout, "index :%d\n", data);
-	data = snmp_oid(rsinfo, STANDARD_MEM_UNIT, 1);
+#endif
+#define check_data() do{				\
+						if (0 >= data) {\
+							goto err;	\
+						}				\
+					} while(0)
+	check_data();
+
+	index = data;
+	memset(tmpoid, 0x00, strlen(tmpoid));
+	sprintf(tmpoid, "%s.%d", STANDARD_MEM_UNIT, index);
+	data = snmp_oid(rsinfo, tmpoid, show_mod);
+	check_data();
+	unit = data;
+#if SNMP_DEBUG
 	fprintf(stdout, "unit :%d\n", data);
 #endif
 
+	memset(tmpoid, 0x00, strlen(tmpoid));
+	sprintf(tmpoid, "%s.%d", STANDARD_MEM_SIZE, index);
+	data = snmp_oid(rsinfo, tmpoid, show_mod);
+	check_data();
+	size = data;
+#if SNMP_DEBUG
+	fprintf(stdout, "size :%d, mem total: %ld\n", data, size * unit);
+#endif
+
+	memset(tmpoid, 0x00, strlen(tmpoid));
+	sprintf(tmpoid, "%s.%d", STANDARD_MEM_USED, index);
+	data = snmp_oid(rsinfo, tmpoid, show_mod);
+	check_data();
+	used = data;
+#if SNMP_DEBUG
+	fprintf(stdout, "used :%d, mem used: %ld\n", used, used * unit);
+#endif
+#undef check_data
+	return (size - used) * unit;
+err:
+	return -1;
+}
+#undef SNMP_DEBUG
+#if 1
+int main(void)
+{
+	char *rsinfo = "-v 2c -c public 192.168.12.80";
+	unsigned long int cpu_free;
+	unsigned long int mem_free;
+
+	cpu_free = get_cpu_free(rsinfo, 1);
+	mem_free = get_mem_free(rsinfo, 1);
+	fprintf(stdout, "cpu free :%ld\n", cpu_free);
+	fprintf(stdout, "mem free :%ld\n", mem_free);
+
 	return 0;
 }
+#endif
+/* vim:set tabstop=4 softtabstop=4 shiftwidth=4 expandtab: */
