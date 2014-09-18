@@ -146,6 +146,11 @@ unsigned long int get_cpu_free(char *rsinfo, int show_mod)
 #endif
 	return data;
 }
+#define check_data() do{				\
+						if (0 >= data) {\
+							goto err;	\
+						}				\
+					} while(0)
 unsigned long int get_mem_free(char *rsinfo, int show_mod)
 {
 	unsigned long int data = 0;
@@ -158,11 +163,6 @@ unsigned long int get_mem_free(char *rsinfo, int show_mod)
 #if SNMP_DEBUG
 	fprintf(stdout, "index :%d\n", data);
 #endif
-#define check_data() do{				\
-						if (0 >= data) {\
-							goto err;	\
-						}				\
-					} while(0)
 	check_data();
 
 	index = data;
@@ -192,24 +192,37 @@ unsigned long int get_mem_free(char *rsinfo, int show_mod)
 #if SNMP_DEBUG
 	fprintf(stdout, "used :%d, mem used: %ld\n", used, used * unit);
 #endif
-#undef check_data
 	return (size - used) * unit;
 err:
 	return -1;
 }
+
+unsigned long int snmp_walk(char *rsinfo, int show_mod)
+{
+	unsigned long int cpu_free;
+	unsigned long int mem_free;
+    unsigned long int data;
+	data = get_cpu_free(rsinfo, show_mod);
+    check_data();
+    cpu_free = data;
+	data = get_mem_free(rsinfo, show_mod);
+    mem_free = data;
+    check_data();
+    if (1 == show_mod) {
+        fprintf(stdout, "cpu free :%ld %%\n", cpu_free);
+        fprintf(stdout, "mem free :%ld Bytes\n", mem_free);
+    }
+    return ;
+err:
+    return -1;
+}
 #undef SNMP_DEBUG
+#undef check_data
 #if 1
 int main(void)
 {
 	char *rsinfo = "-v 2c -c public 192.168.12.80";
-	unsigned long int cpu_free;
-	unsigned long int mem_free;
-
-	cpu_free = get_cpu_free(rsinfo, 1);
-	mem_free = get_mem_free(rsinfo, 1);
-	fprintf(stdout, "cpu free :%ld\n", cpu_free);
-	fprintf(stdout, "mem free :%ld\n", mem_free);
-
+    snmp_walk(rsinfo, 1);
 	return 0;
 }
 #endif
