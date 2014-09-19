@@ -1,0 +1,108 @@
+./smartcli/libsnmp/libsnmp.c:420:	t = cli_register_command(cli, snmp, "add", NULL,
+./smartcli/libsnmp/libsnmp.c-421-			PRIVILEGE_PRIVILEGED, 
+./smartcli/libsnmp/libsnmp.c-422-			MODE_EXEC, LIBCLI_SNMP_SET_ADD);
+--
+./smartcli/main/main.c:521:	p= cli_register_command(cli, c, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-522-			MODE_EXEC, LIBCLI_COMMON_ADD_INFO);
+./smartcli/main/main.c-523-	healthcheck_add_command(cli, p);
+--
+./smartcli/main/main.c:568:	p= cli_register_command(cli, c, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-569-			MODE_EXEC, LIBCLI_COMMON_ADD_INFO);
+./smartcli/main/main.c-570-	gslb_listener_add_command(cli, p);
+--
+./smartcli/main/main.c:619:	p= cli_register_command(cli, c, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-620-			MODE_EXEC, LIBCLI_COMMON_ADD_INFO);
+./smartcli/main/main.c-621-	healthcheck_add_command(cli, p);
+--
+./smartcli/main/main.c:665:	p= cli_register_command(cli, c, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-666-			MODE_EXEC, LIBCLI_TOPOLOGY_ADD_INFO);
+./smartcli/main/main.c-667-	tp_node_add_command(cli, p);
+--
+./smartcli/main/main.c:699:	p= cli_register_command(cli, c, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-700-			MODE_EXEC, LIBCLI_BIND9_ADD_INFO);
+./smartcli/main/main.c-701-	bind9_add_command(cli, p);
+--
+./smartcli/main/main.c-770-	c = cli_register_command(cli, NULL, "passwd", cliusers_default, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-771-			MODE_EXEC, LIBCLI_CLIUSERS_SET_PASSWD);
+--
+--
+./smartcli/main/main.c-774-	c = cli_register_command(cli, NULL, "show", default_func, PRIVILEGE_UNPRIVILEGED,
+./smartcli/main/main.c-775-			MODE_EXEC, LIBCLI_COMMON_SHOW_INFO);
+--
+--
+./smartcli/main/main.c-790-	c = cli_register_command(cli, NULL, "show", default_func, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-791-			MODE_EXEC, LIBCLI_COMMON_SHOW_INFO);
+--
+./smartcli/main/main.c:804:	c = cli_register_command(cli, NULL, "add", default_func, PRIVILEGE_PRIVILEGED,
+./smartcli/main/main.c-805-			MODE_EXEC, LIBCLI_COMMON_ADD_INFO);
+./smartcli/main/main.c-806-	network_add_command(cli, c);
+--
+./smartcli/libnet/libinterface.c:1630:	t = cli_register_command(cli, parent, "add", ip_set, PRIVILEGE_PRIVILEGED,
+./smartcli/libnet/libinterface.c-1631-			MODE_EXEC, LIBCLI_INTERFACE_SET_ADD);
+./smartcli/libnet/libinterface.c-1632-	p = cli_register_command(cli, t, "ipaddr", ip_set,
+--
+./smartcli/libnet/libinterface.c:1643:	/** add interface **/
+./smartcli/libnet/libinterface.c-1644-	p = cli_register_command(cli, t, "interface", vlan_set_command,
+./smartcli/libnet/libinterface.c-1645-			PRIVILEGE_PRIVILEGED, MODE_EXEC,
+--
+--
+./smartcli/libnet/libinterface.c:1766:		t = cli_register_command(cli, parent, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/libnet/libinterface.c-1767-				MODE_EXEC, LIBCLI_INTERFACE_SET_ADD);
+./smartcli/libnet/libinterface.c-1768-		p = cli_register_command(cli, t, "interface", bonding_set,
+--
+./smartcli/libnet/libdns.c:72:	sprintf(buff, "script4 system dns add %s", argv[0]);
+--
+./smartcli/libnet/librtable.c:1134:	t = cli_register_command(cli, rtable, "add", NULL,
+./smartcli/libnet/librtable.c-1135-			PRIVILEGE_UNPRIVILEGED, MODE_EXEC,
+./smartcli/libnet/librtable.c-1136-			LIBCLI_NETWORK_RTABLE_SET_ADD);
+--
+./smartcli/libnet/libfirewall.c:264:	t = cli_register_command(cli, c, "add", NULL,
+./smartcli/libnet/libfirewall.c-265-			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_FIREWALL_ADD_IPLIST);
+./smartcli/libnet/libfirewall.c-266-	add_iplist_to_firewall(cli, t);
+--
+./smartcli/libnet/libdnat.c:172:	l = cli_register_command(cli, h, "add", NULL,
+./smartcli/libnet/libdnat.c-173-			PRIVILEGE_UNPRIVILEGED, MODE_EXEC,
+./smartcli/libnet/libdnat.c-174-			LIBCLI_NETWORK_DNAT_DEST_ADD_INFO);
+--
+./smartcli/libvs/libvs.c-2563-	t = cli_register_command(cli, root, "addrule", vs_config_rule_name,
+./smartcli/libvs/libvs.c-2564-			PRIVILEGE_PRIVILEGED, MODE_EXEC,
+--
+--
+./smartcli/libvs/libpool.c:1820:	t = cli_register_command(cli, pool, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/libvs/libpool.c-1821-			MODE_EXEC, LIBCLI_POOL_SET_ADD_REALSERVER);
+./smartcli/libvs/libpool.c-1822-	realserver_add_command(cli, t);
+--
+./smartcli/libgslb/gslb_libpool.c-890-	p = cli_register_command(cli, cli->folder, "show", gslb_rserver_show,
+./smartcli/libgslb/gslb_libpool.c-891-			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_POOL_SET_SHOW_REALSERVER);
+--
+--
+./smartcli/libgslb/gslb_libpool.c-912-	p = cli_register_command(cli, cli->folder, "order", gslb_rserver_config_modify,
+--
+./smartcli/libgslb/gslb_libpool.c:1053:/********************GSLB Pool add************************************************/
+./smartcli/libgslb/gslb_libpool.c:1054:	t = cli_register_command(cli, gslb_pool, "add", NULL,
+./smartcli/libgslb/gslb_libpool.c-1055-			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_GSLB_RSERVER_ADD_INFO);
+./smartcli/libgslb/gslb_libpool.c-1056-	gslb_rserver_add_command(cli, t);
+--
+./smartcli/libgslb/gslb_libtopology.c-385-	p = cli_register_command(cli, t, "show", tp_policy_show2,
+--
+./smartcli/libgslb/gslb_libvserver.c:180:		printf("ERROR : vserver '%s' already exists, add failture!\n", value);
+--
+./smartcli/libgslb/gslb_libvserver.c:681:	t = cli_register_command(cli, gslb_vserver, "add", gslb_vserver_config_arg1,
+./smartcli/libgslb/gslb_libvserver.c-682-				PRIVILEGE_PRIVILEGED, MODE_EXEC, 
+./smartcli/libgslb/gslb_libvserver.c-683-				LIBCLI_GSLB_VSERVER_ADD_SCHEDULER_INFO);
+--
+./smartcli/libgslb/gslb_libgroup.c:234:	t = cli_register_command(cli, c, "add", gslb_group_device_config,
+./smartcli/libgslb/gslb_libgroup.c-235-			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_GSLB_GROUP_ADD_DEVICE_INFO);
+./smartcli/libgslb/gslb_libgroup.c-236-	add_device_to_group(cli, t);
+--
+./smartcli/libgslb/gslb_libbind9.c:909:	t = cli_register_command(cli, p, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/libgslb/gslb_libbind9.c-910-			MODE_EXEC, LIBCLI_BIND9_ADD_CHILD_INFO);
+./smartcli/libgslb/gslb_libbind9.c-911-	add_bind9_record_common(cli, t);
+--
+./smartcli/libllb/llb_libvserver.c:805:	t = cli_register_command(cli, llb_vserver, "add", llb_vserver_config_arg1,
+./smartcli/libllb/llb_libvserver.c-806-				PRIVILEGE_PRIVILEGED, MODE_EXEC, 
+./smartcli/libllb/llb_libvserver.c-807-				LIBCLI_LLB_VSERVER_ADD_CONF);
+--
+./smartcli/libllb/llb_libpool.c:768:	t = cli_register_command(cli, llb_pool, "add", NULL, PRIVILEGE_PRIVILEGED,
+./smartcli/libllb/llb_libpool.c-769-			MODE_EXEC, LIBCLI_POOL_SET_ADD_REALSERVER);
+./smartcli/libllb/llb_libpool.c-770-	llb_rserver_add_command(cli, t);

@@ -1,0 +1,126 @@
+./smartcli/libvs/libvs.c:128:	SHOW_ALARM1(sched, "scheduler");
+./smartcli/libvs/libvs.c:699:		{10, vserver->sched},
+./smartcli/libvs/libvs.c:750:	vserver_print_detail_content_line("Sched", vserver->sched);
+./smartcli/libvs/libvs.c:2033:/** 重新整理 sched 命令 **/
+./smartcli/libvs/libvs.c:2039:	cli_unregister_command(cli, root, "sched");
+./smartcli/libvs/libvs.c:2040:	/*** sched ***/
+./smartcli/libvs/libvs.c:2041:	t = cli_register_command(cli, root, "sched", vs_config_sched,
+./smartsnmp/getinfo.c:105:		STRNCPY(get->entrytable[i].sched_name, vserver->sched);
+./smartsnmp/lvs.c:361:			    	case 3: /* sched */
+./keepalived/keepalived/check/check_data.c:184:		    TIMER_HZ : vs->delay_loop, vs->sched);
+./keepalived/keepalived/check/check_parser.c:80:	int size = sizeof(vs->sched);
+./keepalived/keepalived/check/check_parser.c:86:	memcpy(vs->sched, str, size);
+./keepalived/keepalived/check/ipvswrapper.c:211:	strncpy(urule->sched_name, vs->sched, IP_VS_SCHEDNAME_MAXLEN);
+./keepalived/keepalived/check/ipvswrapper.c:565:	strncpy(srule->sched_name, vs->sched, IP_VS_SCHEDNAME_MAXLEN);
+./smartvs/ip_vs_ctl.c:1370:	struct ip_vs_scheduler *sched = NULL;
+./smartvs/ip_vs_ctl.c:1377:	sched = ip_vs_scheduler_get(u->sched_name);
+./smartvs/ip_vs_ctl.c:1378:	if (sched == NULL) {
+./smartvs/ip_vs_ctl.c:1413:	ret = ip_vs_bind_scheduler(svc, sched);
+./smartvs/ip_vs_ctl.c:1416:	sched = NULL;
+./smartvs/ip_vs_ctl.c:1451:	ip_vs_scheduler_put(sched);
+./smartvs/ip_vs_ctl.c:1465:	struct ip_vs_scheduler *sched, *old_sched;
+./smartvs/ip_vs_ctl.c:1471:	sched = ip_vs_scheduler_get(u->sched_name);
+./smartvs/ip_vs_ctl.c:1472:	if (sched == NULL) {
+./smartvs/ip_vs_ctl.c:1476:	old_sched = sched;
+./smartvs/ip_vs_ctl.c:1501:	if (sched != old_sched) {
+./smartvs/ip_vs_ctl.c:1504:			old_sched = sched;
+./smartvs/ip_vs_ctl.c:1509:		if ((ret = ip_vs_bind_scheduler(svc, sched))) {
+./smartvs/ip_vs_ctl.c:1521:			old_sched = sched;
+./smartvs/ip_vs_sched.c:79:	struct ip_vs_scheduler *sched;
+./smartvs/ip_vs_sched.c:87:	sched = svc->scheduler;
+./smartvs/ip_vs_sched.c:88:	if (sched == NULL)
+./smartvs/ip_vs_sched.c:94:	if (sched->done_service)
+./smartvs/ip_vs_sched.c:96:		if (sched->done_service(svc) != 0)
+./smartvs/ip_vs_sched.c:112:	struct ip_vs_scheduler *sched;
+./smartvs/ip_vs_sched.c:118:	list_for_each_entry(sched, &ip_vs_schedulers, n_list)
+./smartvs/ip_vs_sched.c:123:		if (sched->module && !try_module_get(sched->module))
+./smartvs/ip_vs_sched.c:130:		if (strcmp(sched_name, sched->name) == 0)
+./smartvs/ip_vs_sched.c:134:			return sched;
+./smartvs/ip_vs_sched.c:136:		if (sched->module)
+./smartvs/ip_vs_sched.c:137:			module_put(sched->module);
+./smartvs/ip_vs_sched.c:149:	struct ip_vs_scheduler *sched;
+./smartvs/ip_vs_sched.c:154:	sched = ip_vs_sched_getbyname(sched_name);
+./smartvs/ip_vs_sched.c:159:	if (sched == NULL)
+./smartvs/ip_vs_sched.c:162:		sched = ip_vs_sched_getbyname(sched_name);
+./smartvs/ip_vs_sched.c:165:	return sched;
+./smartvs/ip_vs_sched.c:179:	struct ip_vs_scheduler *sched;
+./smartvs/ip_vs_sched.c:211:	list_for_each_entry(sched, &ip_vs_schedulers, n_list)
+./smartvs/ip_vs_sched.c:213:		if (strcmp(scheduler->name, sched->name) == 0)
+./smartvs/ip_vs_est.c:47:  * A lot code is taken from net/sched/estimator.c
+./smartcommon/llb/llb_vserver.c:377:	struct llb_scheduler *sched;
+./smartcommon/llb/llb_vserver.c:380:	sched = llb_scheduler_search(schedule_head, type);
+./smartcommon/llb/llb_vserver.c:381:	if (sched) {
+./smartcommon/llb/llb_vserver.c:382:		if (strcasecmp(sched->type, type) == 0) {
+./smartcommon/llb/llb_vserver.c:383:			/* update sched->name */
+./smartcommon/llb/llb_vserver.c:384:			strncpy(sched->name, name, sizeof(sched->name) - 1); 
+./smartcommon/llb/llb_vserver.c:387:			list_del_init(&sched->list);
+./smartcommon/llb/llb_vserver.c:388:			llb_scheduler_free(&sched->list);
+./smartcommon/llb/llb_vserver.c:394:	sched = list_entry(list, struct llb_scheduler, list);
+./smartcommon/llb/llb_vserver.c:395:	strncpy(sched->name, name, sizeof(sched->name));	
+./smartcommon/llb/llb_vserver.c:396:	strncpy(sched->type, type, sizeof(sched->type));	
+./smartcommon/llb/llb_vserver.c:397:	list_add_tail(&sched->list, schedule_head);	
+./smartcommon/loadbalance/vserver.c:110:	strcpy(vserver->sched, "wrr");
+./smartcommon/loadbalance/vserver.c:322:	m_analyse_common(pnode, vserver, sched);
+./smartcommon/loadbalance/vserver.c:423:	m_restore_common(pnode, vserver, sched);
+./smartcommon/loadbalance/vserver.c:835:	strcpy(vserver->sched, "wrr");
+./smartcommon/loadbalance/vserver.c:1043:	m_set_common(vserver, sched, attr, value);
+./smartcommon/loadbalance/vserver.c:1292:		VSERVER_PRO_SET_VALUE(vserver, sched, "sched=", token);
+./smartshell/daemon4/generator.c:470:	if (strlen(vserver->sched)) {
+./smartshell/daemon4/generator.c:471:		if (strcmp(vserver->sched, "lc") == 0) {
+./smartshell/daemon4/generator.c:474:			fprintf(fp, "\tlb_algo %s\n", vserver->sched);
+./smartshell/daemon4/layer7.c:269:	print_lb_algorithm(fp, vs->sched);
+./smartshell/daemon4/layer7.c:383:	print_lb_algorithm(fp, vs->sched);
+./llbfwd/main.c:150:	struct llbfwd_scheduler		*sched;
+./llbfwd/main.c:158:		sched = vs_sched->psched;	
+./llbfwd/main.c:159:		if ((rs = sched->schedule(vs)) != NULL) {
+./llbfwd/main.c:170:		sched = vs_sched->psched;	
+./llbfwd/main.c:171:		if (( rs = sched->schedule(vs)) != NULL) {
+./llbfwd/main.c:182:		sched = vs_sched->psched;	
+./llbfwd/main.c:183:		if (( rs = sched->schedule(vs)) != NULL) {
+./llbfwd/main.c:380:	struct llbfwd_scheduler *sched;
+./llbfwd/main.c:381:	list_for_each_entry(sched, &sched_head, list) {
+./llbfwd/main.c:382:		if (!strcmp(sched->name, name)) {
+./llbfwd/main.c:383:			return sched;
+./llbfwd/main.c:392:	struct llbfwd_vserver_sched *sched;
+./llbfwd/main.c:397:	list_for_each_entry( sched, &vs->vserver_sched_head, list) {
+./llbfwd/main.c:398:		if ((psched = llbfwd_scheduler_search(sched->type)) != NULL) {
+./llbfwd/main.c:399:			sched->psched =  psched;
+./llbfwd/main.c:400:			if (!sched->psched) {
+./llbfwd/main.c:405:			if (!strcmp(sched->type, SCHEDULER_TYPE_RR)) {
+./llbfwd/main.c:412:					sched->sched_data = &rs->list;
+./llbfwd/main.c:413:					printk ("vs:%s sched->name:%s sched->type:%s sched->data:%s\n", 
+./llbfwd/main.c:414:								vs->name, sched->name, sched->type, rs->address);
+./llbfwd/main.c:416:			} else if (!strcmp(sched->type, SCHEDULER_TYPE_WRR)) {
+./llbfwd/main.c:418:			} else if (!strcmp(sched->type, SCHEDULER_TYPE_TP)) {
+./llbfwd/main.c:420:			} else if (!strcmp(sched->type, SCHEDULER_TYPE_GA)) {
+./llbfwd/main.c:426:		if ( !strcmp(sched->name, SCHEDULER_MASTER)) {
+./llbfwd/main.c:427:			vs->cur_sched = sched;
+./llbfwd/main.c:532:int register_llbfwd_scheduler(struct llbfwd_scheduler * sched)
+./llbfwd/main.c:534:	list_add_tail(&sched->list, &sched_head);
+./llbfwd/main.c:538:int unregister_llbfwd_scheduler(struct llbfwd_scheduler * sched)
+./llbfwd/main.c:540:	list_del(&sched->list);
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:87:int DES_enc_read(int fd, void *buf, int len, DES_key_schedule *sched,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:188:			DES_pcbc_encrypt(net,unnet,num,sched,iv,DES_DECRYPT);
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:190:			DES_cbc_encrypt(net,unnet,num,sched,iv,DES_DECRYPT);
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:210:				DES_pcbc_encrypt(net,tmpbuf,num,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:213:				DES_cbc_encrypt(net,tmpbuf,num,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:223:				DES_pcbc_encrypt(net,buf,num,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_read.c:226:				DES_cbc_encrypt(net,buf,num,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_writ.c:81:		  DES_key_schedule *sched, DES_cblock *iv)
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_writ.c:115:				((len-i) > MAXWRITE)?MAXWRITE:(len-i),sched,iv);
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_writ.c:143:		DES_pcbc_encrypt(cp,&(outbuf[HDRSIZE]),(len<8)?8:len,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/enc_writ.c:146:		DES_cbc_encrypt(cp,&(outbuf[HDRSIZE]),(len<8)?8:len,sched,iv,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/des_old.c:180:int _ossl_old_des_enc_read(int fd,char *buf,int len,des_key_schedule sched,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/des_old.c:183:	return DES_enc_read(fd, buf, len, (DES_key_schedule *)sched, iv);
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/des_old.c:185:int _ossl_old_des_enc_write(int fd,char *buf,int len,des_key_schedule sched,
+./cavium/software/apps/TurboSSL-0.9.8j/crypto/des/des_old.c:188:	return DES_enc_write(fd, buf, len, (DES_key_schedule *)sched, iv);
+./smartllb/smartllb_admin/smartllb_admin.c:548:	struct llb_scheduler *sched;
+./smartllb/smartllb_admin/smartllb_admin.c:550:	list_for_each_entry(sched, scheduler_head, list) {
+./smartllb/smartllb_admin/smartllb_admin.c:551:		smartllb_scheduler_add(vserver_name, sched->type, sched->name);
+./smartllb/smartllb_admin/smartllb_admin.c:606:	struct llb_scheduler *sched;
+./smartllb/smartllb_admin/smartllb_admin.c:612:	list_for_each_entry(sched, scheduler_head, list) {
+./smartllb/smartllb_admin/smartllb_admin.c:613:		smartllb_scheduler_delete(vserver_name, sched->type, sched->name);
+./smartllb/smartllb_kernel/smartllb_rtt_schedule.c:20:	printk(KERN_ALERT "\nRTT sched data show:\n");
+./smartllb/smartllb_kernel/smartllb_rr_schedule.c:18:	printk(KERN_ALERT "\nRR sched data show:\n");
+./smartllb/smartllb_kernel/smartllb_leastconnection_schedule.c:19:	printk(KERN_ALERT "\nLC sched data show:\n");
+./nginx/3party/nginx-upstream-fair/ngx_http_upstream_fair_module.c:936:     * calculate sched scores for all the peers, choosing the lowest one

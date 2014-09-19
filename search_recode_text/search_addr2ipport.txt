@@ -1,0 +1,734 @@
+Index: smartcli/libvs/libvs.c
+===================================================================
+--- smartcli/libvs/libvs.c	(revision 16245)
++++ smartcli/libvs/libvs.c	(working copy)
+@@ -1154,6 +1154,47 @@
+ 	return CLI_OK;
+ }
+ 
++static int vs_pool_rs_snmp_check(struct cli_def *cli,
++		char *command, char *argv[], int argc)
++{
++#if 1
++	struct vserver *vserver;
++	struct apppool *apppool;
++	struct rserver *rserver;
++	LIST_HEAD(queue);
++	LIST_HEAD(pool_queue);
++	char address[512] = {0};
++
++	module_get_queue(&queue, "vserver", cli->folder->value);
++
++	list_for_each_entry(vserver, &queue, list) {
++		if (strlen(vserver->pool) == 0) {
++			goto err;
++		}
++	}
++	module_get_queue(&pool_queue, "apppool", vserver->pool);
++	list_for_each_entry(apppool, &pool_queue, list) {
++		module_get_queue(&pool_queue, "apppool", vserver->pool);
++		if (list_empty(&apppool->realserver_head)) {
++			goto err;
++		}
++		list_for_each_entry(rserver, &apppool->realserver_head, list) {
++			if (inet_sockaddr2address(&rserver->address, address) != 0) {
++				goto err;
++			}
++		}
++	}
++
++	if (vs_config_sched(cli, command, argv, argc) != CLI_OK) {
++		return CLI_ERROR;
++	}
++#endif
++	return CLI_OK;
++err:
++	fprintf(stderr, "snmp need by set apppool and config real server\n");
++	return CLI_ERROR;
++
++}
+ static int vs_config_verify_client(struct cli_def *cli,
+ 		char *command, char *argv[], int argc)
+ {
+@@ -2041,6 +2082,8 @@
+ 	t = cli_register_command(cli, root, "sched", vs_config_sched,
+ 			PRIVILEGE_PRIVILEGED, MODE_EXEC,
+ 			LIBCLI_VSERVER_SET_SCHED_ALG);
++	cli_register_command(cli, t, "snmp", vs_pool_rs_snmp_check, PRIVILEGE_PRIVILEGED,
++			MODE_EXEC, LIBCLI_VSERVER_SET_SCHED_RR);
+ 	cli_register_command(cli, t, "rr", vs_config_sched, PRIVILEGE_PRIVILEGED,
+ 			MODE_EXEC, LIBCLI_VSERVER_SET_SCHED_RR);
+ 	cli_register_command(cli, t, "wrr", vs_config_sched, PRIVILEGE_PRIVILEGED,
+Index: smartcli/libvs/libpool.c
+===================================================================
+--- smartcli/libvs/libpool.c	(revision 16245)
++++ smartcli/libvs/libpool.c	(working copy)
+@@ -16,6 +16,7 @@
+ #include "libhealthcheck.h"
+ #include "libvcenter/libvcenter.h"
+ #include "common/dependence.h"
++#include "loadbalance/snmpwalk.h"
+ 
+ 
+ #include "check/check.h"
+@@ -304,6 +305,41 @@
+ 	RSERVER_SET_VALUE("healthcheck", rserver->healthcheck);
+ 	RSERVER_SET_VALUE("enable", rserver->enable);
+ 
++	/* check snmp state:vilad,in- */
++	RSERVER_SET_VALUE("snmp_check", rserver->snmp_check);
++	/* snmp version of realserver */
++	RSERVER_SET_VALUE("snmp_version", rserver->snmp_version);
++	/* snmp name */
++	RSERVER_SET_VALUE("name", rserver->name);
++	/* on, off */
++	RSERVER_SET_VALUE("snmp_enable", rserver->snmp_enable);
++	/* community */
++	RSERVER_SET_VALUE("community", rserver->community);
++	/* SNMPv3 auth type, MD5 or SHA1 */
++	RSERVER_SET_VALUE("authProtocol", rserver->authProtocol);
++	/* noAuthNoPriv|authNoPriv|authPriv */
++	RSERVER_SET_VALUE("securelevel", rserver->securelevel);
++	/* control snmptrap */
++	RSERVER_SET_VALUE("trap_enable", rserver->trap_enable);
++	/* manager ip */
++	RSERVER_SET_VALUE("trap_manager", rserver->trap_manager);
++	/* trap v3 engine id */
++	RSERVER_SET_VALUE("trap_v3_engineid", rserver->trap_v3_engineid);
++	/* trap v3 username */
++	RSERVER_SET_VALUE("trap_v3_username", rserver->trap_v3_username);
++	/* trap v3 password */
++	RSERVER_SET_VALUE("trap_v3_password", rserver->trap_v3_password);
++	/* DES, AES */
++	RSERVER_SET_VALUE("trap_v3_privacy_protocol", rserver->trap_v3_privacy_protocol);
++	/* privacy password */
++	RSERVER_SET_VALUE("trap_v3_privacy_password", rserver->trap_v3_privacy_password);
++	/* authencation usm_name */
++	RSERVER_SET_VALUE("username", rserver->username);
++	/* authencation password */
++	RSERVER_SET_VALUE("password", rserver->password);
++	RSERVER_SET_VALUE("cpu", rserver->cpu);
++	RSERVER_SET_VALUE("memory", rserver->memory);
++
+ 	/* get pool */
+ 	LIST_HEAD(pool_head);
+ 	module_get_queue(&pool_head, "apppool", poolname);
+@@ -365,6 +401,15 @@
+ 	return CLI_OK;
+ }
+ 
++static int check_cpu_mem_range(struct cli_def *cli, struct cli_command *c, char *value)
++{
++	if (check_num_range(cli, c, 1, 100, value) != CLI_OK) {
++		printf("range:<1-100>\n");
++		return CLI_ERROR;
++	}
++	return CLI_OK;
++}
++
+ static int apppool_queue_create(struct list_head *queue, const char *name)
+ {
+ 	return module_get_queue(queue, "apppool", name);
+@@ -473,6 +518,102 @@
+ 		sprintf(desc, "%sstate=%s,", desc, rserver->state);
+ 	}
+ 
++	/* check snmp state:vilad,in- */
++	if (rserver->snmp_check[0] != 0) {
++		sprintf(desc, "%ssnmp_check=%s,",				\
++				desc, rserver->snmp_check);
++	}
++	/* snmp version:1,2c,3 */
++	if (rserver->snmp_version[0] != 0) {
++		sprintf(desc, "%ssnmp_version=%s,",				\
++				desc, rserver->snmp_version);
++	}
++	if (rserver->name[0] != 0) {
++		sprintf(desc, "%sname=%s,",						\
++				desc, rserver->name);
++	}
++	/* on, off */
++	if (rserver->snmp_enable[0] != 0) {
++		sprintf(desc, "%ssnmp_enable=%s,",				\
++				desc, rserver->snmp_enable);
++	}
++	if (rserver->community[0] != 0) {
++		sprintf(desc, "%scommunity=%s,",				\
++				desc, rserver->community);
++	}
++
++	/* noAuthNoPriv|authNoPriv|authPriv */
++	if (rserver->securelevel[0] != 0) {
++		sprintf(desc, "%ssecurelevel=%s,",				\
++				desc, rserver->securelevel);
++	}
++
++	/* SNMPv3 auth type, MD5 or SHA1 */
++	if (rserver->authProtocol[0] != 0) {
++		sprintf(desc, "%sauthProtocol=%s,",				\
++				desc, rserver->authProtocol);
++	}
++	/* control snmptrap */
++	if (rserver->trap_enable[0] != 0) {
++		sprintf(desc, "%strap_enable=%s,",				\
++				desc, rserver->trap_enable);
++	}
++	/* manager ip */
++	if (rserver->trap_manager[0] != 0) {
++		sprintf(desc, "%strap_manager=%s,",				\
++				desc, rserver->trap_manager);
++	}
++	/* trap v3 engine id */
++	if (rserver->trap_v3_engineid[0] != 0) {
++		sprintf(desc, "%strap_v3_engineid=%s,",			\
++				desc, rserver->trap_v3_engineid);
++	}
++	/* trap v3 username */
++	if (rserver->trap_v3_username[0] != 0) {
++		sprintf(desc, "%strap_v3_username=%s,",			\
++				desc, rserver->trap_v3_username);
++	}
++#if 0
++	/* trap v3 password */
++	if (rserver->trap_v3_password[0] != 0) {
++		sprintf(desc, "%strap_v3_password=%s,",			\
++				desc, rserver->trap_v3_password);
++	}
++#endif
++	/* DES, AES */
++	if (rserver->trap_v3_privacy_protocol[0] != 0) {
++		sprintf(desc, "%strap_v3_privacy_protocol=%s,",	\
++				desc, rserver->trap_v3_privacy_protocol);
++	}
++#if 0
++	/* privacy password */
++	if (rserver->trap_v3_privacy_password[0] != 0) {
++		sprintf(desc, "%strap_v3_privacy_password=%s,",	\
++				desc, rserver->trap_v3_privacy_password);
++	}
++#endif
++	/* authencation usm_name */
++	if (rserver->username[0] != 0) {
++		sprintf(desc, "%susername=%s,",					\
++				desc, rserver->username);
++	}
++#if 0
++	/* authencation password */
++	if (rserver->password[0] != 0) {
++		sprintf(desc, "%spassword=%s,",					\
++				desc, rserver->password);
++	}
++#endif
++	if (rserver->cpu[0] != 0) {
++		sprintf(desc, "%scpu=%s,",					    \
++				desc, rserver->cpu);
++	}
++
++	if (rserver->memory[0] != 0) {
++		sprintf(desc, "%smemory=%s,",					\
++				desc, rserver->memory);
++	}
++
+ 	return desc;
+ }
+ 
+@@ -560,7 +701,47 @@
+ 	return CLI_OK;
+ }
+ 
++#define ZERO(x) memset(rserver->x, 0x00, sizeof(rserver->x))
+ 
++static int snmp_user(struct rserver *rserver)
++{
++    char buf[64];
++    set_normal_tty();
++again:
++    memset(buf, 0x00, sizeof(buf));
++    fprintf(stdout, "\nusername:");
++    scanf("%s", buf);
++    if (strlen(buf) == 0) {
++        fprintf(stdout, "usernem can not null\n");
++        goto again;
++    } else if (strncasecmp(buf, "q", sizeof("q")) == 0) {
++        return CLI_ERROR;
++    } else {
++        ZERO(username);
++        memcpy(rserver->username, buf, strlen(buf));
++    }
++    set_nonline_tty();
++    return CLI_OK;
++}
++
++static int snmp_password(struct rserver *rserver)
++{
++    char buf[64];
++again:
++    memset(buf, 0x00, sizeof(buf));
++    fprintf(stdout, "\npassword:");
++    scanf("%s", buf);
++    if (strlen(buf) == 0) {
++        fprintf(stdout, "password can not null\n");
++        goto again;
++    } else {
++        ZERO(password);
++        memcpy(rserver->password, buf, strlen(buf));
++    }
++    return CLI_OK;
++}
++#undef ZERO
++
+ static int _realserver_config_modify(struct cli_def *cli, char *command, char *argv[], int argc, char *poolname, char *rsaddr)
+ {
+ 	struct apppool *apppool;
+@@ -617,9 +798,38 @@
+ 				RSERVER_SET_VALUE(rserver->rscenter, argv[0]);
+ 			} else if (strncmp(command, "vmdatacenter", 8) == 0) {
+ 				RSERVER_SET_VALUE(rserver->vmdatacenter, argv[0]);
++			} else if (strncmp(command, "snmp version", 12) == 0) {
++                    RSERVER_SET_VALUE(rserver->snmp_version, argc == 0 ? "3" : argv[0]);
++			} else if (strncmp(command, "snmp securelevel authNoPriv", 29) == 0) {
++            /* at present only support authNoPriv, other later will be complete */
++                if (memcmp(rserver->snmp_version, "3", sizeof("3")) == 0) {
++                    RSERVER_SET_VALUE(rserver->securelevel, argc == 0 ? "authNoPriv" : argv[0]);
++                } else {
++                    fprintf(stdout, "securelevel needed by snmp version 3\n");
++                }
++			} else if (strncmp(command, "snmp authProtocol", 18) == 0) {
++                if (memcmp(rserver->securelevel, "authNoPriv", sizeof("authNoPriv")) == 0) {
++                    RSERVER_SET_VALUE(rserver->authProtocol, argc == 0 ? "md5" : argv[0]);
++                } else {
++                    fprintf(stdout, "authprotocol needed by v3 and securelevel auth\n");
++                }
++			} else if (strncmp(command, "snmp user", 9) == 0) {
++                snmp_user(rserver);
++                snmp_password(rserver);
++			} else if (strncmp(command, "snmp password", 13) == 0) {
++                snmp_password(rserver);
++			} else if (strncmp(command, "snmp check", 10) == 0) {
++                check_snmp(rserver);
++			} else if (strncmp(command, "snmp cpu", 8) == 0) {
++                RSERVER_SET_VALUE(rserver->cpu, argc == 0 ? "" : argv[0]);
++                if (strlen(rserver->cpu) > 0)
++                    sprintf(rserver->memory, "%ld", 100 - strtol(argv[0], NULL, 10));
++			} else if (strncmp(command, "snmp memory", 11) == 0) {
++				RSERVER_SET_VALUE(rserver->memory, argc == 0 ? "" : argv[0]);
++                if (strlen(rserver->memory) > 0)
++                    sprintf(rserver->cpu, "%ld", 100 - strtol(argv[0], NULL, 10));
+ 			}
+ 
+-
+ 			do_realserver_config_modify(poolname, rserver);
+ #undef RSERVER_SET_VALUE
+ 		}
+@@ -800,11 +1010,31 @@
+ 	return CLI_OK;
+ }
+ 
++static int check_snmp_version(struct cli_def *cli, struct cli_command *c, char *value)
++{
++#if 0 /* current only support version 3 */
++    if (memcmp(value, "1", sizeof("1")) == 0
++    || memcmp(value, "2c", sizeof("2c")) == 0
++    || memcmp(value, "3", sizeof("3")) == 0) {
++#else
++    if (memcmp(value, "3", sizeof("3")) == 0) {
++#endif
++        return CLI_OK;
++    }
++    return CLI_ERROR;
++}
++static int check_snmp_authProtocol(struct cli_def *cli, struct cli_command *c, char *value)
++{
++    if (strncasecmp(value, "md5", sizeof("md5")) == 0
++        ||strncasecmp(value, "sha", sizeof("sha")) == 0) {
++        return CLI_OK;
++    }
++    return CLI_ERROR;
++}
+ 
+-
+ static int realserver_set_command(struct cli_def *cli, struct cli_command *parent)
+ {
+-	struct cli_command *t, *p, *c;
++	struct cli_command *t, *p, *c, *d;
+ 	t = cli_register_command(cli, parent, "realserver", realserver_set_default, PRIVILEGE_PRIVILEGED,
+ 			MODE_FOLDER, LIBCLI_POOL_SET_SET_REALSERVER);
+ 	cli_command_add_argument(t, "<ip:port>", check_address_port);
+@@ -814,7 +1044,40 @@
+ 			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_WEIGHT);
+ 	cli_command_add_argument(p, "<num>", check_weight_range);
+ 
++	p = cli_register_command(cli, t, "snmp", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_SNMP);
+ 
++	c = cli_register_command(cli, p, "check", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++
++	c = cli_register_command(cli, p, "version", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++	cli_command_add_argument(c, "3(default)", check_snmp_version);
++
++	c = cli_register_command(cli, p, "securelevel", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++
++	d = cli_register_command(cli, c, "authNoPriv", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++
++	c = cli_register_command(cli, p, "authProtocol", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++	cli_command_add_argument(c, "md5\tsha", check_snmp_authProtocol);
++
++	c = cli_register_command(cli, p, "user", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++
++	c = cli_register_command(cli, p, "password", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++
++	c = cli_register_command(cli, p, "cpu", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++	cli_command_add_argument(c, "<num:1-100>", check_cpu_mem_range);
++
++	c = cli_register_command(cli, p, "memory", realserver_config_modify,
++			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT_OFF);
++	cli_command_add_argument(c, "<num>:1-100", check_cpu_mem_range);
++
+ 	/** limit maxconn/maxreq/bandwidth <value> **/
+ 	p = cli_register_command(cli, t, "limit", realserver_config_modify,
+ 			PRIVILEGE_PRIVILEGED, MODE_EXEC, LIBCLI_VSERVER_SET_LIMIT);
+@@ -1598,3 +1861,4 @@
+ 	apppool_queue_purge(&applist);
+ 	return -1;
+ }
++/* vim:set tabstop=4 softtabstop=4 shiftwidth=4 expandtab: */
+Index: smartcli/libcli/str_desc.h
+===================================================================
+--- smartcli/libcli/str_desc.h	(revision 16245)
++++ smartcli/libcli/str_desc.h	(working copy)
+@@ -75,6 +75,7 @@
+ 	LIBCLI_VSERVER_DELETE_INFO,
+ 	LIBCLI_VSERVER_SET_ADDRESS,
+ 	LIBCLI_VSERVER_SET_WEIGHT,
++	LIBCLI_VSERVER_SET_SNMP,
+ 	LIBCLI_VSERVER_SET_SCHED_ALG,
+ 	LIBCLI_VSERVER_SET_SCHED_RR,
+ 	LIBCLI_VSERVER_SET_SCHED_WRR,
+Index: smartcli/libcli/str_desc.inc
+===================================================================
+--- smartcli/libcli/str_desc.inc	(revision 16245)
++++ smartcli/libcli/str_desc.inc	(working copy)
+@@ -301,6 +301,11 @@
+ 	},
+ 
+ 
++	[ LIBCLI_VSERVER_SET_SNMP] = {
++		.en = "Set SLB snmpwalk argemet",
++		.cn = "设置SNMPWALK参数",
++	},
++
+ 	[ LIBCLI_VSERVER_SET_PROTOCOL ] = {
+ 		.en = "Set Vserver protocol",
+ 		.cn = "设置Vserver的网络协议",
+Index: smartcli/bin/Makefile
+===================================================================
+--- smartcli/bin/Makefile	(revision 16245)
++++ smartcli/bin/Makefile	(working copy)
+@@ -1,14 +1,17 @@
+ 
+ 
+-LDFLAGS = -lcrypt -lxml2 -lssl -lpthread -lcrypto
++LDFLAGS = -lcrypt -lxml2 -lssl -lpthread -lcrypto -lnetsnmp -L/SmartGrid/snmp/lib/
+ VPATH :=  ../../smartcommon/
+ 
+ TARGET = cli
+ OBJS = $(shell ls *.o) ../../smartcommon/libcomm.a
+ 
+ $(TARGET): $(OBJS) ../../vcenter/libvm_vcenter.a
++	     echo "/SmartGrid/snmp/lib/" > /etc/ld.so.conf.d/netsnmp.conf
++	     ldconfig
+ 	     cc $(LDFLAGS) -o $@ $^
+ 
++
+ ../../smartcommon/libcomm.a:
+ 	make -C ../../smartcommon ACTION=$(ACTION) VERSION=$(VERSION)
+ 
+Index: smartcommon/loadbalance/apppool.c
+===================================================================
+--- smartcommon/loadbalance/apppool.c	(revision 16245)
++++ smartcommon/loadbalance/apppool.c	(working copy)
+@@ -246,6 +246,45 @@
+ 	/* used for vcenter */
+ 	m_analyse_common(pnode, realserver, vmname);
+ 	m_analyse_common(pnode, realserver, vmstate);
++	/*
++	 * below handle function for snmpwalk 
++	 * to obtain cpu and memory data
++	 * @zhangly2014.8.6
++	 */
++	/* check snmp state: vilad,invilad */
++	m_analyse_common(pnode, realserver, snmp_check);
++	/* snmp version of realserver */
++	m_analyse_common(pnode, realserver, snmp_version);
++	/* snmp name */
++	m_analyse_common(pnode, realserver, name);
++    /* on, off */
++	m_analyse_common(pnode, realserver, snmp_enable);
++	/* community */
++	m_analyse_common(pnode, realserver, community);
++	/* noAuthNoPriv|authNoPriv|authPriv */
++	m_analyse_common(pnode, realserver, securelevel);
++	/* SNMPv3 auth type, MD5 or SHA1 */
++	m_analyse_common(pnode, realserver, authProtocol);
++	/* control snmptrap */
++	m_analyse_common(pnode, realserver, trap_enable);
++	/* manager ip */
++	m_analyse_common(pnode, realserver, trap_manager);
++	/* trap v3 engine id */
++	m_analyse_common(pnode, realserver, trap_v3_engineid);
++	/* trap v3 username */
++	m_analyse_common(pnode, realserver, trap_v3_username);
++	/* trap v3 password */
++	m_analyse_common(pnode, realserver, trap_v3_password);
++	/* DES, AES */
++	m_analyse_common(pnode, realserver, trap_v3_privacy_protocol);
++	/* privacy password */
++	m_analyse_common(pnode, realserver, trap_v3_privacy_password); 
++	/* authencation usm_name */
++	m_analyse_common(pnode, realserver, username);
++	/* authencation password */
++	m_analyse_common(pnode, realserver, password);
++	m_analyse_common(pnode, realserver, cpu);
++	m_analyse_common(pnode, realserver, memory);
+ 
+ 	return 0;
+ }
+@@ -300,6 +339,45 @@
+ 	/* use for vcenter */
+ 	m_restore_common(pnode, realserver, vmname);
+ 	m_restore_common(pnode, realserver, vmstate);
++	/*
++	 * below handle function for snmpwalk 
++	 * to obtain cpu and memory data
++	 * @zhangly2014.8.6
++	 */
++	/* check snmp state: vilad,invilad */
++	m_restore_common(pnode, realserver, snmp_check);
++	/* snmp version of realserver */
++	m_restore_common(pnode, realserver, snmp_version);
++	/* snmp name */
++	m_restore_common(pnode, realserver, name);
++    /* on, off */
++	m_restore_common(pnode, realserver, snmp_enable);
++	/* community */
++	m_restore_common(pnode, realserver, community);
++	/* noAuthNoPriv|authNoPriv|authPriv */
++	m_restore_common(pnode, realserver, securelevel);
++	/* SNMPv3 auth type, MD5 or SHA1 */
++	m_restore_common(pnode, realserver, authProtocol);
++	/* control snmptrap */
++	m_restore_common(pnode, realserver, trap_enable);
++	/* manager ip */
++	m_restore_common(pnode, realserver, trap_manager);
++	/* trap v3 engine id */
++	m_restore_common(pnode, realserver, trap_v3_engineid);
++	/* trap v3 username */
++	m_restore_common(pnode, realserver, trap_v3_username);
++	/* trap v3 password */
++	m_restore_common(pnode, realserver, trap_v3_password);
++	/* DES, AES */
++	m_restore_common(pnode, realserver, trap_v3_privacy_protocol);
++	/* privacy password */
++	m_restore_common(pnode, realserver, trap_v3_privacy_password); 
++	/* authencation usm_name */
++	m_restore_common(pnode, realserver, username);
++	/* authencation password */
++	m_restore_common(pnode, realserver, password);
++	m_restore_common(pnode, realserver, cpu);
++	m_restore_common(pnode, realserver, memory);
+ 
+ 	return 0;
+ }
+@@ -421,6 +499,26 @@
+ 	ZERO(rscenter);
+ 	ZERO(vmname);
+ 	ZERO(vmdatacenter);
++
++	ZERO(snmp_check);	/* recode state flag:vilad/invilad */
++	ZERO(snmp_version);	/* snmp version of realserver */
++	ZERO(name);      	/* snmp name */
++	ZERO(snmp_enable);  /* on, off */
++	ZERO(community);	/* community */
++	ZERO(securelevel);	/* noAuthNoPriv|authNoPriv|authPriv */
++	ZERO(authProtocol);	/* SNMPv3 auth type, MD5 or SHA1 */
++	ZERO(trap_enable);  /* control snmptrap */
++	ZERO(trap_manager); /* manager ip */
++	ZERO(trap_v3_engineid);	/* trap v3 engine id */
++	ZERO(trap_v3_username);	/* trap v3 username */
++	ZERO(trap_v3_password);	/* trap v3 password */
++	ZERO(trap_v3_privacy_protocol);	/* DES, AES */
++	ZERO(trap_v3_privacy_password);	/* privacy password */
++	ZERO(username);		/* authencation usm_name */
++	ZERO(password);		/* authencation password */
++	ZERO(cpu);
++	ZERO(memory);
++
+ #undef ZERO
+ 
+ 
+@@ -488,7 +586,43 @@
+ 					vcenter_vm_search(rserver->rscenter, rserver->vmdatacenter, ip, rserver->vmname);
+ 				}
+ 			}
+-		} 
++		} else if (!strncasecmp(token, "snmp_check=", 10)) {
++			set_value(token, rserver->snmp_check);
++		} else if (!strncasecmp(token, "snmp_version=", 13)) {
++			set_value(token, rserver->snmp_version);
++		} else if (!strncasecmp(token, "name=", 5)) {
++			set_value(token, rserver->name);
++		} else if (!strncasecmp(token, "snmp_enable=", 12)) {
++			set_value(token, rserver->snmp_enable);
++		} else if (!strncasecmp(token, "community=", 10)) {
++			set_value(token, rserver->community);
++		} else if (!strncasecmp(token, "securelevel=", 12)) {
++			set_value(token, rserver->securelevel);
++		} else if (!strncasecmp(token, "authProtocol=", 13)) {
++			set_value(token, rserver->authProtocol);
++		} else if (!strncasecmp(token, "trap_enable=", 12)) {
++			set_value(token, rserver->trap_enable);
++		} else if (!strncasecmp(token, "trap_manager=", 13)) {
++			set_value(token, rserver->trap_manager);
++		} else if (!strncasecmp(token, "trap_v3_engineid=", 18)) {
++			set_value(token, rserver->trap_v3_engineid);
++		} else if (!strncasecmp(token, "trap_v3_username=", 18)) {
++			set_value(token, rserver->trap_v3_username);
++		} else if (!strncasecmp(token, "trap_v3_password=", 18)) {
++			set_value(token, rserver->trap_v3_password);
++		} else if (!strncasecmp(token, "trap_v3_privacy_protocol=", 24)) {
++			set_value(token, rserver->trap_v3_privacy_protocol);
++		} else if (!strncasecmp(token, "trap_v3_privacy_password=", 24)) {
++			set_value(token, rserver->trap_v3_privacy_password);
++		} else if (!strncasecmp(token, "username=", 9)) {
++			set_value(token, rserver->username);
++		} else if (!strncasecmp(token, "password=", 9)) {
++			set_value(token, rserver->password);
++		} else if (!strncasecmp(token, "cpu=", 4)) {
++			set_value(token, rserver->cpu);
++		} else if (!strncasecmp(token, "memory=", 7)) {
++			set_value(token, rserver->memory);
++		}
+ 
+ 		token = strtok(NULL, ",");
+ 	}
+@@ -690,6 +824,7 @@
+ 					strcpy(rs->weight, "10");
+ 					strcpy(rs->enable, "on");
+ 					strcpy(rs->state, "unknown");
++					strcpy(rs->snmp_version, "3");
+ 					list_add_tail(list, &apppool->realserver_head);
+ 				}
+ 				break;
+Index: smartcommon/loadbalance/apppool.h
+===================================================================
+--- smartcommon/loadbalance/apppool.h	(revision 16245)
++++ smartcommon/loadbalance/apppool.h	(working copy)
+@@ -36,6 +36,32 @@
+ 		char vmname[256];	/* used for vcenter */
+ 		char vmstate[256];	/* used for vcenter */
+ 	};
++
++	/* 
++	 * SNMP instance for snmpwalk get cpu and memory
++	 * old added handle element for snmpwalk
++	 * @zhangly2014.8.6
++	 */
++	struct {
++		char snmp_check[32];	/* check snmp state:vilad,in- */
++		char snmp_version[32];	/* snmp version of realserver */
++		char name[32];			/* snmp name */
++		char snmp_enable[32];	/* on, off */
++		char community[32];		/* community */
++		char securelevel[32];	/* noAuthNoPriv|authNoPriv|authPriv */
++		char authProtocol[32];		/* SNMPv3 auth type, MD5 or SHA1 */
++		char trap_enable[32];   /* control snmptrap */
++		char trap_manager[32];  /* manager ip */
++		char trap_v3_engineid[32];			/* trap v3 engine id */
++		char trap_v3_username[32];			/* trap v3 username */
++		char trap_v3_password[32];			/* trap v3 password */
++		char trap_v3_privacy_protocol[32];	/* DES, AES */
++		char trap_v3_privacy_password[32];	/* privacy password */
++		char username[64];		/* authencation usm_name */
++		char password[64];		/* authencation password */
++		char cpu[32];			/* percent of cpu free */
++		char memory[32];		/* percent of memory free */
++	};
+ };
+ 
+ static inline int rserver_enable(struct rserver *rs)
+Index: smartshell/daemon4/daemon4.c
+===================================================================
+--- smartshell/daemon4/daemon4.c	(revision 16245)
++++ smartshell/daemon4/daemon4.c	(working copy)
+@@ -32,6 +32,8 @@
+ #include "loadbalance/vserver.h"
+ #include "network/network.h"
+ #include "common/task.h"
++#include "common/list.h"
++#include "loadbalance/apppool.h"
+ 
+ #include "smartlog.h"
+ 
+@@ -55,6 +57,42 @@
+ 	return &daemon4_config;
+ }
+ 
++
++static int snmpwalk_flush_vserver(void)
++{
++	struct vserver *vserver;
++	struct apppool *apppool;
++	struct rserver *rserver;
++	LIST_HEAD(queue);
++	LIST_HEAD(pool_queue);
++	char address[512] = {0};
++
++	module_get_queue(&queue, "vserver", NULL);
++
++	list_for_each_entry(vserver, &queue, list) {
++		if (strlen(vserver->pool) == 0
++			|| memcmp(vserver->sched, "snmp", sizeof("snmp")) != 0) {
++			continue;
++		}
++		module_get_queue(&pool_queue, "apppool", NULL);
++		list_for_each_entry(apppool, &pool_queue, list) {
++			module_get_queue(&pool_queue, "apppool", vserver->pool);
++			if (list_empty(&apppool->realserver_head)) {
++				continue;
++			}
++			list_for_each_entry(rserver, &apppool->realserver_head, list) {
++				if (inet_sockaddr2address(&rserver->address, address) != 0) {
++					continue;
++				}
++				/* snmpwalk real server */
++				syslog(LOG_INFO, "%s\n", address);
++			}
++		}
++	}
++
++	return 0;
++}
++
+ static void callback_connection(int epfd, int fd, struct event *e)
+ {
+ 	char buf[BUFSIZ];
+@@ -70,6 +108,11 @@
+ 		generator_entrance中调用, * * by anhk, 2012-03-19 **/
+ 		//informer_entrance();
+ 	}
++
++	snmpwalk_flush_vserver();
++	syslog(LOG_INFO, "---------------------------------------\n");
++
++
+ out:
+ 	if (e->stolen == 0)
+ 		event_destroy(epfd, fd, e);

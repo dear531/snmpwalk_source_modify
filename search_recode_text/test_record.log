@@ -1,0 +1,47 @@
+open machine
+Every 1.0s: ps -ef |grep daemon4                                                                               Mon Aug 25 16:11:26 2014
+
+root      1080 23505  0 16:11 ?        00:00:00 /SmartGrid/shell//daemon4
+root      1081  1080  4 16:11 ?        00:00:00 /SmartGrid/shell//daemon4
+root      1083 17791  0 16:11 pts/4    00:00:00 sh -c ps -ef |grep daemon4
+root     17791  6965  0 15:59 pts/4    00:00:00 watch -n 1 ps -ef |grep daemon4
+root     23472     1  0 15:09 ?        00:00:00 /SmartGrid/shell//daemon4
+root     23505 23472  0 15:09 ?        00:00:08 /SmartGrid/shell//daemon4
+
+
+===============
+close machine
+Every 1.0s: ps -ef |grep daemon4
+Mon Aug 25 17:45:02 2014
+
+root     17791  6965  0 15:59 pts/4    00:00:04 watch -n 1 ps -ef |grep daemon4
+root     23472     1  0 15:09 ?        00:00:00 /SmartGrid/shell//daemon4
+root     23505 23472  0 15:09 ?        00:00:22 /SmartGrid/shell//daemon4
+root     27295 23505  0 17:44 ?        00:00:00 /SmartGrid/shell//daemon4
+root     27296 27295  0 17:44 ?        00:00:00 /SmartGrid/shell//daemon4
+root     27360 17791  0 17:45 pts/4    00:00:00 sh -c ps -ef |grep daemon4
+
+===============
+
+WiseGrid (pool-pa) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|pa          |                     |            |                             |
+|            |192.168.12.78:80     |            |weight=30,state=unknown,snmp_|
+|            |                     |            |version=3,snmp_enable=on,secu|
+|            |                     |            |relevel=authNoPriv,authProtoc|
+|            |                     |            |ol=md5,username=zhangliuying,|
+|            |                     |            |cpu=20,memory=80,            |
+|            |192.168.12.78:81     |            |weight=30,state=unknown,snmp_|
+|            |                     |            |version=3,snmp_enable=on,secu|
+|            |                     |            |relevel=authNoPriv,authProtoc|
+|            |                     |            |ol=md5,username=zhangliuying,|
+|            |                     |            |cpu=30,memory=70,            |
+|            |192.168.12.79:80     |            |weight=30,state=unknown,snmp_|
+|            |                     |            |version=3,snmp_enable=off,sec|
+|            |                     |            |urelevel=authNoPriv,authProto|
+|            |                     |            |col=md5,username=zhangliuying|
+|            |                     |            |,cpu=20,memory=80,           |
++------------+---------------------+------------+-----------------------------+
+

@@ -1,0 +1,500 @@
+   60  2014-08-17 14:20:49 ls
+   61  2014-08-17 14:21:20 test -e /etc/ld.so.conf.d/netsnmp.conf 
+   62  2014-08-17 14:21:30 fg
+   63  2014-08-17 14:22:11 cat /etc/ld.so.conf.d/netsnmp.conf 
+   64  2014-08-17 14:22:23 jobs
+   65  2014-08-17 14:22:26 fg 1
+   66  2014-08-17 14:22:37 fg
+   67  2014-08-17 14:22:41 jobs
+   68  2014-08-17 14:22:42 fg 2
+   69  2014-08-17 14:23:02 ./test.sh 
+   70  2014-08-17 14:23:05 fg
+   71  2014-08-17 14:25:27 ./test.sh 
+   72  2014-08-17 14:25:29 fg
+   73  2014-08-17 14:25:42 ./test.sh 
+   74  2014-08-17 14:25:44 fg
+   75  2014-08-17 14:26:05 ./test.sh 
+   76  2014-08-17 14:26:06 fg
+   77  2014-08-17 14:26:24 ./test.sh 
+   78  2014-08-17 14:26:24 fg
+   79  2014-08-17 14:26:51 ./test.sh 
+   80  2014-08-17 14:26:52 fg
+   81  2014-08-17 14:27:00 ./test.sh 
+   82  2014-08-17 14:27:01 fg
+   83  2014-08-17 14:27:55 ./test.sh 
+   84  2014-08-17 14:27:56 fg
+   85  2014-08-17 14:28:21 echo "/SmartGrid/snmp/lib/" > /etc/ld.so.conf.d/netsnmp.conf 
+   86  2014-08-17 14:28:25 ./test.sh 
+   87  2014-08-17 14:28:26 fg
+   88  2014-08-17 14:28:49 ./test.sh 
+   89  2014-08-17 14:28:50 fg
+   90  2014-08-17 14:29:19 ./test.sh 
+   91  2014-08-17 14:29:21 fg
+   92  2014-08-17 14:29:53 ./test.sh 
+   93  2014-08-17 14:29:55 fg
+   94  2014-08-17 14:30:05 ./test.sh 
+   95  2014-08-17 14:30:08 fg
+   96  2014-08-17 14:30:16 fg
+   97  2014-08-17 14:30:27 ls
+   98  2014-08-17 14:30:30 fg
+   99  2014-08-17 14:33:04 vim test.sh 
+  100  2014-08-17 14:33:06 jobs
+  101  2014-08-17 14:33:08 fg
+  102  2014-08-17 14:33:24 ./test.sh 
+  103  2014-08-17 14:33:26 fg
+  104  2014-08-17 14:33:30 ./test.sh 
+  105  2014-08-17 14:33:33 fg
+  106  2014-08-17 14:33:38 make
+  107  2014-08-17 14:33:49 sh build.sh 
+  108  2014-08-17 14:34:08 ls
+  109  2014-08-17 14:34:15 cd libsnmp/
+  110  2014-08-17 14:34:16 ls
+  111  2014-08-17 14:34:18 cd ..
+  112  2014-08-17 14:34:19 jobs
+  113  2014-08-17 14:34:24 cd bin/
+  114  2014-08-17 14:34:25 ls
+  115  2014-08-17 14:34:27 jobs
+  116  2014-08-17 14:34:29 make
+  117  2014-08-17 14:34:33 make clean 
+  118  2014-08-17 14:34:34 make
+  119  2014-08-17 14:34:41 cd ..
+  120  2014-08-17 14:34:45 make
+  121  2014-08-17 14:35:02 echo "" > /etc/ld.so.conf.d/netsnmp.conf 
+  122  2014-08-17 14:35:05 sh build.sh 
+  123  2014-08-17 14:35:20 fg
+  124  2014-08-17 14:35:44 sh build.sh 
+  125  2014-08-17 14:36:06 fg
+  126  2014-08-17 14:38:03 sh build.sh 
+  127  2014-08-17 14:38:34 fg
+  128  2014-08-17 14:41:40 sh build.sh 
+  129  2014-08-17 14:41:58 fg
+  130  2014-08-17 14:44:37 sh build.sh 
+  131  2014-08-17 14:44:55 fg
+  132  2014-08-17 14:45:35 sh build.sh 
+  133  2014-08-17 14:45:51 fg
+  134  2014-08-17 14:47:25 sh build.sh 
+  135  2014-08-17 14:48:00 fg
+  136  2014-08-17 14:48:21 sh build.sh 
+  137  2014-08-17 14:48:37 fg
+  138  2014-08-17 14:50:07 sh build.sh 
+  139  2014-08-17 14:50:33 cat /etc/ld.so.conf.d/netsnmp.conf 
+  140  2014-08-17 14:50:35 fg
+  141  2014-08-17 14:51:02 echo "" > /etc/ld.so.conf.d/netsnmp.conf 
+  142  2014-08-17 14:51:04 sh build.sh 
+  143  2014-08-17 14:51:27 ls
+  144  2014-08-17 14:51:31 fg
+  145  2014-08-17 14:51:54 cat /etc/ld.so.conf.d/netsnmp.conf 
+  146  2014-08-17 14:52:00 fg
+  147  2014-08-17 14:52:08 ./test.sh 
+  148  2014-08-17 14:52:56 mv test.sh /home/zhangly/shell/set_ld_nensnmplib.sh
+  149  2014-08-17 14:53:15 cd /home/zhangly/shell/
+  150  2014-08-17 14:53:15 ls
+  151  2014-08-17 14:53:18 git status -s
+  152  2014-08-17 14:53:26 ls
+  153  2014-08-17 14:53:33 git init 
+  154  2014-08-17 14:53:38 git add .
+  155  2014-08-17 14:53:40 git status -s
+  156  2014-08-17 14:54:01 git rm --cached check_lecense.sh
+  157  2014-08-17 14:54:11 git rm --cached pull_svn.sh
+  158  2014-08-17 14:54:18 git rm --cached set_ld_nensnmplib.sh
+  159  2014-08-17 14:54:20 git status s
+  160  2014-08-17 14:54:23 git status -s
+  161  2014-08-17 14:54:41 git commit -m "add check_tcp_prot"
+  162  2014-08-17 14:54:48 git add check_lecense.sh
+  163  2014-08-17 14:54:59 git commit -m "add check_license"
+  164  2014-08-17 14:55:03 git status -s
+  165  2014-08-17 14:55:07 git add pull_svn.sh
+  166  2014-08-17 14:55:21 git commit -m "add pull_svn"
+  167  2014-08-17 14:55:24 git status -s
+  168  2014-08-17 14:55:28 git add set_ld_nensnmplib.sh
+  169  2014-08-17 14:55:49 git mv set_ld_nensnmplib.sh set_ld_netsnmplib.sh
+  170  2014-08-17 14:56:10 git mv check_lecense.sh check_license.sh
+  171  2014-08-17 14:56:25 git commit -m "add set_ld_netsnmplib"
+  172  2014-08-17 14:56:34 git status -s
+  173  2014-08-17 14:58:14 su wsadmin 
+  174  2014-08-17 14:58:56 ls
+  175  2014-08-17 14:59:03 jobs
+  176  2014-08-17 14:59:12 cd /home/zhangly/smartgrid/trunk/
+  177  2014-08-17 14:59:12 ls
+  178  2014-08-17 14:59:19 git status -s
+  179  2014-08-17 14:59:21 git diff
+  180  2014-08-17 14:59:47 git status -s
+  181  2014-08-17 14:59:55 git add -u
+  182  2014-08-17 14:59:57 git status -s
+  183  2014-08-17 15:02:23 git commit -m "optimized make via shell for netsnmplib add path into file of enviranment variable"
+  184  2014-08-17 15:02:25 ls
+  185  2014-08-17 15:06:08 git commit -m "optimized make via shell for netsnmplib add path into file /etc/ld.so.conf.d/netsnmp.conf of enviranment variable"
+  186  2014-08-17 15:06:16 git commit -m "optimized make via shell for netsnmplib add path into file /etc/ld.so.conf.d/netsnmp.conf of enviranment variable" --amend 
+  187  2014-08-17 15:06:20 git log --oneline 
+  188  2014-08-17 15:06:26 git remote show 
+  189  2014-08-17 15:06:34 git cherry github/master 
+  190  2014-08-17 15:06:41 git push github master 
+  191  2014-08-17 15:23:13 ls
+  192  2014-08-17 15:23:25 ls smartcli/bin/Makefile 
+  193  2014-08-17 15:23:28 ls smartcli/bin/Makefile -al
+  194  2014-08-17 15:23:55 git push github master -f
+  195  2014-08-17 15:25:01 git push github master -f
+  196  2014-08-17 16:41:32 jobs
+  197  2014-08-17 16:41:56 ssh root@192.168.12.78
+  198  2014-08-17 16:14:43 ls
+  199  2014-08-17 16:14:46 ls
+  200  2014-08-17 16:14:55 ws admin
+  201  2014-08-17 16:14:58 su wsadmin 
+  202  2014-08-17 16:15:08 ssh root@192.168.12.78
+  203  2014-08-17 16:15:25 ssh man@192.168.12.78
+  204  2014-08-17 16:16:02 ls
+  205  2014-08-17 16:16:46 mv /SmartGrid/snmp/lib /SmartGrid/snmp/lib_sefl_compilet
+  206  2014-08-17 16:17:04 mv /SmartGrid/snmp/lib_backup/ /SmartGrid/snmp/lib
+  207  2014-08-17 16:17:10 ls
+  208  2014-08-17 16:17:19 cd /home/zhangly/smartgrid/
+  209  2014-08-17 16:17:20 ls
+  210  2014-08-17 16:17:24 cd trunk/
+  211  2014-08-17 16:17:25 ls
+  212  2014-08-17 16:17:28 cd smartcli/
+  213  2014-08-17 16:17:29 ls
+  214  2014-08-17 16:17:36 sh build.sh 
+  215  2014-08-17 16:18:13 ssh root@192.168.12.78
+  216  2014-08-17 16:18:25 ls
+  217  2014-08-17 16:18:36 scp install_cli_x86_64_v0.0.1T_16245.bin root@192.168.12.78:
+  218  2014-08-17 16:18:46 cd ../smartcommon/
+  219  2014-08-17 16:18:47 ls
+  220  2014-08-17 16:18:54 sh bu
+  221  2014-08-17 16:18:57 ls
+  222  2014-08-17 16:19:03 cd ../smartshell/
+  223  2014-08-17 16:19:04 sh build.sh 
+  224  2014-08-17 16:19:23 scp install_shell_x86_64_v0.0.1T_16245.bin root@192.168.12.78:
+  225  2014-08-17 16:19:37 ssh root@192.168.12.78
+  226  2014-08-17 16:22:08 ssh root@192.168.12.78
+  227  2014-08-17 16:22:23 ssh man@192.168.12.78
+  228  2014-08-17 16:27:03 ls
+  229  2014-08-17 16:27:26 cd ..
+  230  2014-08-17 16:27:38 grep "0.0.0.0:0" . -R --include\=*.c
+  231  2014-08-17 16:28:15 ls
+  232  2014-08-17 16:28:19 ls
+  233  2014-08-17 16:28:22 cd smartcli/
+  234  2014-08-17 16:28:23 ls
+  235  2014-08-17 16:28:31 ls
+  236  2014-08-17 16:28:39 cd ../smartshell/
+  237  2014-08-17 16:28:40 ls
+  238  2014-08-17 16:28:46 cd script4/
+  239  2014-08-17 16:28:47 ls
+  240  2014-08-17 16:28:51 vim script4.c 
+  241  2014-08-17 16:30:06 man socket
+  242  2014-08-17 16:30:14 man 7 unix
+  243  2014-08-17 16:30:39 ls
+  244  2014-08-17 16:30:40 fg
+  245  2014-08-17 16:44:40 ls
+  246  2014-08-17 16:44:43 cd ..
+  247  2014-08-17 16:44:47 cd ../smartcli/
+  248  2014-08-17 16:44:48 ls
+  249  2014-08-17 16:44:58 cd libvs/
+  250  2014-08-17 16:44:58 ls
+  251  2014-08-17 16:45:08 git ls-files
+  252  2014-08-17 16:45:14 jobs
+  253  2014-08-17 16:45:36 jobs
+  254  2014-08-17 16:45:38 pwd
+  255  2014-08-17 16:45:43 whoami 
+  256  2014-08-17 17:12:53 ls
+  257  2014-08-17 17:13:00 cd /home/zhangly/smartgrid/
+  258  2014-08-17 17:13:00 ls
+  259  2014-08-17 17:13:05 cd trunk/
+  260  2014-08-17 17:13:05 ls
+  261  2014-08-17 17:13:09 ls
+  262  2014-08-17 17:13:12 ls
+  263  2014-08-17 17:13:17 cd smartshell/
+  264  2014-08-17 17:13:18 ls
+  265  2014-08-17 17:13:21 sh install_shell_x86_64_v0.0.1T_16245.bin 
+  266  2014-08-17 17:13:26 exit
+  267  2014-08-17 16:46:04 cd /home/zhangly/smartgrid/
+  268  2014-08-17 16:46:06 cd trunk/
+  269  2014-08-17 16:46:07 ls
+  270  2014-08-17 16:46:09 cd smartcli/
+  271  2014-08-17 16:46:15 git ls-files
+  272  2014-08-17 16:46:20 cd libvs/
+  273  2014-08-17 16:46:21 ls
+  274  2014-08-17 16:46:26 vim libpool.c 
+  275  2014-08-17 16:47:20 ls
+  276  2014-08-17 16:47:25 cd ..
+  277  2014-08-17 16:47:27 sh build.sh 
+  278  2014-08-17 16:51:15 sh install_cli_x86_64_v0.0.1T_16245.bin 
+  279  2014-08-17 16:51:16 ls
+  280  2014-08-17 16:51:19 ls
+  281  2014-08-17 16:51:23 su wsadmin 
+  282  2014-08-17 16:53:11 fg
+  283  2014-08-17 16:54:48 sh build.sh 
+  284  2014-08-17 16:54:53 fg
+  285  2014-08-17 16:55:01 sh build.sh 
+  286  2014-08-17 16:55:13 sl
+  287  2014-08-17 16:55:14 ls
+  288  2014-08-17 16:55:16 sh install_cli_x86_64_v0.0.1T_16245.bin 
+  289  2014-08-17 16:55:17 su wsadmin 
+  290  2014-08-17 16:56:28 fg
+  291  2014-08-17 16:57:37 sh build.sh 
+  292  2014-08-17 16:57:50 su wsadmin 
+  293  2014-08-17 16:58:26 sh install_cli_x86_64_v0.0.1T_16245.bin 
+  294  2014-08-17 16:58:28 su wsadmin 
+  295  2014-08-17 17:00:01 ls
+  296  2014-08-17 17:00:17 scp install_cli_x86_64_v0.0.1T_16245.bin root@192.168.12.78:
+  297  2014-08-17 17:00:33 ssh root@192.168.12.78
+  298  2014-08-17 17:07:16 fg
+  299  2014-08-17 17:07:44 ls
+  300  2014-08-17 17:07:50 ls
+  301  2014-08-17 17:07:55 ls
+  302  2014-08-17 17:08:14 ps aux |grep script4
+  303  2014-08-17 17:08:24 ls
+  304  2014-08-17 17:08:27 ls
+  305  2014-08-17 17:08:30 fg
+  306  2014-08-17 17:08:35 git status -s
+  307  2014-08-17 17:08:39 cd ../smartshell/
+  308  2014-08-17 17:08:39 ls
+  309  2014-08-17 17:08:44 cd script4/
+  310  2014-08-17 17:08:44 ls
+  311  2014-08-17 17:08:50 vim script4.c 
+  312  2014-08-17 17:10:08 man syslog
+  313  2014-08-17 17:10:14 man 3 syslog
+  314  2014-08-17 17:11:22 man 3 syslog
+  315  2014-08-17 17:11:30 fg
+  316  2014-08-17 17:12:36 ls
+  317  2014-08-17 17:12:37 cd ..
+  318  2014-08-17 17:12:39 sh build.sh 
+  319  2014-08-17 17:13:29 ls
+  320  2014-08-17 17:13:33 su wsadmin 
+  321  2014-08-17 17:22:00 ls
+  322  2014-08-17 17:22:02 jobs
+  323  2014-08-17 17:22:03 exit
+  324  2014-08-17 17:29:53 cd /home/zhangly/smartgrid/
+  325  2014-08-17 17:29:53 ls
+  326  2014-08-17 17:30:02 cd trunk/
+  327  2014-08-17 17:30:02 ls
+  328  2014-08-17 17:30:06 cd smartcli/
+  329  2014-08-17 17:30:11 sh install_cli_x86_64_v0.0.1T_16245.bin 
+  330  2014-08-17 17:30:18 cd ../smartshell/
+  331  2014-08-17 17:30:21 sh install_shell_x86_64_v0.0.1T_16245.bin 
+  332  2014-08-17 17:31:28 tail -f /var/log/messages
+  333  2014-08-17 17:32:25 ls
+  334  2014-08-17 17:32:44 tail -f /var/log/messages
+  335  2014-08-17 17:40:50 sh install_shell_x86_64_v0.0.1T_16245.bin 
+  336  2014-08-17 17:41:04 tail -f /var/log/messages
+  337  2014-08-17 17:42:28 sh install_shell_x86_64_v0.0.1T_16245.bin 
+  338  2014-08-17 17:42:31 w
+  339  2014-08-17 17:42:33 tail -f /var/log/messages
+  340  2014-08-17 18:11:31 ls
+  341  2014-08-17 18:11:33 exit
+  342  2014-08-17 18:07:19 cd /home/zhangly/
+  343  2014-08-17 18:07:21 cd tru
+  344  2014-08-17 18:07:28 cd smartgrid/
+  345  2014-08-17 18:07:28 ls
+  346  2014-08-17 18:07:40 cd trunk/
+  347  2014-08-17 18:07:40 ls
+  348  2014-08-17 18:07:41 ls
+  349  2014-08-17 18:07:47 cflow -r -T check_routable_address ./smartcli/libnet/librtable.c
+  350  2014-08-17 18:07:59 cflow -r -l -T check_routable_address ./smartcli/libnet/librtable.c
+  351  2014-08-17 18:08:25 cflow -r -l -T check_routable_address ./smartcli/libnet/librtable.c |less
+  352  2014-08-17 18:09:16 cflow -r -l -T check_routable_address . |less
+  353  2014-08-17 18:09:25 cflow -r -l -T check_routable_address *.c |less
+  354  2014-08-17 18:09:38 cflow -r -l -T check_routable_address *.c
+  355  2014-08-17 18:09:44 cflow -r -l -T check_routable_address *
+  356  2014-08-17 18:09:53 cflow -r -l -T check_routable_address * |less
+  357  2014-08-17 18:09:59 ls
+  358  2014-08-17 18:10:02 cd smartcli/
+  359  2014-08-17 18:10:08 cflow -r -l -T check_routable_address * |less
+  360  2014-08-17 18:10:13 cflow -r -l -T check_routable_address *.c |less
+  361  2014-08-17 18:10:21 cd ..
+  362  2014-08-17 18:10:28 cflow -r -l -T check_routable_address "*" |less
+  363  2014-08-17 18:10:34 cflow -r -l -T check_routable_address "*.c" |less
+  364  2014-08-17 18:10:38 cd smartcli/
+  365  2014-08-17 18:10:41 cflow -r -l -T check_routable_address "*.c" |less
+  366  2014-08-17 18:10:44 ls
+  367  2014-08-17 18:11:39 exit
+  368  2014-08-17 17:14:19 cat /var/log/messages
+  369  2014-08-17 17:14:54 tail -f /var/log/messages
+  370  2014-08-17 17:15:51 tail -f /var/log/messages >> 1.txt
+  371  2014-08-17 17:16:00 vim 1.txt 
+  372  2014-08-17 17:18:32 tail -f /var/log/messages >> 2.txt
+  373  2014-08-17 17:18:40 vim 2.txt 
+  374  2014-08-17 17:19:03 vim 1.txt 
+  375  2014-08-17 17:19:41 cat /SmartGrid/config/config.xml 
+  376  2014-08-17 17:20:54 jobs
+  377  2014-08-17 17:20:54 fg
+  378  2014-08-17 17:21:10 ls
+  379  2014-08-17 17:22:08 ls
+  380  2014-08-17 17:22:18 cd /home/zhangly/smartgrid/
+  381  2014-08-17 17:22:18 ls
+  382  2014-08-17 17:22:22 cd trunk/
+  383  2014-08-17 17:22:22 ls
+  384  2014-08-17 17:22:26 ls
+  385  2014-08-17 17:22:39 grep check_routable_address . -R --include\=*.c
+  386  2014-08-17 17:22:44 grep check_routable_address . -R --include\=*.c -n
+  387  2014-08-17 17:23:36 ls
+  388  2014-08-17 17:23:41 cd 
+  389  2014-08-17 17:23:42 ls
+  390  2014-08-17 17:23:45 vim 1.txt 
+  391  2014-08-17 17:23:47 jobs
+  392  2014-08-17 17:23:48 fg
+  393  2014-08-17 17:24:06 ls
+  394  2014-08-17 17:24:09 cd -
+  395  2014-08-17 17:24:09 ls
+  396  2014-08-17 17:24:13 cd smartshell/
+  397  2014-08-17 17:24:14 ls
+  398  2014-08-17 17:24:19 cd daemon4/
+  399  2014-08-17 17:24:19 ls
+  400  2014-08-17 17:24:34 vim daemon4.c 
+  401  2014-08-17 17:24:48 cd ..
+  402  2014-08-17 17:24:49 cd ..
+  403  2014-08-17 17:24:55 grep check_routable_address . -R --include\=*.c -n
+  404  2014-08-17 17:25:09 vim ./smartcommon/common/dependence.c
+  405  2014-08-17 17:25:54 jobs
+  406  2014-08-17 17:25:56 fg 1
+  407  2014-08-17 17:26:28 vim /root/2.txt 
+  408  2014-08-17 17:26:35 jobs
+  409  2014-08-17 17:26:41 vim /root/1.txt 
+  410  2014-08-17 17:27:30 jobs
+  411  2014-08-17 17:27:38 cd smartshell/
+  412  2014-08-17 17:27:43 cd script4/
+  413  2014-08-17 17:27:45 svn diff 
+  414  2014-08-17 17:27:55 vim script4.c 
+  415  2014-08-17 17:28:07 svn diff 
+  416  2014-08-17 17:28:09 fg
+  417  2014-08-17 17:28:21 git status -s
+  418  2014-08-17 17:28:23 cd ..
+  419  2014-08-17 17:28:28 cd ../smartcli/
+  420  2014-08-17 17:28:28 ls
+  421  2014-08-17 17:28:32 git status -s
+  422  2014-08-17 17:28:37 svn status 
+  423  2014-08-17 17:28:50 vim libvs/libpool.c 
+  424  2014-08-17 17:29:03 vim libvs/libpool.c 
+  425  2014-08-17 17:29:13 git status -s
+  426  2014-08-17 17:29:15 sh build.sh 
+  427  2014-08-17 17:29:39 cd ../smartshell/
+  428  2014-08-17 17:29:40 ls
+  429  2014-08-17 17:29:41 sh build.sh 
+  430  2014-08-17 17:30:31 su wsadmin 
+  431  2014-08-17 17:33:04 su wsadmin 
+  432  2014-08-17 17:37:02 su wsadmin 
+  433  2014-08-17 17:39:30 fg
+  434  2014-08-17 17:40:39 sh build.sh 
+  435  2014-08-17 17:41:18 su wsadmin 
+  436  2014-08-17 17:41:59 ls
+  437  2014-08-17 17:42:00 fg
+  438  2014-08-17 17:42:09 cd ../smartcommon/
+  439  2014-08-17 17:42:11 make
+  440  2014-08-17 17:42:16 cd -
+  441  2014-08-17 17:42:17 sh build.sh 
+  442  2014-08-17 17:42:39 su wsadmin 
+  443  2014-08-17 17:45:52 fg
+  444  2014-08-17 17:46:07 ls
+  445  2014-08-17 17:46:14 git status -s
+  446  2014-08-17 17:46:19 jobs
+  447  2014-08-17 17:46:21 cd ..
+  448  2014-08-17 17:46:26 cd smartcommon/
+  449  2014-08-17 17:46:36 git add common/dependence.c
+  450  2014-08-17 17:46:40 git add common/dependence.c -f
+  451  2014-08-17 17:46:43 git status -s
+  452  2014-08-17 17:46:48 fg
+  453  2014-08-17 17:46:56 git status -s
+  454  2014-08-17 17:47:04 jobs
+  455  2014-08-17 17:47:10 fg
+  456  2014-08-17 17:47:23 cd ..
+  457  2014-08-17 17:47:27 fg
+  458  2014-08-17 17:47:47 grep "check_routable_address" . -R --include\=*.c -n
+  459  2014-08-17 17:48:16 fg
+  460  2014-08-17 17:48:50 flow -r ./smartcli/libnet/librtable.c
+  461  2014-08-17 17:48:58 cflow -r ./smartcli/libnet/librtable.c
+  462  2014-08-17 17:49:04 cflow -r ./smartcli/libnet/librtable.c
+  463  2014-08-17 17:49:05 fg
+  464  2014-08-17 17:49:28 cflow -r ./smartcli/libnet/librtable.c |grep -C 10 check_routable_address
+  465  2014-08-17 17:49:42 cflow -r ./smartcli/libnet/librtable.c |grep -C 10 check_routable_address --color=auto
+  466  2014-08-17 17:49:59 man cflow
+  467  2014-08-17 17:50:41 cflow -rp ./smartcli/libnet/librtable.c |grep -C 10 check_routable_address --color=auto
+  468  2014-08-17 17:50:48 cflow -rx ./smartcli/libnet/librtable.c |grep -C 10 check_routable_address --color=auto
+  469  2014-08-17 17:51:06 cflow -r ./smartcli/libnet/librtable.c |grep -C 10 check_routable_address --color=auto
+  470  2014-08-17 17:51:33 cflow -r ./smartcli/libnet/librtable.c |grep -C 10 "\bcheck_routable_address\b" --color=auto
+  471  2014-08-17 17:52:45 fg
+  472  2014-08-17 17:52:50 ls
+  473  2014-08-17 17:53:12 cflow -r./smartcli/libnet/librtable.c 
+  474  2014-08-17 17:53:45 cflow -r./smartcli/libnet/librtable.c
+  475  2014-08-17 17:53:52 cflow -r ./smartcli/libnet/librtable.c
+  476  2014-08-17 17:53:56 fg
+  477  2014-08-17 17:54:06 cflow -r -f check_routable_address ./smartcli/libnet/librtable.c
+  478  2014-08-17 17:54:17 cflow --help
+  479  2014-08-17 17:55:52 cflow -r -f check_routable_address ./smartcli/libnet/librtable.c
+  480  2014-08-17 17:56:01 cflow --usage
+  481  2014-08-17 17:56:23 cflow --help
+  482  2014-08-17 17:56:34 cflow -r -T check_routable_address ./smartcli/libnet/librtable.c
+  483  2014-08-17 17:56:52 fg
+  484  2014-08-17 17:57:00 cflow --help
+  485  2014-08-17 18:06:57 jParserParser
+  486  2014-08-17 18:11:43 cflow -r -T check_routable_address ./smartcli/libnet/librtable.c
+  487  2014-08-17 18:11:49 cflow -r -T check_routable_address ./smartcli/libnet/librtable.c
+  488  2014-08-17 18:12:00 cflow -r -T check_routable_address ./smartcli/libnet/librtable.c
+  489  2014-08-17 18:12:14 cflow -n
+  490  2014-08-17 18:12:20 cflow --help
+  491  2014-08-17 18:12:57 jobs
+  492  2014-08-17 18:12:58 exit
+  493  2014-08-17 18:13:21 ls
+  494  2014-08-17 18:13:33 cd /home/zhangly/smartgrid/
+  495  2014-08-17 18:13:35 git status -s
+  496  2014-08-17 18:13:39 cd trunk/
+  497  2014-08-17 18:13:41 git status -s
+  498  2014-08-17 18:13:48 git diff
+  499  2014-08-17 18:13:53 ls
+  500  2014-08-17 18:13:55 exit
+  501  2014-08-18 08:58:36 ls
+  502  2014-08-18 08:58:49 ls
+  503  2014-08-18 08:59:07 cd /usr/lib
+  504  2014-08-18 08:59:07 ls
+  505  2014-08-18 09:06:45 ssh root@192.168.12.78
+  506  2014-08-18 09:19:56 ls
+  507  2014-08-18 09:20:09 cd /home/zhangly/smartgrid/software/
+  508  2014-08-18 09:20:10 ls
+  509  2014-08-18 09:20:13 cd ../trunk/
+  510  2014-08-18 09:20:14 ls
+  511  2014-08-18 09:20:16 cd smartcli/
+  512  2014-08-18 09:20:16 ls
+  513  2014-08-18 09:20:40 cd ../smartshell/
+  514  2014-08-18 09:20:41 ls
+  515  2014-08-18 09:20:45 git status -s
+  516  2014-08-18 09:20:56 git diff
+  517  2014-08-18 09:21:29 svn status |grep -i ^m
+  518  2014-08-18 09:21:32 svn diff 
+  519  2014-08-18 09:21:48 ls
+  520  2014-08-18 09:21:49 obs
+  521  2014-08-18 09:21:50 jobs
+  522  2014-08-18 09:21:57 vim daemon4/daemon4.c 
+  523  2014-08-18 09:22:08 fg
+  524  2014-08-18 09:22:34 git status -s
+  525  2014-08-18 09:22:43 git diff daemon4/daemon4.c
+  526  2014-08-18 09:22:50 git status -s
+  527  2014-08-18 09:23:00 git diff ../smartcommon/common/dependence.c
+  528  2014-08-18 09:23:23 cflow --help
+  529  2014-08-18 09:25:56 cflow --help |less
+  530  2014-08-18 09:54:00 ls
+  531  2014-08-18 09:54:12 git status -s
+  532  2014-08-18 09:54:18 svn status 
+  533  2014-08-18 09:54:30 cd ../smartcommon/
+  534  2014-08-18 09:54:38 git ls-files
+  535  2014-08-18 09:54:45 svn diff 
+  536  2014-08-18 09:54:50 svn status
+  537  2014-08-18 09:54:58 svn status |grep -i ^m
+  538  2014-08-18 09:55:04 git ls-files
+  539  2014-08-18 09:55:13 ls
+  540  2014-08-18 09:56:01 ls
+  541  2014-08-18 09:56:05 cd ..
+  542  2014-08-18 09:56:05 ls
+  543  2014-08-18 09:56:13 cd -
+  544  2014-08-18 09:56:13 ls
+  545  2014-08-18 09:56:19 cd ..
+  546  2014-08-18 09:56:30 vim /var/log/messages
+  547  2014-08-18 10:05:49 cd
+  548  2014-08-18 10:05:50 ls
+  549  2014-08-18 10:05:53 vim 1.txt 
+  550  2014-08-18 10:06:34 ls
+  551  2014-08-18 10:06:37 ls
+  552  2014-08-18 10:06:41 ls
+  553  2014-08-18 10:06:47 cd -
+  554  2014-08-18 10:06:47 ls
+  555  2014-08-18 10:07:20 cflow -r check_routable_address smartcommon/*.c
+  556  2014-08-18 10:07:39 cflow  check_routable_address -r smartcommon/*.c
+  557  2014-08-18 10:07:47 cflow  "check_routable_address" -r smartcommon/*.c
+  558  2014-08-18 10:07:53 cflow  "check_routable_address" -r smartcommon/*.c
+  559  2014-08-18 10:08:09 history >> cflow_history.txt

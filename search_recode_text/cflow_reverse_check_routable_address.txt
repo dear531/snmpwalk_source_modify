@@ -1,0 +1,730 @@
++-LIST_HEAD()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-neighbor_show() <int neighbor_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:394>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-bits2mask()
++-check_address_ipv6()
++-check_ip_netmask()
+  \-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-check_ip_version()
+  \-route_match_address() <int route_match_address (char *test_ip,char *ipaddr,char *netmask) at ./smartcli/libnet/librtable.c:597>
+    \-route_match() <int route_match (char *test_ip,char *route) at ./smartcli/libnet/librtable.c:611>
+      \-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+        \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+          +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+          \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-check_routable_address()
+  \-do_check_routable_address() <int do_check_routable_address (struct cli_def cli,struct cli_command c,char *ip) at ./smartcli/libnet/librtable.c:661>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-check_subnet()
+  \-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-check_subnet_addr()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  \-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-cli_command_add_argument()
+  +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+    +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+    \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-cli_command_setvalues_func()
+  \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+    +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+    \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-cli_register_command()
+  +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_set_command() <int route_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1005>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  | +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-fprintf()
+  \-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-get_ip_netmask2()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_match() <int route_match (char *test_ip,char *route) at ./smartcli/libnet/librtable.c:611>
+  | \-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-inet_pton()
++-inet_sockaddr2ip()
+  \-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-list_empty()
+  \-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+    +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+    \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-list_first_entry()
+  \-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+    +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+    \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-list_for_each_entry()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_print() <int route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:100>
+  | +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_print() <int ospf_print (struct list_head queue) at ./smartcli/libnet/librtable.c:131>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ospf6_print() <int ospf6_print (struct list_head queue) at ./smartcli/libnet/librtable.c:153>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-rip_print() <int rip_print (struct list_head queue) at ./smartcli/libnet/librtable.c:176>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ripng_print() <int ripng_print (struct list_head queue) at ./smartcli/libnet/librtable.c:198>
+  | \-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-neighbor_print() <int neighbor_print (struct list_head queue) at ./smartcli/libnet/librtable.c:220>
+  | \-neighbor_show() <int neighbor_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:394>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-s_route_print() <int s_route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:348>
+  | \-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-memset()
++-module_get_queue()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-neighbor_show() <int neighbor_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:394>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-module_purge_queue()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+  | \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-neighbor_show() <int neighbor_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:394>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-do_check_ospf_rip_address() <int do_check_ospf_rip_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:684>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-ospf_show() <;int ospf_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:324>
+  +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-printf()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_print() <int route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:100>
+  | +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_print() <int ospf_print (struct list_head queue) at ./smartcli/libnet/librtable.c:131>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ospf6_print() <int ospf6_print (struct list_head queue) at ./smartcli/libnet/librtable.c:153>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-rip_print() <int rip_print (struct list_head queue) at ./smartcli/libnet/librtable.c:176>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ripng_print() <int ripng_print (struct list_head queue) at ./smartcli/libnet/librtable.c:198>
+  | \-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-neighbor_print() <int neighbor_print (struct list_head queue) at ./smartcli/libnet/librtable.c:220>
+  | \-neighbor_show() <int neighbor_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:394>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-s_route_print() <int s_route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:348>
+  | \-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-do_check_routable_address() <int do_check_routable_address (struct cli_def cli,struct cli_command c,char *ip) at ./smartcli/libnet/librtable.c:661>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-rip_show() <;int rip_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:336>
+  +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-route_set_command() <int route_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1005>
+  \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
++-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
++-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+    +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+    | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+    | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-snprintf()
+  \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+    +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+    | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+    | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-sprintf()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_print() <int route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:100>
+  | +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_config_arg() <int rtable_config_arg (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:241>
+  +-s_route_print() <int s_route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:348>
+  | \-s_route_show() <int s_route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:371>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf_new_delete() <int ospf_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:770>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_new_delete() <int rip_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:792>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-neighbor_new_delete() <int neighbor_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:810>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf_rip_enable_disable() <int ospf_rip_enable_disable (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:826>
+  | \-route_set_command() <int route_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1005>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-strcasecmp()
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-strchr()
+  +-is_ipv4_network() <inline int is_ipv4_network (char *address) at ./smartcli/libnet/librtable.c:22>
+  | +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  | |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  | +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  | |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  | +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  | |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  | \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf_print() <int ospf_print (struct list_head queue) at ./smartcli/libnet/librtable.c:131>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-ospf6_print() <int ospf6_print (struct list_head queue) at ./smartcli/libnet/librtable.c:153>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  +-rip_print() <int rip_print (struct list_head queue) at ./smartcli/libnet/librtable.c:176>
+  | \-ospf6_show() <int ospf6_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:312>
+  |   \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  \-ripng_print() <int ripng_print (struct list_head queue) at ./smartcli/libnet/librtable.c:198>
+    \-ripng_show() <int ripng_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:382>
+      \-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
++-strcmp()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-route_print() <int route_print (struct list_head queue) at ./smartcli/libnet/librtable.c:100>
+  | +-rtable_show() <int rtable_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:263>
+  | | +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_show() <int route_show (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:300>
+  |   +-rtable_show_command() <int rtable_show_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1079>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-rtable_config_arg() <int rtable_config_arg (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:241>
+  +-should_be_direct_route() <int should_be_direct_route (const char *rtable_name,const char *ip_mask,const char *ifname) at ./smartcli/libnet/librtable.c:407>
+  | \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  |   +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_match() <int route_match (char *test_ip,char *route) at ./smartcli/libnet/librtable.c:611>
+  | \-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  |   \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |     +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |     \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-check_busy_route() <int check_busy_route (struct cli_def cli,struct cli_command c,char *route) at ./smartcli/libnet/librtable.c:627>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-do_check_ospf6_ripng_address() <int do_check_ospf6_ripng_address (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:675>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-do_check_ospf6_interface() <int do_check_ospf6_interface (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:722>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-ospf_new_delete() <int ospf_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:770>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_new_delete() <int rip_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:792>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-neighbor_new_delete() <int neighbor_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:810>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ospf_rip_enable_disable() <int ospf_rip_enable_disable (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:826>
+    \-route_set_command() <int route_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1005>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-strcpy()
+  \-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+    +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+    | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+    | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-strdup()
+  +-s_route_get_values() <int s_route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:491>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-route_get_values() <int route_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:514>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf_get_values() <int ospf_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:853>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf6_get_values() <int ospf6_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:876>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_get_values() <int rip_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:899>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ripng_get_values() <int ripng_get_values (struct cli_def cli,char **values) at ./smartcli/libnet/librtable.c:922>
+    \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+      +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+      \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
++-strncmp()
+  +-check_s_route_ip() <int check_s_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:27>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  +-check_route_ip() <int check_route_ip (struct cli_def cli,struct cli_command c,char *value) at ./smartcli/libnet/librtable.c:63>
+  | \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  |   +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  |   \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  \-do_check_routable_address() <int do_check_routable_address (struct cli_def cli,struct cli_command c,char *ip) at ./smartcli/libnet/librtable.c:661>
+    \-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+      +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
++-system()
+  +-rtable_config_arg() <int rtable_config_arg (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:241>
+  +-route_new_delete() <int route_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:444>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-ospf_new_delete() <int ospf_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:770>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-rip_new_delete() <int rip_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:792>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  +-neighbor_new_delete() <int neighbor_new_delete (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:810>
+  | +-route_add_command() <int route_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:945>
+  | | +-rtable_add_command() <int rtable_add_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1106>
+  | | \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  | \-route_delete_command() <int route_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1038>
+  |   +-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>
+  |   \-rtable_delete_command() <int rtable_delete_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1172>
+  \-ospf_rip_enable_disable() <int ospf_rip_enable_disable (struct cli_def cli,char *command,char *argv[],int argc) at ./smartcli/libnet/librtable.c:826>
+    \-route_set_command() <int route_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1005>
+      \-rtable_set_command() <int rtable_set_command (struct cli_def cli,struct cli_command parent) at ./smartcli/libnet/librtable.c:1118>

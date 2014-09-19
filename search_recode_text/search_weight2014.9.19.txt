@@ -1,0 +1,30 @@
+./smartcli/libvs/libpool.c:255:		snprintf(buff, 1024, "script4 system pool %s add realserver %s,weight=10,enable=on",
+./smartcli/libvs/libpool.c:301:	RSERVER_SET_VALUE("weight", rserver->weight);
+./smartcli/libvs/libpool.c:511:	if (rserver->weight[0] != 0) {
+./smartcli/libvs/libpool.c:512:		sprintf(desc, "%sweight=%s,", desc, rserver->weight);
+./smartcli/libvs/libpool.c:818:			} else if (strncmp(command, "weight", 6) == 0) {
+./smartcli/libvs/libpool.c:819:				sprintf(rserver->weight, "%u", atoi(argc == 0 ? "10" : argv[0]));
+./smartcli/libvs/libpool.c:1075:	p = cli_register_command(cli, t, "weight", realserver_config_modify,
+./smartcommon/loadbalance/apppool.c:236:	m_analyse_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:329:	m_restore_common(pnode, realserver, weight);
+./smartcommon/loadbalance/apppool.c:494:	ZERO(weight);
+./smartcommon/loadbalance/apppool.c:529:		if (!strncasecmp(token, "weight=", 7)) {
+./smartcommon/loadbalance/apppool.c:530:			set_value(token, rserver->weight);
+./smartcommon/loadbalance/apppool.c:531:			if (strcmp(rserver->weight, "0") == 0) {
+./smartcommon/loadbalance/apppool.c:532:				strcpy(rserver->weight, "10");
+./smartcommon/loadbalance/apppool.c:827:					strcpy(rs->weight, "10");
+./smartshell/walk4rs/walk4rs.c:36:	char weight[4];
+./smartshell/walk4rs/walk4rs.c:278:						sprintf(rsnode->weight, "%d", ret);
+./smartshell/walk4rs/walk4rs.c:325:	RSERVER_SET_VALUE("weight", rserver->weight);
+./smartshell/walk4rs/walk4rs.c:467:				/** assign to rserver weight **/
+./smartshell/walk4rs/walk4rs.c:468:				if (memcmp(rsnode->weight, "-1", sizeof("-1")) != 0) {
+./smartshell/walk4rs/walk4rs.c:469:					memcpy(rserver->weight, rsnode->weight, strlen(rsnode->weight) + 1);
+./smartshell/vmware_daemon/vmware_daemon.c:1397:	RSERVER_SET_VALUE("weight", rserver->weight);
+./smartshell/daemon4/generator.c:303:	if (strlen(rserver->weight))
+./smartshell/daemon4/generator.c:304:		fprintf(fp, "\t\tweight %s\n", rserver->weight);
+./smartshell/daemon4/layer7.c:47:	if (atoi(rserver->weight) > 0)
+./smartshell/daemon4/layer7.c:48:		fprintf(fp, " weight=%s", rserver->weight);
+./smartshell/daemon4/layer7.c:86:			if (strlen(rserver->weight)) 			\
+./smartshell/daemon4/layer7.c:87:			fprintf(fp, " weight=%s", rserver->weight); 	\
+./smartshell/daemon4/layer7.c:252:		fprintf(fp, "\t\tserver 127.0.0.1:1 weight=10;\n");
+./smartshell/daemon4/layer7.c:380:		fprintf(fp, "\t\tserver 127.0.0.1:1 weight=10;\n");

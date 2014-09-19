@@ -1,0 +1,6 @@
+Breakpoint 0, add_realserver_to_apppool (poolname=0x7fffbb915750 "pa", 
+    value=0x7fffbb914b50
+"192.168.12.80:81,weight=21,enable=off,snmp_version=3,snmp_enable=off,authProtocol=md5,securelevel=authNoPriv,username=zhangliuying,password=zhangliuying,cpu=20,memory=80")
+at apppool.c:114
+114             reverse[1024 - 1] = 0;
+
