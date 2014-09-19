@@ -1,0 +1,11 @@
+./smartcli/libvs/libpool.c:470:	if (pool->alive_vm[0] != 0) {
+./smartcli/libvs/libpool.c:471:		sprintf(desc + strlen(desc), "alive_vm=%s,", pool->alive_vm);
+./smartcli/libvs/libpool.c:1750:	cli_unregister_command(cli, root, "alive_vm");
+./smartcli/libvs/libpool.c:1771:		t = cli_register_command(cli, root, "alive_vm", pool_config_arg1,
+====================
+./smartcommon/loadbalance/apppool.c:314:	m_analyse_common(pnode, apppool, alive_vm);
+./smartcommon/loadbalance/apppool.c:408:	m_restore_common(pnode, apppool, alive_vm);
+./smartcommon/loadbalance/apppool.c:750:	m_set_common(apppool, alive_vm, attr, value);
+./smartshell/vmware_daemon/vmware_daemon.c:1080:	if (!alive || alive < atoi(pool->alive_vm) ) {
+./smartshell/vmware_daemon/vmware_daemon.c:1081:		DP("=====================>> (char)alive=%s, (int)alive=%d", pool->alive_vm, atoi(pool->alive_vm));
+./smartshell/vmware_daemon/vmware_daemon.c:1888:	if (total <= atoi(pool->alive_vm)) {
