@@ -1112,3 +1112,11 @@ HOST-RESOURCES-MIB::hrStorageUsed.5 = INTEGER: 1614
 
 .iso(1).org(3).dod(6).internet(1).mgmt(2).mib-2(1).host(25).hrStorage(2).hrStorageTable(3).hrStorageEntry(1).hrStorageSize(5)
 .iso.org.dod.internet.mgmt.mib-2.host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize
+================
+linux 开放以下节点：
+/etc/snmp/snmpd.conf
+view    systemview    included   .1.3.6.1.2.1.25.2
+view    systemview    included   .1.3.6.1.2.1.25.3
+其中：
+内存节点可以开放到这样的程度，但cpu不可以，cpu只能开放发上文的节点，再往下一个节点能提取到有效值，但同时也提示无效的oid：
+view    systemview    included   .1.3.6.1.2.1.25.2.3.1
