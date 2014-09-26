@@ -1,0 +1,296 @@
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=80,memory=20,snmp|
+|            |                     |            |_weight=5,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=6,                  |
++------------+---------------------+------------+-----------------------------+
+resulte
+zml 312
+using 376
+zyy://192.168.12.95 312
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=80,memory=20,snmp|
+|            |                     |            |_weight=5,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
++------------+---------------------+------------+-----------------------------+
+
+zyy://192.168.12.95
+334
+using
+333
+zml
+333
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=80,memory=20,snmp|
+|            |                     |            |_weight=5,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=2,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 11:14:06 CST
+zyy://192.168.12.95
+409
+using
+180
+zml
+411
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=80,memory=20,snmp|
+|            |                     |            |_weight=5,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=80,memory=20,snm|
+|            |                     |            |p_weight=5,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 11:15:25 CST
+zyy://192.168.12.95
+333
+using
+333
+zml
+334
+
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=4,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=4,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 11:18:49 CST
+zyy://192.168.12.95
+364
+using
+273
+zml
+363
+
+将应用池还原成为subjionsched=normal, 注意12.65此时的权重是5，其他是10
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |ping        |subjionsched=normal          |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=4,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=4,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 11:20:23 CST
+zyy://192.168.12.95
+400
+using
+400
+zml
+200
+
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |tcp         |subjionsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=3,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=2,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 15:46:52 CST
+zyy://192.168.12.95
+375
+using
+250
+zml
+375
+start loop 10000
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |tcp         |subjoinsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=3,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=2,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 16:13:32 CST
+zyy://192.168.12.95
+3750
+using
+2500
+zml
+3750
+2014年 09月 25日 星期四 16:16:00 CST
+zyy://192.168.12.95
+3799
+using
+2235
+zml
+3966
+
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |tcp         |subjoinsched=normal          |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=3,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=6,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
++------------+---------------------+------------+-----------------------------+
+
+subjoinsched=normol
+weight10:10:5
+2014年 09月 25日 星期四 17:38:27 CST
+zyy://192.168.12.95
+4002
+using
+3997
+zml
+2001
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |tcp         |subjoinsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=3,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=6,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
++------------+---------------------+------------+-----------------------------+
+2014年 09月 25日 星期四 17:40:27 CST
+zyy://192.168.12.95
+5001
+using
+2499
+zml
+2500
+
+WiseGrid (pool-poola) # show
++------------+---------------------+------------+-----------------------------+
+|Pool Name   |RealServer           |HealthCheck |Notes                        |
++------------+---------------------+------------+-----------------------------+
+|poola       |                     |tcp         |subjoinsched=snmp            |
+|            |192.168.12.65:80     |            |weight=5,state=up,snmp_versio|
+|            |                     |            |n=2c,snmp_enable=on,community|
+|            |                     |            |=public,cpu=20,memory=80,snmp|
+|            |                     |            |_weight=3,                   |
+|            |192.168.12.95:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=5,                  |
+|            |192.168.12.80:80     |            |weight=10,state=up,snmp_versi|
+|            |                     |            |on=2c,snmp_enable=on,communit|
+|            |                     |            |y=public,cpu=20,memory=80,snm|
+|            |                     |            |p_weight=3,                  |
++------------+---------------------+------------+-----------------------------+
+
+2014年 09月 25日 星期四 18:03:27 CST
+zyy://192.168.12.95
+4545
+using
+2723
+zml
+2732
