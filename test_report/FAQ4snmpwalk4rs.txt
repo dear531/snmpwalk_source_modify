@@ -73,6 +73,13 @@ this OID
 please complete snmp element
 
 ======================
+4层设置权重的配置文件：
+cat /SmartGrid/keepalived/etc/check.conf
+7层设置权重的配置文件：
+cat /SmartGrid/smartl7/conf/smartl7.conf
+两个文件均查看weight值
+======================
+
 command:
 命令：
 设置真是服务器的snmp协议选项：
