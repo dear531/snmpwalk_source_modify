@@ -1,0 +1,35 @@
+1.linux default config file (/etc/snmp/snmpd.conf)
+
+     36 
+     37 ####
+     38 # First, map the community name "public" into a "security name"
+     39 
+     40 #       sec.name  source          community
+     41 com2sec notConfigUser  default       public
+     42 
+     43 ####
+     44 # Second, map the security name into a group name:
+     45 
+     46 #       groupName      securityModel securityName
+     47 group   notConfigGroup v1           notConfigUser
+     48 group   notConfigGroup v2c           notConfigUser
+     49 
+     50 ####
+
+2.success fix bug configure of costum file (/SmartGrid/snmp/share/snmp/snmpd.conf)
+
+     13 
+     14 com2sec local default public
+3.machine wrong configure file
+
+     13 
+     14 com2sec local localhost public
+4.diff ringht and wrong:
+
+[root@localhost snmp]# diff /SmartGrid/snmp/share/snmp/snmpd.conf /SmartGrid/snmp/share/snmp/snmpd.conf.backup
+14c14
+< com2sec local localhost public
+---
+> com2sec local default public
+
+
